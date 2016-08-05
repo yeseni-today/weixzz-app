@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.finderlo.weixzz">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- 用于调用 JNI -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".Activity.MainViewAcivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activity.WeiXzzMainViewActivity"/>
+        <activity android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"/>
+        <activity
+            android:name=".Activity.WeiXzzLoginMainActivity"
+            android:label="@string/title_activity_main_view_acivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Activity.WeiXzzStatusDetailActivity">
+        </activity>
+        <activity
+            android:name=".Activity.StatusDetailActivity"
+            android:label="@string/title_activity_status_detail"
+            android:parentActivityName=".Activity.MainViewAcivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.finderlo.weixzz.Activity.MainViewAcivity"/>
+        </activity>
+    </application>
+
+</manifest>

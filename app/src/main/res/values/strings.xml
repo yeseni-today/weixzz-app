@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">WeiXzz</string>
+    <string name="weibosdk_demo_token_to_string_format_1">Token：%1$s \\n有效期：%2$s</string>
+    <string name="flag_is_V_Certification">已认证</string>
+    <string name="isVerified">已认证</string>
+    <string name="isUnVerified">未认证</string>
+    <string name="title_activity_main_view_acivity">WeiXzz</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_status_detail">StatusDetailActivity</string>
+</resources>

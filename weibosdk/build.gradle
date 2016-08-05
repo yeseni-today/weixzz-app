@@ -1,0 +1,24 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
+    signingConfigs {
+        debug {
+            storeFile file('D:/文档/WeiXzzdebugKeystore.jks')
+            keyAlias 'debugKeystore'
+            keyPassword '123456'
+            storePassword '123456'
+        }
+        releaseConfig {}
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+}
