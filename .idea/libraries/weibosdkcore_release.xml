@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="weibosdkcore_release">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/weibosdk/libs/weibosdkcore_release.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/libs/weibosdkcore_release.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

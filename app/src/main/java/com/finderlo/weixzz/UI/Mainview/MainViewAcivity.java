@@ -7,7 +7,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -24,8 +23,9 @@ import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
 import com.finderlo.weixzz.UI.Login.LoginActivity;
 import com.finderlo.weixzz.UI.StatusDetail.StatusDetailActivity;
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.Util.AccessTokenKeeper;
+import com.finderlo.weixzz.Util.AccessTokenManger;
 import com.finderlo.weixzz.Database.StatusDatabaseTool;
+import com.finderlo.weixzz.Util.ClientApiManger;
 import com.finderlo.weixzz.Util.Util;
 import com.finderlo.weixzz.XzzConstants;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
@@ -39,19 +39,14 @@ import java.util.ArrayList;
 public class MainViewAcivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final String TAG = "WeiXzzMainViewActivity";
+    private static final String TAG = "MainViewActivity";
 
     private ListView mListView;
-    private com.finderlo.weixzz.Adapter.StatusAdapter mStatusAdapter;
     private ArrayList<Status> mStatuses;
     private StatusAdapter mAdapter;
-
-    private Oauth2AccessToken mOauth2AccessToken = AccessTokenKeeper.getOauth2AccessToken();
-    private StatusesAPI mStatusesAPI;
-
     private ProgressDialog mProgressDialog;
-
     private ArrayList<Status> mDataList = new ArrayList<Status>();
+    private StatusesAPI mStatusesAPI;
 
 
     @Override
@@ -73,7 +68,6 @@ public class MainViewAcivity extends AppCompatActivity
 
 
         mDataList = StatusDatabaseTool.getInstance(this).queryStatuses();
-        Log.d(TAG, "onCreate: mDataList size"+mDataList.size());
         mListView = (ListView) findViewById(R.id.listView_Statuses);
         mAdapter = new StatusAdapter(this,
                 R.layout.mainview_listitem,
@@ -152,25 +146,12 @@ public class MainViewAcivity extends AppCompatActivity
         return true;
     }
 
-    private boolean isUserTokenExist(){
-
-        if (!"".equals(AccessTokenKeeper.readAccessToken(getApplicationContext()).getUid())) {
-            mOauth2AccessToken = AccessTokenKeeper.readAccessToken(getApplicationContext());
-            mStatusesAPI = new StatusesAPI(this, XzzConstants.APP_KEY, mOauth2AccessToken);
-            String date = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(
-                    new java.util.Date(mOauth2AccessToken.getExpiresTime()));
-            String format = getString(R.string.weibosdk_demo_token_to_string_format_1);
-            Log.i(TAG, "isUserTokenExist: "+String.format(format, mOauth2AccessToken.getToken(), date));
-            return true;
-        }
-        return false;
-    }
 
     /**
      * 从服务器获取最新的50条微博消息
      **/
     private void queryLastStatus() {
-        mStatusesAPI = AccessTokenKeeper.getStatuesAPI();
+        mStatusesAPI = ClientApiManger.getClientApiManger(this).getStatusesAPI();
         if (null==mStatusesAPI){
             startActivity(new Intent(MainViewAcivity.this, LoginActivity.class));
             finish();
@@ -180,8 +161,9 @@ public class MainViewAcivity extends AppCompatActivity
             @Override
             public void onComplete(String s) {
                 Util.handleJSONStringData(MainViewAcivity.this,s);
-                mStatuses = StatusDatabaseTool.getInstance(MainViewAcivity.this).queryStatuses();
-                freshDatalist();
+
+                Log.d(TAG, "onComplete: mDataList.size"+mDataList.size());
+                refreshDatalist();
                 Log.d(TAG, "onComplete: 99999999+9");
                 closeProgressDialog();
             }
@@ -193,63 +175,15 @@ public class MainViewAcivity extends AppCompatActivity
 
     }
 
-    /**
-     * 用于授权界面的回调回调
-     **/
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        // 在此处调用
-        showProgressDialog("授权成功,正在加载数据...");
-        queryLastStatus();
-
-
-
-    }
-
-    /**
-     * 登入按钮的监听器，接收授权结果。
-     */
-    private WeiboAuthListener mWeiboAuthListener = new WeiboAuthListener() {
-        @Override
-        public void onComplete(Bundle values) {
-            //这是获取用户的taken信息
-            mOauth2AccessToken = Oauth2AccessToken.parseAccessToken(values);
-            mStatusesAPI = new StatusesAPI(MainViewAcivity.this, XzzConstants.APP_KEY, mOauth2AccessToken);
-            ////显示token的有效期
-            if (mOauth2AccessToken != null && mOauth2AccessToken.isSessionValid()) {
-                String date = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(
-                        new java.util.Date(mOauth2AccessToken.getExpiresTime()));
-                String format = getString(R.string.weibosdk_demo_token_to_string_format_1);
-//                mBtnTokenInfo.setText(String.format(format, mOauth2AccessToken.getToken(), date));
-
-                AccessTokenKeeper.writeAccessToken(getApplicationContext(), mOauth2AccessToken);
-            } else {
-                // 当您注册的应用程序签名不正确时，就会收到错误Code，请确保签名正确
-                String code = values.getString("code", "");
-                Log.e(TAG, "onComplete: 授权错误代码" + code);
-            }
-        }
-        @Override
-        public void onWeiboException(WeiboException e) {
-            Toast.makeText(MainViewAcivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-        @Override
-        public void onCancel() {
-            Toast.makeText(MainViewAcivity.this,
-                    "授权取消", Toast.LENGTH_SHORT).show();
-        }
-    };
-
-    private void freshDatalist(){
-        mStatuses = StatusDatabaseTool.getInstance(this).queryStatuses();
+    private void refreshDatalist() {
+        mStatuses = StatusDatabaseTool.getInstance(MainViewAcivity.this).queryStatuses();
         mDataList.clear();
-        for (Status status:mStatuses)
-            mDataList.add(status);
+        for (Status s:mStatuses){
+            mDataList.add(s);
+        }
         mAdapter.notifyDataSetChanged();
-        mListView.setSelection(0);
-        Log.d(TAG, "freshDatalist: complete");
     }
+
 
     private void showProgressDialog() {
         if (mProgressDialog == null) {

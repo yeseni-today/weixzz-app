@@ -94,8 +94,8 @@ public class WeiXzzDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(CREATETABLE_STATUS);
-        sqLiteDatabase.execSQL(CREATETABLE_USER);
+        sqLiteDatabase.execSQL(UserTable.CREATE_TABLE_SQL_STATUS);
+        sqLiteDatabase.execSQL(StatusTable.CREATE_TABLE_SQL_STATUS);
         Log.d(TAG, "onCreate: 表创建成功");
     }
 

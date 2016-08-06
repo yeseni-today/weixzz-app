@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.finderlo.weixzz.UI.Mainview.MainViewAcivity;
-import com.finderlo.weixzz.Util.AccessTokenKeeper;
+import com.finderlo.weixzz.Util.AccessTokenManger;
 
 /**
  * Created by Finderlo on 2016/8/5.
@@ -16,7 +16,7 @@ public class LoadDataActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if(AccessTokenKeeper.isAccessTokenExist(this)){
+        if(AccessTokenManger.isAccessTokenExist(this)){
             // TODO: 2016/8/5 if token exist
             Intent intent = new Intent(LoadDataActivity.this, MainViewAcivity.class);
             startActivity(intent);

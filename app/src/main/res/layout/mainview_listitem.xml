@@ -13,13 +13,6 @@
         <FrameLayout
             android:layout_width="50dp"
             android:layout_height="50dp">
-            <!--<ImageButton-->
-                <!--android:id="@+id/image_user_pic"-->
-                <!--android:layout_width="45dp"-->
-                <!--android:layout_height="45dp"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:scaleType="centerCrop"-->
-                <!--android:src="@drawable/user_default_pic" />-->
 
             <com.finderlo.weixzz.View.RoundImageView
                 android:layout_width="45dp"
@@ -45,6 +38,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="7"
                     android:layout_marginLeft="20dp"
+
                     android:gravity="center_vertical"
                     android:text="User_name"
                     android:textSize="14sp" />
@@ -91,7 +85,7 @@
                 android:id="@+id/list_item_statusContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="15dp"
                 android:autoLink="web"
 
@@ -102,9 +96,13 @@
             android:id="@+id/list_item_retweed_statusContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="40dp"
+            android:gravity="center_vertical"
+            android:minHeight="40dp"
             android:layout_marginTop="15dp"
+            android:background="#F5F5F5"
             android:autoLink="web"
+            android:paddingLeft="10dp"
             android:visibility="gone"
 
             android:text="转发微博内容"

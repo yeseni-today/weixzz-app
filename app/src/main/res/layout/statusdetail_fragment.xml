@@ -29,6 +29,8 @@
             android:layout_height="wrap_content"
             android:autoLink="web"
             android:focusable="false"
+            android:minHeight="40dp"
+
             android:layout_marginLeft="40dp"
             android:layout_marginTop="20dp"
             android:text="转发微博内容"
@@ -47,8 +49,7 @@
             android:id="@+id/statusdetail_pic_count_out_three_gridlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="3"
-            android:visibility="gone">
+            android:columnCount="3">
 
 
             <ImageView

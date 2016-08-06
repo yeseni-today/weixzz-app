@@ -34,39 +34,21 @@ import java.util.Set;
  * @author SINA
  * @since 2013-10-07
  */
-public class AccessTokenKeeper {
+public class AccessTokenManger {
+
     private static final String PREFERENCES_NAME = "com_weixzz_token";
 
     private static final String KEY_UID           = "uid";
     private static final String KEY_ACCESS_TOKEN  = "access_token";
     private static final String KEY_EXPIRES_IN    = "expires_in";
     private static final String KEY_REFRESH_TOKEN    = "refresh_token";
-    private static final String TAG = "AccessTokenKeeper";
+    private static final String TAG = "AccessTokenManger";
 
     private static Oauth2AccessToken sOauth2AccessToken;
     private static StatusesAPI sStatusesAPI;
     private static Context sContext;
 
-    public static void initAccessTokenKeeper(Context context){
-        sContext = context.getApplicationContext();
-        sOauth2AccessToken = readAccessToken(sContext);
-        if (sOauth2AccessToken!=null){
-            sStatusesAPI = new StatusesAPI(sContext, XzzConstants.APP_KEY, sOauth2AccessToken);
-        }
 
-    }
-
-    public static void setOauth2AccessToken(Oauth2AccessToken oauth2AccessToken){
-        sOauth2AccessToken = oauth2AccessToken;
-    }
-
-    public static Oauth2AccessToken getOauth2AccessToken() {
-        if (sOauth2AccessToken == null) {
-            Log.e(TAG, "getOauth2AccessToken: ", new Exception("Token is null || 授权信息为空"));
-            return null;
-        }
-        return sOauth2AccessToken;
-    }
 
     /**
      * 保存 Token 对象到 SharedPreferences。
@@ -86,8 +68,6 @@ public class AccessTokenKeeper {
         editor.putString(KEY_REFRESH_TOKEN, token.getRefreshToken());
         editor.putLong(KEY_EXPIRES_IN, token.getExpiresTime());
         editor.commit();
-
-        initAccessTokenKeeper(context);
     }
 
     /**
@@ -109,10 +89,6 @@ public class AccessTokenKeeper {
         token.setRefreshToken(pref.getString(KEY_REFRESH_TOKEN, ""));
         token.setExpiresTime(pref.getLong(KEY_EXPIRES_IN, 0));
 
-        if ("".equals(pref.getString(KEY_UID,""))){
-            return null;
-        }
-        
         return token;
     }
     /**
@@ -148,8 +124,10 @@ public class AccessTokenKeeper {
         editor.commit();
     }
 
-    public static StatusesAPI getStatuesAPI() {
-
-        return sStatusesAPI;
+    public static void refreshTokenInfo(Context context,Oauth2AccessToken token){
+        clear(context);
+        writeAccessToken(context,token);
+        sOauth2AccessToken = token;
     }
+
 }

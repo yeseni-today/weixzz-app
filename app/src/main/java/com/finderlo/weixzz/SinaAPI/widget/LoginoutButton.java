@@ -300,8 +300,8 @@ public class LoginoutButton extends Button implements OnClickListener {
 	
 			                    // 注销成功
 			                    if ("true".equalsIgnoreCase(value)) {
-			                    	// XXX: 考虑是否需要将 AccessTokenKeeper 放到 SDK 中？？
-			                        //AccessTokenKeeper.clear(getContext());
+			                    	// XXX: 考虑是否需要将 AccessTokenManger 放到 SDK 中？？
+			                        //AccessTokenManger.clear(getContext());
 			                    	// 清空当前 Token
 			                        mAccessToken = null;
 			                        

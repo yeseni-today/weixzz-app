@@ -14,7 +14,6 @@ public class WeiXzzApplication extends Application {
     public void onCreate() {
         super.onCreate();
         sContext = this;
-        AccessTokenKeeper.initAccessTokenKeeper(sContext);
     }
 
     public static Context getContext(){

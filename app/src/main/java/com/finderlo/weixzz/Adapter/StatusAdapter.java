@@ -59,14 +59,13 @@ public class StatusAdapter extends ArrayAdapter<Status> {
         mStatus = getItem(position);
         mImagePic = (ImageView) convertView.findViewById(R.id.image_user_pic);
         mTvRetweedContent = (AutoLinkTextView) convertView.findViewById(R.id.list_item_retweed_statusContent);
-        if (mStatus.user != null) {
             HttpUtil.loadPicFromUrl(mStatus.user.profile_image_url, mListener);
             viewHolder.mTvIsVerified.setText(mStatus.user.verified ?
                     getContext().getString(R.string.isVerified) : getContext().getString(R.string.isUnVerified));
             viewHolder.mTvVerifiedReason.setText(mStatus.user.verified_reason);
             viewHolder.mTvTitle.setText(mStatus.user.name);
 
-        }
+
         if (mStatus.retweeted_status!=null){
             mTvRetweedContent.setText(mStatus.retweeted_status.text);
             mTvRetweedContent.setVisibility(View.VISIBLE);
