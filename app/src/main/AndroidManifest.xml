@@ -16,30 +16,22 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".Activity.MainViewAcivity">
+        <activity android:name=".UI.Login.LoadDataActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.WeiXzzMainViewActivity"/>
+
+        <activity android:name=".UI.Login.LoginActivity"/>
+
+        <activity android:name="com.finderlo.weixzz.UI.Mainview.MainViewAcivity"/>
+
         <activity android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"/>
-        <activity
-            android:name=".Activity.WeiXzzLoginMainActivity"
-            android:label="@string/title_activity_main_view_acivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Activity.WeiXzzStatusDetailActivity">
+
+        <activity android:name=".UI.StatusDetail.StatusDetailActivity">
         </activity>
-        <activity
-            android:name=".Activity.StatusDetailActivity"
-            android:label="@string/title_activity_status_detail"
-            android:parentActivityName=".Activity.MainViewAcivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.finderlo.weixzz.Activity.MainViewAcivity"/>
-        </activity>
+
     </application>
 
 </manifest>

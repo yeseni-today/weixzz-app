@@ -15,7 +15,7 @@ import java.net.URL;
  */
 public class HttpUtil {
     public static void loadPicFromUrl(final String addressUrl, final HttpLoadPicCallbackListener listener){
-        if ("".equals(addressUrl)) return;
+        if ("".equals(addressUrl)||addressUrl==null) return;
         new Thread(new Runnable() {
             @Override
             public void run() {

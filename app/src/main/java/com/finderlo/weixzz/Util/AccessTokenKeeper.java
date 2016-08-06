@@ -19,8 +19,14 @@ package com.finderlo.weixzz.Util;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.provider.Settings;
+import android.util.Log;
 
+import com.finderlo.weixzz.SinaAPI.openapi.StatusesAPI;
+import com.finderlo.weixzz.XzzConstants;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
+
+import java.util.Set;
 
 /**
  * 该类定义了微博授权时所需要的参数。
@@ -29,13 +35,39 @@ import com.sina.weibo.sdk.auth.Oauth2AccessToken;
  * @since 2013-10-07
  */
 public class AccessTokenKeeper {
-    private static final String PREFERENCES_NAME = "com_weibo_sdk_android";
+    private static final String PREFERENCES_NAME = "com_weixzz_token";
 
     private static final String KEY_UID           = "uid";
     private static final String KEY_ACCESS_TOKEN  = "access_token";
     private static final String KEY_EXPIRES_IN    = "expires_in";
     private static final String KEY_REFRESH_TOKEN    = "refresh_token";
-    
+    private static final String TAG = "AccessTokenKeeper";
+
+    private static Oauth2AccessToken sOauth2AccessToken;
+    private static StatusesAPI sStatusesAPI;
+    private static Context sContext;
+
+    public static void initAccessTokenKeeper(Context context){
+        sContext = context.getApplicationContext();
+        sOauth2AccessToken = readAccessToken(sContext);
+        if (sOauth2AccessToken!=null){
+            sStatusesAPI = new StatusesAPI(sContext, XzzConstants.APP_KEY, sOauth2AccessToken);
+        }
+
+    }
+
+    public static void setOauth2AccessToken(Oauth2AccessToken oauth2AccessToken){
+        sOauth2AccessToken = oauth2AccessToken;
+    }
+
+    public static Oauth2AccessToken getOauth2AccessToken() {
+        if (sOauth2AccessToken == null) {
+            Log.e(TAG, "getOauth2AccessToken: ", new Exception("Token is null || 授权信息为空"));
+            return null;
+        }
+        return sOauth2AccessToken;
+    }
+
     /**
      * 保存 Token 对象到 SharedPreferences。
      * 
@@ -54,6 +86,8 @@ public class AccessTokenKeeper {
         editor.putString(KEY_REFRESH_TOKEN, token.getRefreshToken());
         editor.putLong(KEY_EXPIRES_IN, token.getExpiresTime());
         editor.commit();
+
+        initAccessTokenKeeper(context);
     }
 
     /**
@@ -74,8 +108,28 @@ public class AccessTokenKeeper {
         token.setToken(pref.getString(KEY_ACCESS_TOKEN, ""));
         token.setRefreshToken(pref.getString(KEY_REFRESH_TOKEN, ""));
         token.setExpiresTime(pref.getLong(KEY_EXPIRES_IN, 0));
+
+        if ("".equals(pref.getString(KEY_UID,""))){
+            return null;
+        }
         
         return token;
+    }
+    /**
+     *
+     *@param context
+     *
+     * @return userToken exist? or out of expiresTime?
+     **/
+    public static boolean isAccessTokenExist(Context context){
+        Oauth2AccessToken token = readAccessToken(context);
+        if ("".equals(token.getUid())){
+            return false;
+        }
+        if (token.getExpiresTime()>= System.currentTimeMillis()){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -92,5 +146,10 @@ public class AccessTokenKeeper {
         Editor editor = pref.edit();
         editor.clear();
         editor.commit();
+    }
+
+    public static StatusesAPI getStatuesAPI() {
+
+        return sStatusesAPI;
     }
 }

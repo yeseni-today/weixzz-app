@@ -20,7 +20,6 @@ allprojects {
 
 dependencies {
     apply plugin: 'jetty'
-    compile project(':weibosdk')
 }
 
 task clean(type: Delete) {

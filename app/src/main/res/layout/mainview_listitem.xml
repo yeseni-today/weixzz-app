@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants">
 
     <!--这些是第一个linealayout，用于显示头像，和用户名称，还有一些按钮-->
     <LinearLayout
@@ -20,7 +21,7 @@
                 <!--android:scaleType="centerCrop"-->
                 <!--android:src="@drawable/user_default_pic" />-->
 
-            <com.finderlo.weixzz.libs.RoundImageView
+            <com.finderlo.weixzz.View.RoundImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
@@ -86,14 +87,28 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-            <TextView
+            <com.finderlo.weixzz.View.AutoLinkTextView
                 android:id="@+id/list_item_statusContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="80dp"
                 android:layout_marginTop="15dp"
+                android:autoLink="web"
+
                 android:text="This is Status content"
                 android:textSize="16sp" />
+
+        <com.finderlo.weixzz.View.AutoLinkTextView
+            android:id="@+id/list_item_retweed_statusContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="15dp"
+            android:autoLink="web"
+            android:visibility="gone"
+
+            android:text="转发微博内容"
+            android:textSize="16sp" />
 
     </LinearLayout>
 

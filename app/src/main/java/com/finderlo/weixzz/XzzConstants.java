@@ -16,11 +16,6 @@
 
 package com.finderlo.weixzz;
 
-import com.sina.weibo.sdk.openapi.models.Geo;
-import com.sina.weibo.sdk.openapi.models.User;
-import com.sina.weibo.sdk.openapi.models.Visible;
-
-import java.util.ArrayList;
 
 /**
  * 该类定义了微博授权时所需要的参数。
@@ -141,7 +136,7 @@ public interface XzzConstants {
     /**
      * 被转发的原微博信息字段，当该微博为转发微博时返回
      */
-    public static final String STATUS_RETWEETED_STATUS = "retweeted_status";
+    public static final String STATUS_RETWEETED_STATUS_IDSTR = "retweeted_status_str";
     /**
      * 转发数
      */
