@@ -33,7 +33,7 @@
                     android:minHeight="200dp"
                     android:orientation="vertical">
 
-                    <com.finderlo.weixzz.View.AutoLinkTextView
+                    <com.finderlo.weixzz.Widgt.AutoLinkTextView
                         android:id="@+id/textview_statusdetail_content"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -181,12 +181,12 @@
                     android:text="转发(不可用)"/>
             </LinearLayout>
 
-            <com.finderlo.weixzz.View.NestedListView
+            <com.finderlo.weixzz.Widgt.NestedListView
                 android:id="@+id/statusdetail_comment_listview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            </com.finderlo.weixzz.View.NestedListView>
+            </com.finderlo.weixzz.Widgt.NestedListView>
 
         </LinearLayout>
 

@@ -12,9 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.finderlo.weixzz.Adapter.StatusAdapter;
+import com.finderlo.weixzz.Adapter.StatusViewAdapter;
 import com.finderlo.weixzz.Database.DatabaseTool;
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.SinaAPI.openapi.StatusesAPI;
@@ -23,26 +23,26 @@ import com.finderlo.weixzz.UI.Login.LoginActivity;
 import com.finderlo.weixzz.UI.StatusDetail.StatusDetailActivity;
 import com.finderlo.weixzz.Util.ClientApiManger;
 import com.finderlo.weixzz.Util.Util;
-import com.finderlo.weixzz.View.NestedListView;
+import com.finderlo.weixzz.Widgt.NestedListView;
 import com.finderlo.weixzz.XzzConstants;
 import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.net.RequestListener;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 /**
  * Created by Finderlo on 2016/8/7.
  */
 public class MainViewFragment extends Fragment {
 
+    private String TAG = "MainviewFragment";
     Toolbar mToolbar;
+
     NestedListView mListViewStatuses;
 
     ArrayList<Status> mDataList;
+//    StatusAdapter mAdapter;
+StatusViewAdapter mAdapter;
 
     View.OnClickListener lister_fresh = new View.OnClickListener() {
         @Override
@@ -50,7 +50,6 @@ public class MainViewFragment extends Fragment {
             queryLastStatus();
         }
     };
-    private String TAG = "MainviewFragment";
 
     public void setListViewStatuses(NestedListView listViewStatuses) {
         mListViewStatuses = listViewStatuses;
@@ -59,8 +58,6 @@ public class MainViewFragment extends Fragment {
     public void setToolbar(Toolbar toolbar) {
         mToolbar = toolbar;
     }
-
-    StatusAdapter mAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,9 +77,10 @@ public class MainViewFragment extends Fragment {
         mToolbar.setTitle("Weixzz");
 
         mListViewStatuses = (NestedListView) view.findViewById(R.id.listView_Statuses);
-        mAdapter = new StatusAdapter(getActivity(),
-                R.layout.mainview_listitem,
-                mDataList);
+//        mAdapter = new StatusAdapter(getActivity(),
+//                R.layout.mainview_listitem,
+//                mDataList);
+        mAdapter = new StatusViewAdapter(getActivity(),mDataList);
         mListViewStatuses.setAdapter(mAdapter);
 
         mListViewStatuses.setOnItemClickListener(itemListClickListener);
@@ -110,14 +108,6 @@ public class MainViewFragment extends Fragment {
 
     public Toolbar getToolbar() {
         return mToolbar;
-    }
-
-    public StatusAdapter getAdapter() {
-        return mAdapter;
-    }
-
-    public void setAdapter(StatusAdapter adapter) {
-        mAdapter = adapter;
     }
 
     public NestedListView getListViewStatuses() {
@@ -164,12 +154,12 @@ public class MainViewFragment extends Fragment {
     }
 
     /**
-     *数据库中微博刷新时,刷新适配器
+     * 数据库中微博刷新时,刷新适配器
      **/
     private void refreshDatalist() {
         ArrayList<Status> mStatuses = DatabaseTool.getInstance(getActivity()).queryStatuses();
         mDataList.clear();
-        for (Status s:mStatuses){
+        for (Status s : mStatuses) {
             mDataList.add(s);
         }
         mAdapter.notifyDataSetChanged();

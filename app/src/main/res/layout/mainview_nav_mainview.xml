@@ -31,7 +31,7 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.finderlo.weixzz.View.NestedListView
+        <com.finderlo.weixzz.Widgt.NestedListView
             android:id="@+id/listView_Statuses"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"/>

@@ -20,11 +20,13 @@ public class HttpUtil {
             @Override
             public void run() {
 
+                HttpURLConnection connection = null;
                 try {
                     URL url = new URL(addressUrl);
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection = (HttpURLConnection) url.openConnection();
                     Bitmap bitmap = BitmapFactory.decodeStream(connection.getInputStream());
                     listener.onComplete(bitmap);
+
 
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
@@ -32,6 +34,8 @@ public class HttpUtil {
                 } catch (IOException e) {
                     e.printStackTrace();
                     listener.onError(new IOException("打开链接输入流出了错？"));
+                }finally {
+                    connection.disconnect();
                 }
 
             }

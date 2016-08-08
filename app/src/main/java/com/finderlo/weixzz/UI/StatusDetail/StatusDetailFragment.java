@@ -18,8 +18,7 @@ import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
 import com.finderlo.weixzz.Util.CallbackListener.HttpLoadPicCallbackListener;
 import com.finderlo.weixzz.Util.HttpUtil;
-import com.finderlo.weixzz.Util.Util;
-import com.finderlo.weixzz.View.AutoLinkTextView;
+import com.finderlo.weixzz.Widgt.AutoLinkTextView;
 import com.finderlo.weixzz.XzzConstants;
 
 import java.util.ArrayList;

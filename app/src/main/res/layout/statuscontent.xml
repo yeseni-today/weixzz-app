@@ -9,7 +9,7 @@
     android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
 
-    <com.finderlo.weixzz.View.AutoLinkTextView
+    <com.finderlo.weixzz.Widgt.AutoLinkTextView
         android:id="@+id/statusdetail_retweeted_status_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

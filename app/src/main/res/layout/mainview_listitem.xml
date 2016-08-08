@@ -14,7 +14,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp">
 
-            <com.finderlo.weixzz.View.RoundImageView
+            <com.finderlo.weixzz.Widgt.RoundImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-            <com.finderlo.weixzz.View.AutoLinkTextView
+            <com.finderlo.weixzz.Widgt.AutoLinkTextView
                 android:id="@+id/list_item_statusContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
                 android:text="This is Status content"
                 android:textSize="16sp" />
 
-        <com.finderlo.weixzz.View.AutoLinkTextView
+        <com.finderlo.weixzz.Widgt.AutoLinkTextView
             android:id="@+id/list_item_retweed_statusContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
