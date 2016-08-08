@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
+import com.finderlo.weixzz.Database.DatabaseTool;
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.Database.StatusDatabaseTool;
 import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
 import com.finderlo.weixzz.Util.Util;
 import com.finderlo.weixzz.XzzConstants;
+
+import java.util.List;
 
 public class StatusDetailActivity extends AppCompatActivity {
 
@@ -20,6 +22,7 @@ public class StatusDetailActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     Status mStatus;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,19 +32,16 @@ public class StatusDetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Intent intent = getIntent();
-        String status_idstr = intent.getStringExtra(XzzConstants.STATUS_IDSTR);
-        mStatus = StatusDatabaseTool.getInstance(
-                this).queryStatus(StatusDatabaseTool.TYPE_IDSTR,status_idstr);
-
-//        toolbar.setTitle(mStatus.user.name);
-
+        String status_idstr = "";
+        if (intent == null){
+        }else status_idstr = intent.getStringExtra(XzzConstants.STATUS_IDSTR);
 
         FragmentManager manager = getFragmentManager();
         Fragment fragment = manager.findFragmentById(R.id.id_ContentFragment);
-        Log.d(TAG, "onCreate: "+ Util.booleanToString(fragment==null));
-        if (fragment==null){
+        Log.d(TAG, "onCreate: " + Util.booleanToString(fragment == null));
+        if (fragment == null) {
             fragment = StatusDetailFragment.newInstance(status_idstr);
-            manager.beginTransaction().add(R.id.id_ContentFragment,fragment).commit();
+            manager.beginTransaction().add(R.id.id_ContentFragment, fragment).commit();
         }
     }
 }

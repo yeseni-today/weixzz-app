@@ -3,16 +3,12 @@ package com.finderlo.weixzz.Util;
 import android.content.Context;
 import android.util.Log;
 
-import com.finderlo.weixzz.Database.StatusDatabaseTool;
+import com.finderlo.weixzz.Database.DatabaseTool;
 import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
-import com.finderlo.weixzz.SinaAPI.openapi.models.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Finderlo on 2016/8/3.
@@ -31,8 +27,8 @@ public class Util {
             for (int i = 0; i < array.length(); i++) {
                 String statusjsonString = array.getString(i);
                 Status status = Status.parse(statusjsonString);
-                StatusDatabaseTool.getInstance(context).insertStatus(status,statusjsonString);
-
+                DatabaseTool.getInstance(context).insertStatus(status,statusjsonString);
+                Log.d(TAG, statusjsonString);
             }
 
 

@@ -1,155 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false">
 
-    <LinearLayout
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E91E63"
-        android:minHeight="200dp"
-        android:orientation="vertical"
-        android:descendantFocusability="blocksDescendants">
+        android:id="@+id/addbar_layout"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <com.finderlo.weixzz.View.AutoLinkTextView
-            android:id="@+id/textview_statusdetail_content"
+        <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autoLink="web"
-            android:focusable="false"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:text="测试微博内容"
-            android:textSize="16sp"/>
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
-        <com.finderlo.weixzz.View.AutoLinkTextView
-            android:id="@+id/textview_statusdetail_retweeted_status_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autoLink="web"
-            android:focusable="false"
-            android:minHeight="40dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:layout_collapseMode="parallax"
+                >
 
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
-            android:text="转发微博内容"
-            android:textSize="16sp"
-            android:visibility="gone"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#E91E63"
+                    android:descendantFocusability="blocksDescendants"
+                    android:minHeight="200dp"
+                    android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/statusdetail_pic_count_one_imageview"
-            android:layout_width="240dp"
-            android:layout_height="240dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/user_default_pic"
-            android:visibility="gone"/>
-
-        <GridLayout
-            android:id="@+id/statusdetail_pic_count_out_three_gridlayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="3">
+                    <com.finderlo.weixzz.View.AutoLinkTextView
+                        android:id="@+id/textview_statusdetail_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:autoLink="web"
+                        android:focusable="false"
+                        android:text="测试微博内容"
+                        android:textSize="16sp"/>
 
 
-            <ImageView
-                android:id="@+id/statusdetail_pic_count_1_gridview_imageview"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/user_default_pic"
-                android:visibility="gone"/>
+                    <ImageView
+                        android:id="@+id/statusdetail_pic_count_one_imageview"
+                        android:layout_width="240dp"
+                        android:layout_height="240dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/user_default_pic"
+                        android:visibility="gone"/>
 
-            <ImageView
-                android:id="@+id/statusdetail_pic_count_2_gridview_imageview"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/user_default_pic"
-                android:visibility="gone"/>
-
-            <ImageView
-                android:id="@+id/statusdetail_pic_count_3_gridview_imageview"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/user_default_pic"
-                android:visibility="gone"/>
-
-            <ImageView
-                android:id="@+id/statusdetail_pic_count_4_gridview_imageview"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/user_default_pic"
-                android:visibility="gone"/>
-
-            <ImageView
-                android:id="@+id/statusdetail_pic_count_5_gridview_imageview"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/user_default_pic"
-                android:visibility="gone"/>
-
-            <ImageView
-                android:id="@+id/statusdetail_pic_count_6_gridview_imageview"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/user_default_pic"
-                android:visibility="gone"/>
-
-            <ImageView
-                android:id="@+id/statusdetail_pic_count_7_gridview_imageview"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/user_default_pic"
-                android:visibility="gone"/>
-
-            <ImageView
-                android:id="@+id/statusdetail_pic_count_8_gridview_imageview"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/user_default_pic"
-                android:visibility="gone"/>
-
-            <ImageView
-                android:id="@+id/statusdetail_pic_count_9_gridview_imageview"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/user_default_pic"
-                android:visibility="gone"/>
+                    <GridLayout
+                        android:id="@+id/statusdetail_pic_count_out_three_gridlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="3">
 
 
-        </GridLayout>
+                        <ImageView
+                            android:id="@+id/statusdetail_pic_count_1_gridview_imageview"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/user_default_pic"
+                            android:visibility="gone"/>
+
+                        <ImageView
+                            android:id="@+id/statusdetail_pic_count_2_gridview_imageview"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/user_default_pic"
+                            android:visibility="gone"/>
+
+                        <ImageView
+                            android:id="@+id/statusdetail_pic_count_3_gridview_imageview"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/user_default_pic"
+                            android:visibility="gone"/>
+
+                        <ImageView
+                            android:id="@+id/statusdetail_pic_count_4_gridview_imageview"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/user_default_pic"
+                            android:visibility="gone"/>
+
+                        <ImageView
+                            android:id="@+id/statusdetail_pic_count_5_gridview_imageview"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/user_default_pic"
+                            android:visibility="gone"/>
+
+                        <ImageView
+                            android:id="@+id/statusdetail_pic_count_6_gridview_imageview"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/user_default_pic"
+                            android:visibility="gone"/>
+
+                        <ImageView
+                            android:id="@+id/statusdetail_pic_count_7_gridview_imageview"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/user_default_pic"
+                            android:visibility="gone"/>
+
+                        <ImageView
+                            android:id="@+id/statusdetail_pic_count_8_gridview_imageview"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/user_default_pic"
+                            android:visibility="gone"/>
+
+                        <ImageView
+                            android:id="@+id/statusdetail_pic_count_9_gridview_imageview"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/user_default_pic"
+                            android:visibility="gone"/>
 
 
-    </LinearLayout>
+                    </GridLayout>
 
-    <LinearLayout
+                    <include layout="@layout/statuscontent"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        app:behavior_overlapTop="30dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:background="#FF4081"
-            android:text="评论(不可用)"
-            android:textSize="14sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:background="#FF4081"
-            android:text="转发(不可用)"/>
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:background="#FF4081"
+                    android:text="评论(不可用)"
+                    android:textSize="14sp"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:background="#FF4081"
+                    android:text="转发(不可用)"/>
+            </LinearLayout>
+
+            <com.finderlo.weixzz.View.NestedListView
+                android:id="@+id/statusdetail_comment_listview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </com.finderlo.weixzz.View.NestedListView>
+
+        </LinearLayout>
 
 
-</LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

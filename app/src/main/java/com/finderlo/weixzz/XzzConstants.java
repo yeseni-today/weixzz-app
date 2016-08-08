@@ -68,249 +68,25 @@ public interface XzzConstants {
      *下面这些参数是status实体类在database中存储的列名
      **/
     /**
-     * 微博创建时间
-     */
-    public static final String STATUS_CREATED_AT = "created_at";
+
     /**
      * 微博ID
      */
     public static final String STATUS_ID = "id";
-    /**
-     * 微博MID
-     */
+    /**微博MID*/
     public static final String STATUS_MID = "mid";
-    /**
-     * 字符串型的微博ID
-     */
+    /** 字符串型的微博ID*/
     public static final String STATUS_IDSTR = "idstr";
-
-    public static final String STATUS_USER_IDSTR = "user_idstr";
-    /**
-     * 微博信息内容
-     */
-    public static final String STATUS_TEXT = "text";
-    /**
-     * 微博来源
-     */
-    public static final String STATUS_SOURCE = "source";
-    /**
-     * 是否已收藏，true：是，false：否
-     */
-    public static final String STATUS_FAVORITED = "favorited";
-    /**
-     * 是否被截断，true：是，false：否
-     */
-    public static final String STATUS_TRUNCATED = "truncated";
-    /**
-     * （暂未支持）回复ID
-     */
-    public static final String STATUS_IN_REPLY_TO_STATUS_ID = "in_reply_to_status_id";
-    /**
-     * （暂未支持）回复人UID
-     */
-    public static final String STATUS_IN_REPLY_TO_USER_ID = "in_reply_to_user_id";
-    /**
-     * （暂未支持）回复人昵称
-     */
-    public static final String STATUS_IN_REPLY_TO_SCAEEN_NAME = "in_reply_to_screen_name";
-    /**
-     * 缩略图片地址（小图），没有时不返回此字段
-     */
-    public static final String STATUS_THUMNAIL_PIC = "thumbnail_pic";
-    /**
-     * 中等尺寸图片地址（中图），没有时不返回此字段
-     */
-    public static final String STATUS_BMIDDLE_PIC = "bmiddle_pic";
-    /**
-     * 原始图片地址（原图），没有时不返回此字段
-     */
-    public static final String STATUS_ORIGINAL_PIC = "original_pic";
-    /**
-     * 地理信息字段
-     */
-    public static final String STATUS_GEO = "geo";
-    /**
-     * 微博作者的用户信息字段
-     */
-    public static final String STATUS_USER = "user";
-    /**
-     * 被转发的原微博信息字段，当该微博为转发微博时返回
-     */
-    public static final String STATUS_RETWEETED_STATUS_IDSTR = "retweeted_status_str";
-    /**
-     * 转发数
-     */
-    public static final String STATUS_REPOSTS_COUNT = "reposts_count";
-    /**
-     * 评论数
-     */
-    public static final String STATUS_COMMENTS_COUNT = "comments_count";
-    /**
-     * 表态数
-     */
-    public static final String STATUS_ATTITUDES_COUNT = "attitudes_count";
-    /**
-     * 暂未支持
-     */
-    public static final String STATUS_MLEVEL = "mlevel";
-    /**
-     * 微博的可见性及指定可见分组信息。该 object 中 type 取值，
-     * 0：普通微博，1：私密微博，3：指定分组微博，4：密友微博；
-     * list_id为分组的组号
-     */
-    public static final String STATUS_VISIBLE = "visible";
-    /** 微博配图地址。多图时返回多图链接。无配图返回"[]" */
-//    public ArrayList<String> pic_urls;
-    /** 微博流内的推广微博ID */
-    //public Ad ad;
 
 
     /**
      *下面这些参数是user实体类在database中存储的列名
      **/
-    /**
-     * 用户UID（int64）
-     */
+    /**用户UID（int64）*/
     public static final String USER_ID = "id";
-    /**
-     * 字符串型的用户 UID
-     */
+    /**字符串型的用户 UID*/
     public static final String USER_IDSTR = "idstr";
-    /**
-     * 用户昵称
-     */
-    public static final String USER_SCREEN_NAME = "screen_name";
-    /**
-     * 友好显示名称
-     */
-    public static final String USER_NAME = "name";
-    /**
-     * 用户所在省级ID
-     */
-    public static final String USER_PROVINCE = "province";
-    /**
-     * 用户所在城市ID
-     */
-    public static final String USER_CITY = "city";
-    /**
-     * 用户所在地
-     */
-    public static final String USER_LOCATION = "location";
-    /**
-     * 用户个人描述
-     */
-    public static final String USER_DESCRIPTION = "description";
-    /**
-     * 用户博客地址
-     */
-    public static final String USER_URL = "url";
-    /**
-     * 用户头像地址，50×50像素
-     */
-    public static final String USER_PROFILE_IMAGE_URL = "profile_image_url";
-    /**
-     * 用户的微博统一URL地址
-     */
-    public static final String USER_PROFILE_URL = "profile_url";
-    /**
-     * 用户的个性化域名
-     */
-    public static final String USER_DOMAIN = "domain";
-    /**
-     * 用户的微号
-     */
-    public static final String USER_WEIHAO = "weihao";
-    /**
-     * 性别，m：男、f：女、n：未知
-     */
-    public static final String USER_GENDER = "gender";
-    /**
-     * 粉丝数
-     */
-    public static final String USER_FOLLOWERS_COUNT = "followers_count";
-    /**
-     * 关注数
-     */
-    public static final String USER_FRIENDS_COUNT = "friends_count";
-    /**
-     * 微博数
-     */
-    public static final String USER_STATUSES_COUNT = "statuses_count";
-    /**
-     * 收藏数
-     */
-    public static final String USER_FAVORITES_COUNT = "favourites_count";
-    /**
-     * 用户创建（注册）时间
-     */
-    public static final String USER_CREATED_AT = "created_at";
-    /**
-     * 暂未支持
-     */
-    public static final String USER_FOLLOWING = "following";
-    /**
-     * 是否允许所有人给我发私信，true：是，false：否
-     */
-    public static final String USER_ALL_ACT_MSG = "allow_all_act_msg";
-    /**
-     * 是否允许标识用户的地理位置，true：是，false：否
-     */
-    public static final String USER_GEO_ENABLED = "geo_enabled";
-    /**
-     * 是否是微博认证用户，即加V用户，true：是，false：否
-     */
-    public static final String USER_VERIFIED = "verified";
-    /**
-     * 暂未支持
-     */
-    public static final String USER_VERIFIED_TYPE = "verified_type";
-    /**
-     * 用户备注信息，只有在查询用户关系时才返回此字段
-     */
-    public static final String USER_REMARK = "remark";
-    /**
-     * 用户的最近一条微博信息字段
-     */
-    public static final String USER_STATUS = "status";
-    /**
-     * 是否允许所有人对我的微博进行评论，true：是，false：否
-     */
-    public static final String USER_ALLOW_ALL_COMMENT = "allow_all_comment";
-    /**
-     * 用户大头像地址
-     */
-    public static final String USER_AVATAR_LARGE = "avatar_large";
-    /**
-     * 用户高清大头像地址
-     */
-    public static final String USER_AVATAR_HD = "avatar_hd";
-    /**
-     * 认证原因
-     */
-    public static final String USER_VERIFIED_REASON = "verified_reason";
-    /**
-     * 该用户是否关注当前登录用户，true：是，false：否
-     */
-    public static final String USER_FOLLOW_ME = "follow_me";
-    /**
-     * 用户的在线状态，0：不在线、1：在线
-     */
-    public static final String USER_ONLINE_STATUS = "online_status";
-    /**
-     * 用户的互粉数
-     */
-    public static final String USER_BI_FOLLOWERS_COUNT = "bi_followers_count";
-    /**
-     * 用户当前的语言版本，zh-cn：简体中文，zh-tw：繁体中文，en：英语
-     */
-    public static final String USER_LANG = "lang";
 
-    /**
-     * 注意：以下字段暂时不清楚具体含义，OpenAPI 说明文档暂时没有同步更新对应字段
-     */
-    public static final String USER_STAR = "star";
-    public String USER_MBTYPE = "mbtype";
-    public static final String USER_MBRANK = "mbrank";
-    public static final String USER_BLOCK_WORD = "block_word";
-
+    public static final String TEST_STATUS_JSON_STRING_1 =
+            "{\"created_at\":\"Sun Aug 07 21:06:43 +0800 2016\",\"id\":4005945106838619,\"mid\":\"4005945106838619\",\"idstr\":\"4005945106838619\",\"text\":\"看到说GAY骗婚的帖子，楼主以自己的亲身经历说明为什么有些女孩会被骗婚\",\"textLength\":67,\"source_allowclick\":0,\"source_type\":2,\"source\":\"<a href=\\\"http:\\/\\/weibo.com\\/\\\" rel=\\\"nofollow\\\">iPhone 6s<\\/a>\",\"favorited\":false,\"truncated\":false,\"in_reply_to_status_id\":\"\",\"in_reply_to_user_id\":\"\",\"in_reply_to_screen_name\":\"\",\"pic_urls\":[{\"thumbnail_pic\":\"http:\\/\\/ww1.sinaimg.cn\\/thumbnail\\/005Hk6S7gw1f6lhiv40ppj30cl6axx00.jpg\"},{\"thumbnail_pic\":\"http:\\/\\/ww4.sinaimg.cn\\/thumbnail\\/005Hk6S7gw1f6lhirylc5j30cl6aqh6f.jpg\"},{\"thumbnail_pic\":\"http:\\/\\/ww3.sinaimg.cn\\/thumbnail\\/005Hk6S7gw1f6lhj18n3sj30cl7ufhdj.jpg\"},{\"thumbnail_pic\":\"http:\\/\\/ww1.sinaimg.cn\\/thumbnail\\/005Hk6S7gw1f6lhjfli2vj30cl6ap1e7.jpg\"},{\"thumbnail_pic\":\"http:\\/\\/ww1.sinaimg.cn\\/thumbnail\\/005Hk6S7gw1f6lhjsbb9mj30cl7wmquh.jpg\"},{\"thumbnail_pic\":\"http:\\/\\/ww1.sinaimg.cn\\/thumbnail\\/005Hk6S7gw1f6lhjv7u4hj30cl4oenhp.jpg\"}],\"thumbnail_pic\":\"http:\\/\\/ww1.sinaimg.cn\\/thumbnail\\/005Hk6S7gw1f6lhiv40ppj30cl6axx00.jpg\",\"bmiddle_pic\":\"http:\\/\\/ww1.sinaimg.cn\\/bmiddle\\/005Hk6S7gw1f6lhiv40ppj30cl6axx00.jpg\",\"original_pic\":\"http:\\/\\/ww1.sinaimg.cn\\/large\\/005Hk6S7gw1f6lhiv40ppj30cl6axx00.jpg\",\"geo\":null,\"user\":{\"id\":5220839587,\"idstr\":\"5220839587\",\"class\":1,\"screen_name\":\"豆瓣说\",\"name\":\"豆瓣说\",\"province\":\"44\",\"city\":\"1000\",\"location\":\"广东\",\"description\":\"嘻嘻\",\"url\":\"\",\"profile_image_url\":\"http:\\/\\/tva3.sinaimg.cn\\/crop.0.0.900.900.50\\/005Hk6S7jw8f26wtswleoj30p00p0jw9.jpg\",\"cover_image\":\"http:\\/\\/ss15.sinaimg.cn\\/crop.0.-25.980.245\\/OUdes&690\",\"cover_image_phone\":\"http:\\/\\/ww1.sinaimg.cn\\/crop.0.0.640.640.640\\/549d0121tw1egm1kjly3jj20hs0hsq4f.jpg\",\"profile_url\":\"u\\/5220839587\",\"domain\":\"\",\"weihao\":\"\",\"gender\":\"m\",\"followers_count\":2311748,\"friends_count\":90,\"pagefriends_count\":0,\"statuses_count\":767,\"favourites_count\":400,\"created_at\":\"Thu Jul 17 22:18:25 +0800 2014\",\"following\":true,\"allow_all_act_msg\":false,\"geo_enabled\":true,\"verified\":true,\"verified_type\":0,\"remark\":\"\",\"ptype\":0,\"allow_all_comment\":true,\"avatar_large\":\"http:\\/\\/tva3.sinaimg.cn\\/crop.0.0.900.900.180\\/005Hk6S7jw8f26wtswleoj30p00p0jw9.jpg\",\"avatar_hd\":\"http:\\/\\/tva3.sinaimg.cn\\/crop.0.0.900.900.1024\\/005Hk6S7jw8f26wtswleoj30p00p0jw9.jpg\",\"verified_reason\":\"微博知名博主\",\"verified_trade\":\"3370\",\"verified_reason_url\":\"\",\"verified_source\":\"\",\"verified_source_url\":\"\",\"verified_state\":0,\"verified_level\":3,\"verified_type_ext\":0,\"verified_reason_modified\":\"\",\"verified_contact_name\":\"\",\"verified_contact_email\":\"\",\"verified_contact_mobile\":\"\",\"follow_me\":false,\"online_status\":0,\"bi_followers_count\":43,\"lang\":\"zh-cn\",\"star\":0,\"mbtype\":12,\"mbrank\":3,\"block_word\":0,\"block_app\":1,\"credit_score\":80,\"user_ability\":8,\"urank\":17},\"annotations\":[{\"client_mblogid\":\"iPhone-0E2E0C60-AFB4-491D-9229-342FE23142B3\"},{\"mapi_request\":true}],\"picStatus\":\"0:1,1:1,2:1,3:1,4:1,5:1\",\"reposts_count\":2,\"comments_count\":6,\"attitudes_count\":17,\"isLongText\":false,\"mlevel\":0,\"visible\":{\"type\":0,\"list_id\":0},\"biz_feature\":4294967300,\"hasActionTypeCard\":0,\"darwin_tags\":[],\"hot_weibo_tags\":[],\"text_tag_tips\":[],\"rid\":\"2_0_1_2666885570820909429\",\"userType\":0,\"positive_recom_flag\":0,\"gif_ids\":\"\"}\n";
 }

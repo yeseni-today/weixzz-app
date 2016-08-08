@@ -1,5 +1,6 @@
 package com.finderlo.weixzz.UI.Mainview;
 
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,25 +16,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.finderlo.weixzz.Adapter.StatusAdapter;
+import com.finderlo.weixzz.Database.DatabaseTool;
 import com.finderlo.weixzz.SinaAPI.openapi.StatusesAPI;
 import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
 import com.finderlo.weixzz.UI.Login.LoginActivity;
 import com.finderlo.weixzz.UI.StatusDetail.StatusDetailActivity;
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.Util.AccessTokenManger;
-import com.finderlo.weixzz.Database.StatusDatabaseTool;
 import com.finderlo.weixzz.Util.ClientApiManger;
 import com.finderlo.weixzz.Util.Util;
 import com.finderlo.weixzz.XzzConstants;
-import com.sina.weibo.sdk.auth.Oauth2AccessToken;
-import com.sina.weibo.sdk.auth.WeiboAuthListener;
 import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.net.RequestListener;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class MainViewAcivity extends AppCompatActivity
@@ -53,36 +49,43 @@ public class MainViewAcivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainview_navactivity);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        /**这是主layout的drawer*/
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        /**这是侧边栏的naviView*/
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-                ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                        this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        /**这是主layout的drawer*/
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        /**这是侧边栏的naviView*/
+//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+//        navigationView.setNavigationItemSelectedListener(this);
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+//                        this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.setDrawerListener(toggle);
+//        toggle.syncState();
 
 
 
-        mDataList = StatusDatabaseTool.getInstance(this).queryStatuses();
-        mListView = (ListView) findViewById(R.id.listView_Statuses);
-        mAdapter = new StatusAdapter(this,
-                R.layout.mainview_listitem,
-                mDataList);
-        mListView.setAdapter(mAdapter);
+//        mDataList = DatabaseTool.getInstance(this).queryStatuses();
+//        mListView = (ListView) findViewById(R.id.listView_Statuses);
+//        mAdapter = new StatusAdapter(this,
+//                R.layout.mainview_listitem,
+//                mDataList);
+//        mListView.setAdapter(mAdapter);
+////        mListView.addHeaderView(toolbar);
+//
+//        if (mDataList.size()==0){
+//            showProgressDialog("正在加载数据...");
+//            queryLastStatus();
+//        }
+//        Log.d(TAG, "onCreate: complete");
+//
+////        mListView.setOnItemSelectedListener(itemListSelectListener);
+//        mListView.setOnItemClickListener(itemListClickListener);
 
-
-        if (mDataList.size()==0){
-            showProgressDialog("正在加载数据...");
-            queryLastStatus();
+        Fragment fragment = getFragmentManager().findFragmentById(R.id.Container);
+        ArrayList<Status> mDataList = DatabaseTool.getInstance(this).queryStatuses();
+        if (fragment==null){
+            fragment = MainViewFragment.newInstance(mDataList);
+            getFragmentManager().beginTransaction().add(R.id.Container,fragment,null).commit();
         }
-        Log.d(TAG, "onCreate: complete");
-
-//        mListView.setOnItemSelectedListener(itemListSelectListener);
-        mListView.setOnItemClickListener(itemListClickListener);
 
     }
 
@@ -176,7 +179,7 @@ public class MainViewAcivity extends AppCompatActivity
     }
 
     private void refreshDatalist() {
-        mStatuses = StatusDatabaseTool.getInstance(MainViewAcivity.this).queryStatuses();
+        mStatuses = DatabaseTool.getInstance(MainViewAcivity.this).queryStatuses();
         mDataList.clear();
         for (Status s:mStatuses){
             mDataList.add(s);

@@ -8,11 +8,9 @@ import android.util.Log;
 
 import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
 import com.finderlo.weixzz.SinaAPI.openapi.models.User;
-import com.finderlo.weixzz.Util.Util;
 import com.finderlo.weixzz.XzzConstants;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Finderlo on 2016/8/1 0001.
@@ -20,13 +18,13 @@ import java.util.List;
  * <p/>
  */
 
-public class StatusDatabaseTool {
+public class DatabaseTool {
 
     public static final String TYPE_IDSTR = " idstr ";
     public static final String TYPE_ID = " id ";
 
 
-    private static final String TAG = "StatusDatabaseTool";
+    private static final String TAG = "DatabaseTool";
 
     private static SQLiteDatabase mDatabase;
     private static Context sContext;
@@ -40,7 +38,7 @@ public class StatusDatabaseTool {
     private static final int STATUS_TABLE_VERSION_1 = 1;
 
 
-    private StatusDatabaseTool(Context context) {
+    private DatabaseTool(Context context) {
         sContext = context;
         WeiXzzDatabaseHelper weiXzzDatabaseHelper =
                 new WeiXzzDatabaseHelper(context, TABLE_NAME_STATUS, null, STATUS_TABLE_VERSION_1);
@@ -203,20 +201,36 @@ public class StatusDatabaseTool {
         return user;
     }
 
+    public  String queryStatusJsonString(Status status){
+        String json;
+        Cursor cursor = mDatabase.rawQuery("select * from Status where idstr = ? ", new String[]{status.idstr});
+        json = queryStatusJson(cursor);
+        return json;
+    }
+
+    private String queryStatusJson(Cursor cursor) {
+        String json = "";
+        if (cursor.moveToFirst()) {
+            json = cursor.getString(cursor.getColumnIndex("json"));
+        }
+
+    return json;
+    }
+
 
     /**
      * 使用了单例模式
      **/
-    public static StatusDatabaseTool getInstance(Context context) {
-        if (sStatusDatabaseTool == null) {
+    public static DatabaseTool getInstance(Context context) {
+        if (sDatabaseTool == null) {
             sContext = context.getApplicationContext();
-            sStatusDatabaseTool = new StatusDatabaseTool(sContext);
+            sDatabaseTool = new DatabaseTool(sContext);
 
         }
-        return sStatusDatabaseTool;
+        return sDatabaseTool;
     }
 
-    private static StatusDatabaseTool sStatusDatabaseTool;
+    private static DatabaseTool sDatabaseTool;
 
 
 

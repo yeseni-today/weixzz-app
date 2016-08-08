@@ -43,7 +43,7 @@ public class StatusAdapter extends ArrayAdapter<Status> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        viewHolder = null;
+
         if (convertView == null) {
             viewHolder = new ViewHolder();
             convertView = LayoutInflater.from(getContext()).inflate(mResource, null);
@@ -59,19 +59,22 @@ public class StatusAdapter extends ArrayAdapter<Status> {
         mStatus = getItem(position);
         mImagePic = (ImageView) convertView.findViewById(R.id.image_user_pic);
         mTvRetweedContent = (AutoLinkTextView) convertView.findViewById(R.id.list_item_retweed_statusContent);
-            HttpUtil.loadPicFromUrl(mStatus.user.profile_image_url, mListener);
-            viewHolder.mTvIsVerified.setText(mStatus.user.verified ?
-                    getContext().getString(R.string.isVerified) : getContext().getString(R.string.isUnVerified));
-            viewHolder.mTvVerifiedReason.setText(mStatus.user.verified_reason);
-            viewHolder.mTvTitle.setText(mStatus.user.name);
+
+        HttpUtil.loadPicFromUrl(mStatus.user.profile_image_url, mListener);
 
 
+        mTvRetweedContent.setVisibility(View.GONE);
         if (mStatus.retweeted_status!=null){
             mTvRetweedContent.setText(mStatus.retweeted_status.text);
             mTvRetweedContent.setVisibility(View.VISIBLE);
         }
+
+        viewHolder.mTvIsVerified.setText(mStatus.user.verified ?
+                getContext().getString(R.string.isVerified) : getContext().getString(R.string.isUnVerified));
+        viewHolder.mTvVerifiedReason.setText(mStatus.user.verified_reason);
+        viewHolder.mTvTitle.setText(mStatus.user.name);
         viewHolder.mTvContent.setText(mStatus.text);
-        ((ViewGroup)convertView).setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);//加上次属性使焦点能够传递
+
         return convertView;
     }
 

@@ -19,19 +19,17 @@
         <activity android:name=".UI.Login.LoadDataActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <activity android:name=".UI.Login.LoginActivity"/>
-
-        <activity android:name="com.finderlo.weixzz.UI.Mainview.MainViewAcivity"/>
-
+        <activity android:name=".UI.Mainview.MainViewAcivity"/>
         <activity android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"/>
-
         <activity android:name=".UI.StatusDetail.StatusDetailActivity">
         </activity>
-
+        <activity android:name=".UI.TestActivity">
+        </activity>
     </application>
 
 </manifest>
