@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
+import com.finderlo.weixzz.Util.ImageLoader;
+import com.finderlo.weixzz.Widgt.RoundImageView;
 
 /**
  * Created by Finderlo on 2016/8/8.
@@ -21,7 +23,13 @@ public class StatusHeadView extends LinearLayout {
     public StatusHeadView(Context context) {
         super(context);
         mContext = context;
-        LayoutInflater.from(context).inflate(R.layout.statusview_head, this);
+//        LayoutInflater.from(context).inflate(R.layout.statusview_head, this);
+        setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
+    }
+
+    public StatusHeadView(Context context, AttributeSet attrs ) {
+        super(context, attrs);
+        mContext = context;
         setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
     }
 
@@ -40,7 +48,12 @@ public class StatusHeadView extends LinearLayout {
         TextView verfied_reason = (TextView) findViewById(R.id.statusview_header_Verified_reason);
         verfied_reason.setText(mStatus.user.verified_reason);
 
+        RoundImageView user_pic = (RoundImageView) findViewById(R.id.statusview_header_image_user_pic);
+        ImageLoader.load(mContext,mStatus.user.profile_image_url,user_pic);
+
     }
+
+
 
 
 }

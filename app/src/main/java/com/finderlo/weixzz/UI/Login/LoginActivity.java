@@ -8,11 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.finderlo.weixzz.Constants;
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.SinaAPI.widget.LoginButton;
 import com.finderlo.weixzz.UI.Mainview.MainViewAcivity;
 import com.finderlo.weixzz.Util.AccessTokenManger;
-import com.finderlo.weixzz.XzzConstants;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.auth.WeiboAuthListener;
 import com.sina.weibo.sdk.exception.WeiboException;
@@ -38,8 +39,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
         mLoginButton = new LoginButton(this);
-        mLoginButton.setWeiboAuthInfo(XzzConstants.APP_KEY,
-                XzzConstants.REDIRECT_URL, XzzConstants.SCOPE,
+        mLoginButton.setWeiboAuthInfo(Constants.APP_KEY,
+                Constants.REDIRECT_URL, Constants.SCOPE,
                 mWeiboAuthListener);
 
         mImageView = (ImageView) findViewById(R.id.imageButton_login);

@@ -19,14 +19,9 @@ package com.finderlo.weixzz.Util;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.provider.Settings;
-import android.util.Log;
 
 import com.finderlo.weixzz.SinaAPI.openapi.StatusesAPI;
-import com.finderlo.weixzz.XzzConstants;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
-
-import java.util.Set;
 
 /**
  * 该类定义了微博授权时所需要的参数。

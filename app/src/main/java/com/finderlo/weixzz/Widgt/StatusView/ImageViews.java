@@ -1,20 +1,27 @@
 package com.finderlo.weixzz.Widgt.StatusView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
+import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 
 import com.finderlo.weixzz.R;
+import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
+import com.finderlo.weixzz.UI.Login.LoadDataActivity;
 import com.finderlo.weixzz.Util.CallbackListener.HttpLoadPicCallbackListener;
 import com.finderlo.weixzz.Util.HttpUtil;
+import com.finderlo.weixzz.Util.ImageLoader;
 import com.finderlo.weixzz.Util.Util;
 import com.finderlo.weixzz.Util.WeiXzzApplication;
+import com.finderlo.weixzz.Widgt.BaseImageView;
 
 import java.util.ArrayList;
 
@@ -22,8 +29,11 @@ import java.util.ArrayList;
  * Created by Finderlo on 2016/8/8.
  */
 public class ImageViews extends GridLayout {
-    private int mImageCount;
+
+
+    private int mImageCount = 0;
     Context mContext;
+    private Status mStatus;
 
     public ImageViews(Context context) {
         super(context);
@@ -32,81 +42,89 @@ public class ImageViews extends GridLayout {
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         setLayoutParams(params);
         setColumnCount(3);
+        setPadding(Util.dip2px(context, 10), Util.dip2px(context, 10), Util.dip2px(context, 10), Util.dip2px(context, 10));
+    }
 
-
+    public ImageViews(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        mContext = context;
+        setColumnCount(3);
+        setPadding(Util.dip2px(context, 10), Util.dip2px(context, 10), Util.dip2px(context, 10), Util.dip2px(context, 10));
     }
 
 
-    public void setImageSrc(ArrayList<String> list) {
+    CardImage[] images;
+
+    public void setImageSrc(Status status) {
+        ArrayList<String> list = status.pic_urls;
         if (null == list || list.size() == 0) return;
 
         mImageCount = list.size();
-        CardImage[] images = new CardImage[mImageCount];
+        images = new CardImage[mImageCount];
         for (int i = 0; i < mImageCount; i++) {
             images[i] = new CardImage(mContext);
             images[i].setBitmapUrl(mContext, list.get(i));
             addView(images[i]);
-
         }
         invalidate();
         setVisibility(VISIBLE);
     }
 
+    public void init() {
+        if (images == null) return;
+        if (mImageCount == 0) return;
+        removeAllViews();
+    }
+
     public class CardImage extends FrameLayout {
 
         private static final String TAG = "CardImage";
-        ImageView mImageView;
+
+        BaseImageView mImageView;
         Context mContext;
 
         public CardImage(Context context) {
             super(context);
             mContext = context;
-            LayoutParams layoutParams = new LayoutParams(Util.dip2px(mContext, 100),
-                    Util.dip2px(mContext, 100));
-            layoutParams.setMargins(Util.dip2px(mContext, 10), Util.dip2px(mContext, 10), 0, 0);
-            setLayoutParams(layoutParams);
 
-            mImageView = new ImageView(context);
-            mImageView.setLayoutParams(layoutParams);
+//            LayoutParams layoutParams = new LayoutParams(
+//                    Util.dip2px(mContext, LoadDataActivity.PIC_WIDTH+10),
+//                    Util.dip2px(mContext,  LoadDataActivity.PIC_WIDTH+10));
+//            setLayoutParams(layoutParams);
+
+            LayoutParams imagelayoutParams = new LayoutParams(
+                    Util.dip2px(mContext, LoadDataActivity.PIC_WIDTH),
+                    Util.dip2px(mContext, LoadDataActivity.PIC_WIDTH));
+
+            imagelayoutParams.setMargins(Util.dip2px(mContext, 5), Util.dip2px(mContext, 5),
+                    Util.dip2px(mContext, 5), Util.dip2px(mContext, 5));
+            mImageView = new BaseImageView(context);
+            mImageView.setLayoutParams(imagelayoutParams);
             mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             mImageView.setImageResource(R.drawable.user_default_pic);
+            mImageView.setOnClickListener(mOnClickListener);
             addView(mImageView);
         }
 
-        private void setBitmap(Bitmap bitmap) {
-            mImageView.setImageBitmap(bitmap);
+
+        public void setBitmapUrl(Context context, String bitmapUrl) {
+            ImageLoader.load(context, bitmapUrl, mImageView);
             invalidate();
         }
 
-        public void setBitmapUrl(Context context, String bitmapUrl) {
-
-            HttpUtil.loadPicFromUrl(bitmapUrl, new HttpLoadPicCallbackListener() {
-                @Override
-                public void onComplete(Bitmap bitmap) {
-                    Message message = Message.obtain();
-                    message.obj = bitmap;
-                    message.what = 1;
-                    mHandler.sendMessage(message);
-                }
-
-                @Override
-                public void onError(Exception exception) {
-                    Log.d(TAG, "onError: 图片加载错误");
-                }
-            });
-
-        }
-
-        Handler mHandler = new Handler() {
+        OnClickListener mOnClickListener = new OnClickListener() {
             @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                switch (msg.what) {
-                    case 1:
-                        Bitmap bitmap = (Bitmap) msg.obj;
-                        setBitmap(bitmap);
-                }
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setAction("image_detail");
+                intent.putExtra("image_url", mImageView.getPic_Url());
+                mContext.startActivity(intent);
             }
         };
+
+        @Override
+        public void setOnClickListener(OnClickListener l) {
+            super.setOnClickListener(l);
+        }
     }
 }

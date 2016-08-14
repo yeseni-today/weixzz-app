@@ -3,12 +3,14 @@ package com.finderlo.weixzz.Widgt.StatusView;
 import android.content.Context;
 import android.text.util.Linkify;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
+import com.finderlo.weixzz.Util.Util;
 import com.finderlo.weixzz.Widgt.AutoLinkTextView;
 
 import java.util.ArrayList;
@@ -23,29 +25,29 @@ public class StatusViewitem extends LinearLayout{
 
     private int mType = 1;
     private Status mStatus;
-    private LayoutParams mLayoutParams = new LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
-    );
+
 
     public StatusViewitem(Context context) {
         super(context);
         setOrientation(VERTICAL);
         setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
+        setPadding(Util.dip2px(context,5),Util.dip2px(context,5),Util.dip2px(context,5),Util.dip2px(context,5));
     }
 
     public StatusViewitem(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
+    StatusHeadView headView = null;
     private void initView(Context context) {
         if (mType==TYPE_STATUS){
-            StatusHeadView headView = new StatusHeadView(context);
+            headView = new StatusHeadView(context);
             headView.setStatus(mStatus);
             addView(headView);
         }
 
         initStatusContent(context,mStatus.text);
-        initStatusPics(context,mStatus.pic_urls);
+        initStatusPics(context,mStatus);
 
         if (mStatus.retweeted_status!=null){
             StatusViewitem statusViewitem = new StatusViewitem(context);
@@ -56,10 +58,10 @@ public class StatusViewitem extends LinearLayout{
 
     }
 
-    private void initStatusPics(Context context, ArrayList<String> pic_urls) {
-        if (null == pic_urls||pic_urls.size()==0)  return;
+    private void initStatusPics(Context context, Status status) {
+        if (null == mStatus.pic_urls||mStatus.pic_urls.size()==0)  return;
         ImageViews imageViews = new ImageViews(context);
-        imageViews.setImageSrc(pic_urls);
+        imageViews.setImageSrc(status);
         addView(imageViews);
     }
 
@@ -90,6 +92,13 @@ public class StatusViewitem extends LinearLayout{
             setBackground(getResources().getDrawable(R.drawable.backgroundcolor));
         }
         initView(context);
+    }
+
+    public void setHeadViewVisible(boolean flag){
+        if (headView==null) return;
+        if (flag){
+            headView.setVisibility(View.VISIBLE);
+        }else headView.setVisibility(View.GONE);
     }
 
     public void setIsRetweetedStatus(boolean type){

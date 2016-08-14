@@ -8,13 +8,10 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
-import com.finderlo.weixzz.Database.DatabaseTool;
+import com.finderlo.weixzz.Constants;
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
 import com.finderlo.weixzz.Util.Util;
-import com.finderlo.weixzz.XzzConstants;
-
-import java.util.List;
 
 public class StatusDetailActivity extends AppCompatActivity {
 
@@ -34,7 +31,7 @@ public class StatusDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String status_idstr = "";
         if (intent == null){
-        }else status_idstr = intent.getStringExtra(XzzConstants.STATUS_IDSTR);
+        }else status_idstr = intent.getStringExtra(Constants.STATUS_IDSTR);
 
         FragmentManager manager = getFragmentManager();
         Fragment fragment = manager.findFragmentById(R.id.id_ContentFragment);

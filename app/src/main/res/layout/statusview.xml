@@ -1,124 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="15dp"
-    android:background="#3c615050"
-    android:descendantFocusability="blocksDescendants"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
-    <com.finderlo.weixzz.Widgt.AutoLinkTextView
-        android:id="@+id/statusdetail_retweeted_status_content"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:autoLink="web"
-        android:focusable="false"
-        android:text="测试微博内容"
-        android:textSize="16sp"
-        android:visibility="gone"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        card_view:cardCornerRadius="8dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:stateListAnimator="@anim/touch_raise">
 
-    <ImageView
-        android:id="@+id/statusdetail_retweeted_pic_count_one_imageview"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/user_default_pic"
-        android:visibility="gone"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:descendantFocusability="blocksDescendants"
+            android:orientation="vertical">
 
-    <GridLayout
-        android:id="@+id/statusdetail_pic_count_out_three_gridlayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="3">
+            <include
+                layout="@layout/statusview_head"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"/>
 
+            <com.finderlo.weixzz.Widgt.AutoLinkTextView
+                android:id="@+id/statusview_status_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:autoLink="web"
+                android:text="微博测试内容"
+                android:textSize="16sp"/>
 
-        <ImageView
-            android:id="@+id/statusdetail_retweeted_pic_count_1_gridview_imageview"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/user_default_pic"
-            android:visibility="gone"/>
-
-        <ImageView
-            android:id="@+id/statusdetail_retweeted_pic_count_2_gridview_imageview"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/user_default_pic"
-            android:visibility="gone"/>
-
-        <ImageView
-            android:id="@+id/statusdetail_retweeted_pic_count_3_gridview_imageview"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/user_default_pic"
-            android:visibility="gone"/>
-
-        <ImageView
-            android:id="@+id/statusdetail_retweeted_pic_count_4_gridview_imageview"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/user_default_pic"
-            android:visibility="gone"/>
-
-        <ImageView
-            android:id="@+id/statusdetail_retweeted_pic_count_5_gridview_imageview"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/user_default_pic"
-            android:visibility="gone"/>
-
-        <ImageView
-            android:id="@+id/statusdetail_retweeted_pic_count_6_gridview_imageview"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/user_default_pic"
-            android:visibility="gone"/>
-
-        <ImageView
-            android:id="@+id/statusdetail_retweeted_pic_count_7_gridview_imageview"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/user_default_pic"
-            android:visibility="gone"/>
-
-        <ImageView
-            android:id="@+id/statusdetail_retweeted_pic_count_8_gridview_imageview"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/user_default_pic"
-            android:visibility="gone"/>
-
-        <ImageView
-            android:id="@+id/statusdetail_retweeted_pic_count_9_gridview_imageview"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/user_default_pic"
-            android:visibility="gone"/>
+            <com.finderlo.weixzz.Widgt.StatusView.ImageViews
+                android:id="@+id/statusview_imageviews_gridlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
 
 
-    </GridLayout>
+            <LinearLayout
+                android:id="@+id/statusview_retweeted_status_linearlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#3c615050"
+                android:orientation="vertical">
+
+                <com.finderlo.weixzz.Widgt.AutoLinkTextView
+                    android:id="@+id/statusview_retweeted_status_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:autoLink="web"
+                    android:text="测试转发微博内容"
+                    android:textSize="16sp"
+                    android:visibility="gone"/>
+
+                <com.finderlo.weixzz.Widgt.StatusView.ImageViews
+                    android:id="@+id/statusview_retweeted_imageviews_gridlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
 
 
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 </LinearLayout>

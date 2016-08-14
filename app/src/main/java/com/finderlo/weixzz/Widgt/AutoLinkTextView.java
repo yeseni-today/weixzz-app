@@ -11,7 +11,7 @@ import android.view.MotionEvent;
 import android.widget.TextView;
 
 
-public class AutoLinkTextView extends TextView {
+public class AutoLinkTextView extends BaseTextView {
     public AutoLinkTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }

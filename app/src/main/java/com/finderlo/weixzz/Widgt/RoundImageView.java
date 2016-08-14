@@ -45,11 +45,11 @@ import com.finderlo.weixzz.R;
 
 /**
  * 圆形ImageView，可设置最多两个宽度不同且颜色不同的圆形边框。
- * <p/>
+ * <p>
  * 设置颜色在xml布局文件中由自定义属性配置参数指定
  */
 
-public class RoundImageView extends ImageView {
+public class RoundImageView extends BaseImageView {
 
     private int mBorderThickness = 0;
 
@@ -59,36 +59,27 @@ public class RoundImageView extends ImageView {
 
     // 如果只有其中一个有值，则只画一个圆形边框
 
-    private
-    int mBorderOutsideColor = 0;
+    private int mBorderOutsideColor = 0;
 
-    private
-    int mBorderInsideColor = 0;
+    private int mBorderInsideColor = 0;
 
     // 控件默认长、宽
 
-    private
-    int defaultWidth = 0;
+    private int defaultWidth = 0;
 
-    private
-    int defaultHeight = 0;
+    private int defaultHeight = 0;
 
 
     public RoundImageView(Context context) {
-
         super(context);
-
         mContext = context;
 
     }
 
 
     public RoundImageView(Context context, AttributeSet attrs) {
-
         super(context, attrs);
-
         mContext = context;
-
         setCustomAttributes(attrs);
 
     }
@@ -96,109 +87,60 @@ public class RoundImageView extends ImageView {
 
     public RoundImageView(Context context, AttributeSet attrs, int
             defStyle) {
-
         super(context, attrs, defStyle);
-
         mContext = context;
-
         setCustomAttributes(attrs);
-
     }
 
 
     private void setCustomAttributes(AttributeSet attrs) {
-
         TypedArray a = mContext.obtainStyledAttributes(attrs, R.styleable.roundedimageview);
-
         mBorderThickness = a.getDimensionPixelSize(R.styleable.roundedimageview_border_thickness, 0);
-
         mBorderOutsideColor = a.getColor(R.styleable.roundedimageview_border_outside_color, defaultColor);
-
         mBorderInsideColor = a.getColor(R.styleable.roundedimageview_border_inside_color, defaultColor);
-
     }
 
 
     @Override
 
     protected void onDraw(Canvas canvas) {
-
         Drawable drawable = getDrawable();
-
-        if
-                (drawable == null) {
-
+        if (drawable == null) {
             return;
-
         }
-
-        if
-                (getWidth() == 0
-                || getHeight() == 0) {
-
+        if (getWidth() == 0 || getHeight() == 0) {
             return;
-
         }
-
         this.measure(0, 0);
-
-        if
-                (drawable.getClass() == NinePatchDrawable.class)
-
+        if (drawable.getClass() == NinePatchDrawable.class)
             return;
-
         Bitmap b = ((BitmapDrawable) drawable).getBitmap();
-
         Bitmap bitmap = b.copy(Bitmap.Config.ARGB_8888, true);
-
-        if
-                (defaultWidth == 0) {
-
+        if (defaultWidth == 0) {
             defaultWidth = getWidth();
-
         }
-
-        if
-                (defaultHeight == 0) {
-
+        if (defaultHeight == 0) {
             defaultHeight = getHeight();
-
         }
-
-        int
-                radius = 0;
-
-        if
-                (mBorderInsideColor != defaultColor && mBorderOutsideColor != defaultColor) {// 定义画两个边框，分别为外圆边框和内圆边框
-
+        int radius = 0;
+        if (mBorderInsideColor != defaultColor
+                && mBorderOutsideColor != defaultColor) {// 定义画两个边框，分别为外圆边框和内圆边框
             radius = (defaultWidth < defaultHeight ? defaultWidth : defaultHeight) / 2
                     - 2
                     * mBorderThickness;
-
             // 画内圆
-
             drawCircleBorder(canvas, radius + mBorderThickness / 2, mBorderInsideColor);
-
             // 画外圆
-
             drawCircleBorder(canvas, radius + mBorderThickness + mBorderThickness / 2, mBorderOutsideColor);
-
         } else if (mBorderInsideColor != defaultColor && mBorderOutsideColor == defaultColor) {// 定义画一个边框
-
             radius = (defaultWidth < defaultHeight ? defaultWidth : defaultHeight) / 2
                     - mBorderThickness;
-
             drawCircleBorder(canvas, radius + mBorderThickness / 2, mBorderInsideColor);
-
         } else if (mBorderInsideColor == defaultColor && mBorderOutsideColor != defaultColor) {// 定义画一个边框
-
             radius = (defaultWidth < defaultHeight ? defaultWidth : defaultHeight) / 2
                     - mBorderThickness;
-
             drawCircleBorder(canvas, radius + mBorderThickness / 2, mBorderOutsideColor);
-
         } else {// 没有边框
-
             radius = (defaultWidth < defaultHeight ? defaultWidth : defaultHeight) / 2;
 
         }
@@ -215,7 +157,8 @@ public class RoundImageView extends ImageView {
     /**
      * 获取裁剪后的圆形图片
      *
-     * @param radius半径
+     * @param radius
+     * 半径
      */
 
     public Bitmap getCroppedRoundBitmap(Bitmap bmp, int
@@ -223,36 +166,22 @@ public class RoundImageView extends ImageView {
 
         Bitmap scaledSrcBmp;
 
-        int
-                diameter = radius * 2;
+        int diameter = radius * 2;
 
         // 为了防止宽高不相等，造成圆形图片变形，因此截取长方形中处于中间位置最大的正方形图片
 
-        int
-                bmpWidth = bmp.getWidth();
-
-        int
-                bmpHeight = bmp.getHeight();
-
-        int
-                squareWidth = 0, squareHeight = 0;
-
-        int
-                x = 0, y = 0;
-
+        int bmpWidth = bmp.getWidth();
+        int bmpHeight = bmp.getHeight();
+        int squareWidth = 0, squareHeight = 0;
+        int x = 0, y = 0;
         Bitmap squareBitmap;
 
-        if
-                (bmpHeight > bmpWidth) {// 高大于宽
-
+        if (bmpHeight > bmpWidth) {// 高大于宽
             squareWidth = squareHeight = bmpWidth;
-
             x = 0;
-
             y = (bmpHeight - bmpWidth) / 2;
 
             // 截取正方形图片
-
             squareBitmap = Bitmap.createBitmap(bmp, x, y, squareWidth, squareHeight);
 
         } else if (bmpHeight < bmpWidth) {// 宽大于高
@@ -277,26 +206,19 @@ public class RoundImageView extends ImageView {
             scaledSrcBmp = Bitmap.createScaledBitmap(squareBitmap, diameter, diameter, true);
 
         } else {
-
             scaledSrcBmp = squareBitmap;
-
         }
 
         Bitmap output = Bitmap.createBitmap(scaledSrcBmp.getWidth(),
-
                 scaledSrcBmp.getHeight(),
-
                 Config.ARGB_8888);
 
-        Canvas canvas = new
-                Canvas(output);
+        Canvas canvas = new Canvas(output);
 
 
-        Paint paint = new
-                Paint();
+        Paint paint = new Paint();
 
-        Rect rect = new
-                Rect(0, 0, scaledSrcBmp.getWidth(), scaledSrcBmp.getHeight());
+        Rect rect = new Rect(0, 0, scaledSrcBmp.getWidth(), scaledSrcBmp.getHeight());
 
 
         paint.setAntiAlias(true);
@@ -326,8 +248,7 @@ public class RoundImageView extends ImageView {
 
         scaledSrcBmp = null;
 
-        return
-                output;
+        return output;
 
     }
 
@@ -337,11 +258,9 @@ public class RoundImageView extends ImageView {
      */
 
     private void drawCircleBorder(Canvas canvas, int
-            radius, int
-                                          color) {
+            radius, int color) {
 
-        Paint paint = new
-                Paint();
+        Paint paint = new Paint();
 
         /* 去锯齿 */
 

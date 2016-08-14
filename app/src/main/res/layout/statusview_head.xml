@@ -11,7 +11,7 @@
         android:layout_height="50dp">
 
         <com.finderlo.weixzz.Widgt.RoundImageView
-            android:id="@+id/image_user_pic"
+            android:id="@+id/statusview_header_image_user_pic"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_gravity="center"

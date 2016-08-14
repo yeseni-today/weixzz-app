@@ -30,6 +30,12 @@
         </activity>
         <activity android:name=".UI.TestActivity">
         </activity>
+        <activity android:name=".UI.ImageDetailActivity">
+            <intent-filter>
+                <action android:name="image_detail"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

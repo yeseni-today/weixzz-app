@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.Database;
+package com.finderlo.weixzz.Database.Table;
 
 /**
  * Created by Finderlo on 2016/8/6.

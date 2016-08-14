@@ -8,7 +8,7 @@ import android.util.Log;
 
 import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
 import com.finderlo.weixzz.SinaAPI.openapi.models.User;
-import com.finderlo.weixzz.XzzConstants;
+import com.finderlo.weixzz.Constants;
 
 import java.util.ArrayList;
 
@@ -56,8 +56,8 @@ public class DatabaseTool {
             return;
         }
         ContentValues values = new ContentValues();
-        values.put(XzzConstants.USER_ID, user.id);
-        values.put(XzzConstants.USER_IDSTR, user.idstr);
+        values.put(Constants.USER_ID, user.id);
+        values.put(Constants.USER_IDSTR, user.idstr);
         values.put("json",userjson);
 
         mDatabase.insert(TABLE_NAME_USER, null, values);
@@ -76,9 +76,9 @@ public class DatabaseTool {
             return;
         }
         ContentValues values = new ContentValues();
-        values.put(XzzConstants.STATUS_ID, status.id);
-        values.put(XzzConstants.STATUS_MID, status.mid);
-        values.put(XzzConstants.STATUS_IDSTR, status.idstr);
+        values.put(Constants.STATUS_ID, status.id);
+        values.put(Constants.STATUS_MID, status.mid);
+        values.put(Constants.STATUS_IDSTR, status.idstr);
         values.put("json", jsonString);
 
         mDatabase.insert(TABLE_NAME_STATUS, null, values);
@@ -276,29 +276,29 @@ public class DatabaseTool {
 //            status = new Status();
 ////
 ////            /**这些是string和int数据*/
-////            status.created_at = cursor.getString(cursor.getColumnIndex(XzzConstants.STATUS_CREATED_AT));
-////            status.id = cursor.getString(cursor.getColumnIndex(XzzConstants.STATUS_ID));
-////            status.mid = cursor.getString(cursor.getColumnIndex(XzzConstants.STATUS_MID));
-////            status.idstr = cursor.getString(cursor.getColumnIndex(XzzConstants.STATUS_IDSTR));
-////            status.text = cursor.getString(cursor.getColumnIndex(XzzConstants.STATUS_TEXT));
-////            status.source = cursor.getString(cursor.getColumnIndex(XzzConstants.STATUS_SOURCE));
-////            status.in_reply_to_status_id = cursor.getString(cursor.getColumnIndex(XzzConstants.STATUS_IN_REPLY_TO_STATUS_ID));
-////            status.in_reply_to_user_id = cursor.getString(cursor.getColumnIndex(XzzConstants.STATUS_IN_REPLY_TO_USER_ID));
-////            status.in_reply_to_screen_name = cursor.getString(cursor.getColumnIndex(XzzConstants.STATUS_IN_REPLY_TO_SCAEEN_NAME));
-////            status.thumbnail_pic = cursor.getString(cursor.getColumnIndex(XzzConstants.STATUS_THUMNAIL_PIC));
-////            status.bmiddle_pic = cursor.getString(cursor.getColumnIndex(XzzConstants.STATUS_BMIDDLE_PIC));
-////            status.original_pic = cursor.getString(cursor.getColumnIndex(XzzConstants.STATUS_ORIGINAL_PIC));
-////            status.reposts_count = cursor.getInt(cursor.getColumnIndex(XzzConstants.STATUS_REPOSTS_COUNT));
-////            status.comments_count = cursor.getInt(cursor.getColumnIndex(XzzConstants.STATUS_COMMENTS_COUNT));
-////            status.attitudes_count = cursor.getInt(cursor.getColumnIndex(XzzConstants.STATUS_ATTITUDES_COUNT));
-////            status.mlevel = cursor.getInt(cursor.getColumnIndex(XzzConstants.STATUS_MLEVEL));
+////            status.created_at = cursor.getString(cursor.getColumnIndex(Constants.STATUS_CREATED_AT));
+////            status.id = cursor.getString(cursor.getColumnIndex(Constants.STATUS_ID));
+////            status.mid = cursor.getString(cursor.getColumnIndex(Constants.STATUS_MID));
+////            status.idstr = cursor.getString(cursor.getColumnIndex(Constants.STATUS_IDSTR));
+////            status.text = cursor.getString(cursor.getColumnIndex(Constants.STATUS_TEXT));
+////            status.source = cursor.getString(cursor.getColumnIndex(Constants.STATUS_SOURCE));
+////            status.in_reply_to_status_id = cursor.getString(cursor.getColumnIndex(Constants.STATUS_IN_REPLY_TO_STATUS_ID));
+////            status.in_reply_to_user_id = cursor.getString(cursor.getColumnIndex(Constants.STATUS_IN_REPLY_TO_USER_ID));
+////            status.in_reply_to_screen_name = cursor.getString(cursor.getColumnIndex(Constants.STATUS_IN_REPLY_TO_SCAEEN_NAME));
+////            status.thumbnail_pic = cursor.getString(cursor.getColumnIndex(Constants.STATUS_THUMNAIL_PIC));
+////            status.bmiddle_pic = cursor.getString(cursor.getColumnIndex(Constants.STATUS_BMIDDLE_PIC));
+////            status.original_pic = cursor.getString(cursor.getColumnIndex(Constants.STATUS_ORIGINAL_PIC));
+////            status.reposts_count = cursor.getInt(cursor.getColumnIndex(Constants.STATUS_REPOSTS_COUNT));
+////            status.comments_count = cursor.getInt(cursor.getColumnIndex(Constants.STATUS_COMMENTS_COUNT));
+////            status.attitudes_count = cursor.getInt(cursor.getColumnIndex(Constants.STATUS_ATTITUDES_COUNT));
+////            status.mlevel = cursor.getInt(cursor.getColumnIndex(Constants.STATUS_MLEVEL));
 ////
-////            status.user = queryUser(TYPE_IDSTR, cursor.getString(cursor.getColumnIndex(XzzConstants.STATUS_USER_IDSTR)));
-////            status.retweeted_status = queryStatus(TYPE_IDSTR, cursor.getString(cursor.getColumnIndex(XzzConstants.STATUS_RETWEETED_STATUS_IDSTR)));
+////            status.user = queryUser(TYPE_IDSTR, cursor.getString(cursor.getColumnIndex(Constants.STATUS_USER_IDSTR)));
+////            status.retweeted_status = queryStatus(TYPE_IDSTR, cursor.getString(cursor.getColumnIndex(Constants.STATUS_RETWEETED_STATUS_IDSTR)));
 ////
 ////            /**这些是Boolean数据*/
-////            status.favorited = Util.stringToBoolean(cursor.getString(cursor.getColumnIndex(XzzConstants.STATUS_FAVORITED)));
-////            status.truncated = Util.stringToBoolean(cursor.getString(cursor.getColumnIndex(XzzConstants.STATUS_TRUNCATED)));
+////            status.favorited = Util.stringToBoolean(cursor.getString(cursor.getColumnIndex(Constants.STATUS_FAVORITED)));
+////            status.truncated = Util.stringToBoolean(cursor.getString(cursor.getColumnIndex(Constants.STATUS_TRUNCATED)));
 //
 //            /** *
 //             * 这些数据暂时没有添加
@@ -316,110 +316,110 @@ public class DatabaseTool {
 //             * ad	                            object array	微博流内的推广微博ID
 //             * */
 
-//values.put(XzzConstants.STATUS_CREATED_AT, status.created_at);
-//        values.put(XzzConstants.STATUS_ID, status.id);
-//        values.put(XzzConstants.STATUS_MID, status.mid);
-//        values.put(XzzConstants.STATUS_IDSTR, status.idstr);
-//        values.put(XzzConstants.STATUS_TEXT, status.text);
-//        values.put(XzzConstants.STATUS_SOURCE, status.source);
-//        values.put(XzzConstants.STATUS_FAVORITED, Util.booleanToString(status.favorited));
-//        values.put(XzzConstants.STATUS_TRUNCATED, Util.booleanToString(status.truncated));
+//values.put(Constants.STATUS_CREATED_AT, status.created_at);
+//        values.put(Constants.STATUS_ID, status.id);
+//        values.put(Constants.STATUS_MID, status.mid);
+//        values.put(Constants.STATUS_IDSTR, status.idstr);
+//        values.put(Constants.STATUS_TEXT, status.text);
+//        values.put(Constants.STATUS_SOURCE, status.source);
+//        values.put(Constants.STATUS_FAVORITED, Util.booleanToString(status.favorited));
+//        values.put(Constants.STATUS_TRUNCATED, Util.booleanToString(status.truncated));
 //
-//        values.put(XzzConstants.STATUS_IN_REPLY_TO_STATUS_ID, status.in_reply_to_status_id);
-//        values.put(XzzConstants.STATUS_IN_REPLY_TO_USER_ID, status.in_reply_to_user_id);
-//        values.put(XzzConstants.STATUS_IN_REPLY_TO_SCAEEN_NAME, status.in_reply_to_screen_name);
-//        values.put(XzzConstants.STATUS_THUMNAIL_PIC, status.thumbnail_pic);
-//        values.put(XzzConstants.STATUS_BMIDDLE_PIC, status.bmiddle_pic);
-//        values.put(XzzConstants.STATUS_ORIGINAL_PIC, status.original_pic);
-//        values.put(XzzConstants.STATUS_REPOSTS_COUNT, status.reposts_count);
-//        values.put(XzzConstants.STATUS_COMMENTS_COUNT, status.comments_count);
-//        values.put(XzzConstants.STATUS_ATTITUDES_COUNT, status.attitudes_count);
-//        values.put(XzzConstants.STATUS_MLEVEL, status.mlevel);
+//        values.put(Constants.STATUS_IN_REPLY_TO_STATUS_ID, status.in_reply_to_status_id);
+//        values.put(Constants.STATUS_IN_REPLY_TO_USER_ID, status.in_reply_to_user_id);
+//        values.put(Constants.STATUS_IN_REPLY_TO_SCAEEN_NAME, status.in_reply_to_screen_name);
+//        values.put(Constants.STATUS_THUMNAIL_PIC, status.thumbnail_pic);
+//        values.put(Constants.STATUS_BMIDDLE_PIC, status.bmiddle_pic);
+//        values.put(Constants.STATUS_ORIGINAL_PIC, status.original_pic);
+//        values.put(Constants.STATUS_REPOSTS_COUNT, status.reposts_count);
+//        values.put(Constants.STATUS_COMMENTS_COUNT, status.comments_count);
+//        values.put(Constants.STATUS_ATTITUDES_COUNT, status.attitudes_count);
+//        values.put(Constants.STATUS_MLEVEL, status.mlevel);
 //
-//        values.put(XzzConstants.STATUS_USER_IDSTR, status.user_idstr);
-//        values.put(XzzConstants.STATUS_RETWEETED_STATUS_IDSTR, status.retweeted_status_idstr);
+//        values.put(Constants.STATUS_USER_IDSTR, status.user_idstr);
+//        values.put(Constants.STATUS_RETWEETED_STATUS_IDSTR, status.retweeted_status_idstr);
 
 //
-//user.id = cursor.getString(cursor.getColumnIndex(XzzConstants.USER_ID));
-//        user.idstr = cursor.getString(cursor.getColumnIndex(XzzConstants.USER_IDSTR));
-//        user.name = cursor.getString(cursor.getColumnIndex(XzzConstants.USER_NAME));
-//        user.screen_name = cursor.getString(cursor.getColumnIndex(XzzConstants.USER_SCREEN_NAME));
+//user.id = cursor.getString(cursor.getColumnIndex(Constants.USER_ID));
+//        user.idstr = cursor.getString(cursor.getColumnIndex(Constants.USER_IDSTR));
+//        user.name = cursor.getString(cursor.getColumnIndex(Constants.USER_NAME));
+//        user.screen_name = cursor.getString(cursor.getColumnIndex(Constants.USER_SCREEN_NAME));
 //
-//        user.province = cursor.getInt(cursor.getColumnIndex(XzzConstants.USER_PROVINCE));
-//        user.city = cursor.getInt(cursor.getColumnIndex(XzzConstants.USER_CITY));
+//        user.province = cursor.getInt(cursor.getColumnIndex(Constants.USER_PROVINCE));
+//        user.city = cursor.getInt(cursor.getColumnIndex(Constants.USER_CITY));
 //
-//        user.location = cursor.getString(cursor.getColumnIndex(XzzConstants.USER_LOCATION));
-//        user.description = cursor.getString(cursor.getColumnIndex(XzzConstants.USER_DESCRIPTION));
-//        user.url = cursor.getString(cursor.getColumnIndex(XzzConstants.USER_URL));
-//        user.profile_image_url = cursor.getString(cursor.getColumnIndex(XzzConstants.USER_PROFILE_IMAGE_URL));
-//        user.profile_url = cursor.getString(cursor.getColumnIndex(XzzConstants.USER_PROFILE_URL));
-//        user.domain = cursor.getString(cursor.getColumnIndex(XzzConstants.USER_DOMAIN));
-//        user.weihao = cursor.getString(cursor.getColumnIndex(XzzConstants.USER_WEIHAO));
-//        user.gender = cursor.getString(cursor.getColumnIndex(XzzConstants.USER_GENDER));
+//        user.location = cursor.getString(cursor.getColumnIndex(Constants.USER_LOCATION));
+//        user.description = cursor.getString(cursor.getColumnIndex(Constants.USER_DESCRIPTION));
+//        user.url = cursor.getString(cursor.getColumnIndex(Constants.USER_URL));
+//        user.profile_image_url = cursor.getString(cursor.getColumnIndex(Constants.USER_PROFILE_IMAGE_URL));
+//        user.profile_url = cursor.getString(cursor.getColumnIndex(Constants.USER_PROFILE_URL));
+//        user.domain = cursor.getString(cursor.getColumnIndex(Constants.USER_DOMAIN));
+//        user.weihao = cursor.getString(cursor.getColumnIndex(Constants.USER_WEIHAO));
+//        user.gender = cursor.getString(cursor.getColumnIndex(Constants.USER_GENDER));
 //
-//        user.followers_count = cursor.getInt(cursor.getColumnIndex(XzzConstants.USER_FOLLOWERS_COUNT));
-//        user.friends_count = cursor.getInt(cursor.getColumnIndex(XzzConstants.USER_FRIENDS_COUNT));
-//        user.statuses_count = cursor.getInt(cursor.getColumnIndex(XzzConstants.USER_STATUSES_COUNT));
-//        user.favourites_count = cursor.getInt(cursor.getColumnIndex(XzzConstants.USER_FAVORITES_COUNT));
+//        user.followers_count = cursor.getInt(cursor.getColumnIndex(Constants.USER_FOLLOWERS_COUNT));
+//        user.friends_count = cursor.getInt(cursor.getColumnIndex(Constants.USER_FRIENDS_COUNT));
+//        user.statuses_count = cursor.getInt(cursor.getColumnIndex(Constants.USER_STATUSES_COUNT));
+//        user.favourites_count = cursor.getInt(cursor.getColumnIndex(Constants.USER_FAVORITES_COUNT));
 //
-//        user.created_at = cursor.getString(cursor.getColumnIndex(XzzConstants.USER_CREATED_AT));
+//        user.created_at = cursor.getString(cursor.getColumnIndex(Constants.USER_CREATED_AT));
 //
-//        user.remark = cursor.getString(cursor.getColumnIndex(XzzConstants.USER_REMARK));
+//        user.remark = cursor.getString(cursor.getColumnIndex(Constants.USER_REMARK));
 //        /**user.status = ?*/
-//        user.avatar_large = cursor.getString(cursor.getColumnIndex(XzzConstants.USER_AVATAR_LARGE));
-//        user.avatar_hd = cursor.getString(cursor.getColumnIndex(XzzConstants.USER_AVATAR_HD));
-//        user.verified_reason = cursor.getString(cursor.getColumnIndex(XzzConstants.USER_VERIFIED_REASON));
+//        user.avatar_large = cursor.getString(cursor.getColumnIndex(Constants.USER_AVATAR_LARGE));
+//        user.avatar_hd = cursor.getString(cursor.getColumnIndex(Constants.USER_AVATAR_HD));
+//        user.verified_reason = cursor.getString(cursor.getColumnIndex(Constants.USER_VERIFIED_REASON));
 //
-//        user.online_status = cursor.getInt(cursor.getColumnIndex(XzzConstants.USER_ONLINE_STATUS));
-//        user.bi_followers_count = cursor.getInt(cursor.getColumnIndex(XzzConstants.USER_BI_FOLLOWERS_COUNT));
+//        user.online_status = cursor.getInt(cursor.getColumnIndex(Constants.USER_ONLINE_STATUS));
+//        user.bi_followers_count = cursor.getInt(cursor.getColumnIndex(Constants.USER_BI_FOLLOWERS_COUNT));
 //
-//        user.lang = cursor.getString(cursor.getColumnIndex(XzzConstants.USER_LANG));
+//        user.lang = cursor.getString(cursor.getColumnIndex(Constants.USER_LANG));
 //
 //        /**这些字段是Boolean类型的数据,在database中存为text类型,需要转换为Boolean类型*/
 //        user.follow_me = Util.stringToBoolean
-//        (cursor.getString(cursor.getColumnIndex(XzzConstants.USER_FOLLOW_ME)));
+//        (cursor.getString(cursor.getColumnIndex(Constants.USER_FOLLOW_ME)));
 //        user.allow_all_comment = Util.stringToBoolean
-//        (cursor.getString(cursor.getColumnIndex(XzzConstants.USER_ALLOW_ALL_COMMENT)));
+//        (cursor.getString(cursor.getColumnIndex(Constants.USER_ALLOW_ALL_COMMENT)));
 //        user.geo_enabled = Util.stringToBoolean(
-//        cursor.getString(cursor.getColumnIndex(XzzConstants.USER_GEO_ENABLED)));
+//        cursor.getString(cursor.getColumnIndex(Constants.USER_GEO_ENABLED)));
 //        user.allow_all_act_msg = Util.stringToBoolean
-//        (cursor.getString(cursor.getColumnIndex(XzzConstants.USER_ALL_ACT_MSG)));
+//        (cursor.getString(cursor.getColumnIndex(Constants.USER_ALL_ACT_MSG)));
 //        user.verified = Util.stringToBoolean
-//        (cursor.getString(cursor.getColumnIndex(XzzConstants.USER_VERIFIED)));
+//        (cursor.getString(cursor.getColumnIndex(Constants.USER_VERIFIED)));
 //        user.following = Util.stringToBoolean
-//        (cursor.getString(cursor.getColumnIndex(XzzConstants.USER_FOLLOWING)));
+//        (cursor.getString(cursor.getColumnIndex(Constants.USER_FOLLOWING)));
 
 
-//        values.put(XzzConstants.USER_SCREEN_NAME, user.screen_name);
-//        values.put(XzzConstants.USER_NAME, user.name);
-//        values.put(XzzConstants.USER_PROVINCE, user.province);
-//        values.put(XzzConstants.USER_CITY, user.city);
-//        values.put(XzzConstants.USER_LOCATION, user.location);
-//        values.put(XzzConstants.USER_DESCRIPTION, user.description);
-//        values.put(XzzConstants.USER_URL, user.url);
-//        values.put(XzzConstants.USER_PROFILE_IMAGE_URL, user.profile_image_url);
-//        values.put(XzzConstants.USER_PROFILE_URL, user.profile_url);
-//        values.put(XzzConstants.USER_DOMAIN, user.domain);
-//        values.put(XzzConstants.USER_WEIHAO, user.weihao);
-//        values.put(XzzConstants.USER_GENDER, user.gender);
-//        values.put(XzzConstants.USER_FOLLOWERS_COUNT, user.followers_count);
-//        values.put(XzzConstants.USER_FRIENDS_COUNT, user.friends_count);
-//        values.put(XzzConstants.USER_STATUSES_COUNT, user.statuses_count);
-//        values.put(XzzConstants.USER_FAVORITES_COUNT, user.favourites_count);
-//        values.put(XzzConstants.USER_CREATED_AT, user.created_at);
-//        values.put(XzzConstants.USER_FOLLOWING, user.following);
-//        values.put(XzzConstants.USER_ALLOW_ALL_COMMENT, Util.booleanToString(user.allow_all_act_msg));
-//        values.put(XzzConstants.USER_GEO_ENABLED, Util.booleanToString(user.geo_enabled));
-//        values.put(XzzConstants.USER_VERIFIED, Util.booleanToString(user.verified));
-//        values.put(XzzConstants.USER_VERIFIED_TYPE, user.verified_type);
-////        values.put(XzzConstants.USER_SCREEN_NAME, user.status);
-//        values.put(XzzConstants.USER_ALLOW_ALL_COMMENT, Util.booleanToString(user.allow_all_comment));
-//        values.put(XzzConstants.USER_AVATAR_LARGE, user.avatar_large);
-//        values.put(XzzConstants.USER_AVATAR_HD, user.avatar_hd);
-//        values.put(XzzConstants.USER_VERIFIED_REASON, user.verified_reason);
-//        values.put(XzzConstants.USER_FOLLOWING, Util.booleanToString(user.follow_me));
-//        values.put(XzzConstants.USER_ONLINE_STATUS, user.online_status);
-//        values.put(XzzConstants.USER_BI_FOLLOWERS_COUNT, user.bi_followers_count);
-//        values.put(XzzConstants.USER_LANG, user.lang);
+//        values.put(Constants.USER_SCREEN_NAME, user.screen_name);
+//        values.put(Constants.USER_NAME, user.name);
+//        values.put(Constants.USER_PROVINCE, user.province);
+//        values.put(Constants.USER_CITY, user.city);
+//        values.put(Constants.USER_LOCATION, user.location);
+//        values.put(Constants.USER_DESCRIPTION, user.description);
+//        values.put(Constants.USER_URL, user.url);
+//        values.put(Constants.USER_PROFILE_IMAGE_URL, user.profile_image_url);
+//        values.put(Constants.USER_PROFILE_URL, user.profile_url);
+//        values.put(Constants.USER_DOMAIN, user.domain);
+//        values.put(Constants.USER_WEIHAO, user.weihao);
+//        values.put(Constants.USER_GENDER, user.gender);
+//        values.put(Constants.USER_FOLLOWERS_COUNT, user.followers_count);
+//        values.put(Constants.USER_FRIENDS_COUNT, user.friends_count);
+//        values.put(Constants.USER_STATUSES_COUNT, user.statuses_count);
+//        values.put(Constants.USER_FAVORITES_COUNT, user.favourites_count);
+//        values.put(Constants.USER_CREATED_AT, user.created_at);
+//        values.put(Constants.USER_FOLLOWING, user.following);
+//        values.put(Constants.USER_ALLOW_ALL_COMMENT, Util.booleanToString(user.allow_all_act_msg));
+//        values.put(Constants.USER_GEO_ENABLED, Util.booleanToString(user.geo_enabled));
+//        values.put(Constants.USER_VERIFIED, Util.booleanToString(user.verified));
+//        values.put(Constants.USER_VERIFIED_TYPE, user.verified_type);
+////        values.put(Constants.USER_SCREEN_NAME, user.status);
+//        values.put(Constants.USER_ALLOW_ALL_COMMENT, Util.booleanToString(user.allow_all_comment));
+//        values.put(Constants.USER_AVATAR_LARGE, user.avatar_large);
+//        values.put(Constants.USER_AVATAR_HD, user.avatar_hd);
+//        values.put(Constants.USER_VERIFIED_REASON, user.verified_reason);
+//        values.put(Constants.USER_FOLLOWING, Util.booleanToString(user.follow_me));
+//        values.put(Constants.USER_ONLINE_STATUS, user.online_status);
+//        values.put(Constants.USER_BI_FOLLOWERS_COUNT, user.bi_followers_count);
+//        values.put(Constants.USER_LANG, user.lang);
 
 

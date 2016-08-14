@@ -23,7 +23,7 @@ package com.finderlo.weixzz;
  * @author SINA
  * @since 2013-09-29
  */
-public interface XzzConstants {
+public interface Constants {
 
     /** 当前 DEMO 应用的 APP_KEY，第三方应用应该使用自己的 APP_KEY 替换该 APP_KEY */
 
@@ -41,7 +41,7 @@ public interface XzzConstants {
      * 建议使用默认回调页：https://api.weibo.com/oauth2/default.html
      * </p>
      */
-//    public static final String REDIRECT_URL = "http://www.sina.com";
+
     public static final String REDIRECT_URL = "http://sns.whalecloud.com/sina2/callback";
 
     /**
@@ -61,7 +61,6 @@ public interface XzzConstants {
             "email,direct_messages_read,direct_messages_write,"
             + "friendships_groups_read,friendships_groups_write,statuses_to_me_read,"
             + "follow_app_official_microblog," + "invitation_write";
-//    public static final String SCOPE = "";
 
 
     /**

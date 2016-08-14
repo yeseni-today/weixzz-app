@@ -14,31 +14,5 @@ import java.net.URL;
  * Created by Finderlo on 2016/8/3.
  */
 public class HttpUtil {
-    public static void loadPicFromUrl(final String addressUrl, final HttpLoadPicCallbackListener listener){
-        if ("".equals(addressUrl)||addressUrl==null) return;
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
 
-                HttpURLConnection connection = null;
-                try {
-                    URL url = new URL(addressUrl);
-                    connection = (HttpURLConnection) url.openConnection();
-                    Bitmap bitmap = BitmapFactory.decodeStream(connection.getInputStream());
-                    listener.onComplete(bitmap);
-
-
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                    listener.onError(new MalformedURLException("貌似输入的统一资源定位器是不对的"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    listener.onError(new IOException("打开链接输入流出了错？"));
-                }finally {
-                    connection.disconnect();
-                }
-
-            }
-        }).start();
-    }
 }

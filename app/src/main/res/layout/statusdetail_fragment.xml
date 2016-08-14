@@ -10,137 +10,147 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/addbar_layout"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:background="@color/pinkcolor">
+    <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/pinkcolor"
+            android:minHeight="200dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                app:layout_collapseMode="parallax"
-                >
+                android:id="@+id/statusdetail_statuscoent_framlayout"></FrameLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#E91E63"
-                    android:descendantFocusability="blocksDescendants"
-                    android:minHeight="200dp"
-                    android:orientation="vertical">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical"-->
+                <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+                <!--app:layout_collapseMode="parallax"-->
+                <!--&gt;-->
 
-                    <com.finderlo.weixzz.Widgt.AutoLinkTextView
-                        android:id="@+id/textview_statusdetail_content"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="20dp"
-                        android:autoLink="web"
-                        android:focusable="false"
-                        android:text="测试微博内容"
-                        android:textSize="16sp"/>
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@color/pinkcolor"-->
+                    <!--android:id="@+id/detail_container"-->
+                    <!--android:descendantFocusability="blocksDescendants"-->
+                    <!--android:orientation="vertical">-->
 
-
-                    <ImageView
-                        android:id="@+id/statusdetail_pic_count_one_imageview"
-                        android:layout_width="240dp"
-                        android:layout_height="240dp"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/user_default_pic"
-                        android:visibility="gone"/>
-
-                    <GridLayout
-                        android:id="@+id/statusdetail_pic_count_out_three_gridlayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:columnCount="3">
+                    <!--&lt;!&ndash;<com.finderlo.weixzz.Widgt.AutoLinkTextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/textview_statusdetail_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginLeft="20dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginTop="20dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:autoLink="web"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:focusable="false"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="测试微博内容"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textSize="16sp"/>&ndash;&gt;-->
 
 
-                        <ImageView
-                            android:id="@+id/statusdetail_pic_count_1_gridview_imageview"
-                            android:layout_width="110dp"
-                            android:layout_height="110dp"
-                            android:layout_margin="10dp"
-                            android:src="@drawable/user_default_pic"
-                            android:visibility="gone"/>
+                    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/statusdetail_pic_count_one_imageview"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="240dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="240dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_gravity="center_horizontal"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:src="@drawable/user_default_pic"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:visibility="gone"/>&ndash;&gt;-->
 
-                        <ImageView
-                            android:id="@+id/statusdetail_pic_count_2_gridview_imageview"
-                            android:layout_width="110dp"
-                            android:layout_height="110dp"
-                            android:layout_margin="10dp"
-                            android:src="@drawable/user_default_pic"
-                            android:visibility="gone"/>
-
-                        <ImageView
-                            android:id="@+id/statusdetail_pic_count_3_gridview_imageview"
-                            android:layout_width="110dp"
-                            android:layout_height="110dp"
-                            android:layout_margin="10dp"
-                            android:src="@drawable/user_default_pic"
-                            android:visibility="gone"/>
-
-                        <ImageView
-                            android:id="@+id/statusdetail_pic_count_4_gridview_imageview"
-                            android:layout_width="110dp"
-                            android:layout_height="110dp"
-                            android:layout_margin="10dp"
-                            android:src="@drawable/user_default_pic"
-                            android:visibility="gone"/>
-
-                        <ImageView
-                            android:id="@+id/statusdetail_pic_count_5_gridview_imageview"
-                            android:layout_width="110dp"
-                            android:layout_height="110dp"
-                            android:layout_margin="10dp"
-                            android:src="@drawable/user_default_pic"
-                            android:visibility="gone"/>
-
-                        <ImageView
-                            android:id="@+id/statusdetail_pic_count_6_gridview_imageview"
-                            android:layout_width="110dp"
-                            android:layout_height="110dp"
-                            android:layout_margin="10dp"
-                            android:src="@drawable/user_default_pic"
-                            android:visibility="gone"/>
-
-                        <ImageView
-                            android:id="@+id/statusdetail_pic_count_7_gridview_imageview"
-                            android:layout_width="110dp"
-                            android:layout_height="110dp"
-                            android:layout_margin="10dp"
-                            android:src="@drawable/user_default_pic"
-                            android:visibility="gone"/>
-
-                        <ImageView
-                            android:id="@+id/statusdetail_pic_count_8_gridview_imageview"
-                            android:layout_width="110dp"
-                            android:layout_height="110dp"
-                            android:layout_margin="10dp"
-                            android:src="@drawable/user_default_pic"
-                            android:visibility="gone"/>
-
-                        <ImageView
-                            android:id="@+id/statusdetail_pic_count_9_gridview_imageview"
-                            android:layout_width="110dp"
-                            android:layout_height="110dp"
-                            android:layout_margin="10dp"
-                            android:src="@drawable/user_default_pic"
-                            android:visibility="gone"/>
+                    <!--&lt;!&ndash;<GridLayout&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/statusdetail_pic_count_out_three_gridlayout"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:columnCount="3">&ndash;&gt;-->
 
 
-                    </GridLayout>
+                        <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:id="@+id/statusdetail_pic_count_1_gridview_imageview"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="110dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="110dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_margin="10dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:src="@drawable/user_default_pic"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:visibility="gone"/>&ndash;&gt;-->
 
-                    <include layout="@layout/statuscontent"/>
+                        <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:id="@+id/statusdetail_pic_count_2_gridview_imageview"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="110dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="110dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_margin="10dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:src="@drawable/user_default_pic"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:visibility="gone"/>&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:id="@+id/statusdetail_pic_count_3_gridview_imageview"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="110dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="110dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_margin="10dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:src="@drawable/user_default_pic"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:visibility="gone"/>&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:id="@+id/statusdetail_pic_count_4_gridview_imageview"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="110dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="110dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_margin="10dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:src="@drawable/user_default_pic"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:visibility="gone"/>&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:id="@+id/statusdetail_pic_count_5_gridview_imageview"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="110dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="110dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_margin="10dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:src="@drawable/user_default_pic"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:visibility="gone"/>&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:id="@+id/statusdetail_pic_count_6_gridview_imageview"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="110dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="110dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_margin="10dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:src="@drawable/user_default_pic"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:visibility="gone"/>&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:id="@+id/statusdetail_pic_count_7_gridview_imageview"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="110dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="110dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_margin="10dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:src="@drawable/user_default_pic"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:visibility="gone"/>&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:id="@+id/statusdetail_pic_count_8_gridview_imageview"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="110dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="110dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_margin="10dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:src="@drawable/user_default_pic"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:visibility="gone"/>&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:id="@+id/statusdetail_pic_count_9_gridview_imageview"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_width="110dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_height="110dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:layout_margin="10dp"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:src="@drawable/user_default_pic"&ndash;&gt;-->
+                            <!--&lt;!&ndash;android:visibility="gone"/>&ndash;&gt;-->
 
 
-                </LinearLayout>
+                    <!--&lt;!&ndash;</GridLayout>&ndash;&gt;-->
 
-            </LinearLayout>
+                    <!--&lt;!&ndash;<include layout="@layout/statuscontent"/>&ndash;&gt;-->
+
+
+                <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+            <!--</LinearLayout>-->
+
+            <!--</LinearLayout>-->
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -152,7 +162,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none"
-        app:behavior_overlapTop="30dp"
+        app:behavior_overlapTop="0dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -169,7 +179,7 @@
                     android:layout_width="0dp"
                     android:layout_height="60dp"
                     android:layout_weight="1"
-                    android:background="#FF4081"
+                    android:background="@color/pinkcolor"
                     android:text="评论(不可用)"
                     android:textSize="14sp"/>
 
@@ -177,7 +187,7 @@
                     android:layout_width="0dp"
                     android:layout_height="60dp"
                     android:layout_weight="1"
-                    android:background="#FF4081"
+                    android:background="@color/pinkcolor"
                     android:text="转发(不可用)"/>
             </LinearLayout>
 
@@ -192,5 +202,14 @@
 
 
     </android.support.v4.widget.NestedScrollView>
+
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize"-->
+        <!--android:background="@color/pinkcolor">-->
+
+    <!--</android.support.v7.widget.Toolbar>-->
+
+
 
 </android.support.design.widget.CoordinatorLayout>

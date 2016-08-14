@@ -81,6 +81,7 @@ public class Status {
     public Visible visible;
     /** 微博配图地址。多图时返回多图链接。无配图返回"[]" */
     public ArrayList<String> pic_urls;
+    public ArrayList<String> pic_original_urls;
 
     public String retweeted_status_idstr;
 
@@ -144,7 +145,18 @@ public class Status {
                 }
             }
         }
-        
+        if (picUrlsArray != null && picUrlsArray.length() > 0) {
+            int length = picUrlsArray.length();
+            status.pic_original_urls = new ArrayList<String>(length);
+            JSONObject tmpObject = null;
+            for (int ix = 0; ix < length; ix++) {
+                tmpObject = picUrlsArray.optJSONObject(ix);
+                if (tmpObject != null) {
+                    status.pic_original_urls.add(tmpObject.optString("original_pic"));
+                }
+            }
+        }
+
         //status.ad = jsonObject.optString("ad", "");
         
         return status;

@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,8 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
-import com.finderlo.weixzz.Adapter.StatusAdapter;
-import com.finderlo.weixzz.Adapter.StatusViewAdapter;
+import com.finderlo.weixzz.Adapter.StatusViewRecyclerAdapter;
+import com.finderlo.weixzz.Constants;
 import com.finderlo.weixzz.Database.DatabaseTool;
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.SinaAPI.openapi.StatusesAPI;
@@ -23,8 +25,6 @@ import com.finderlo.weixzz.UI.Login.LoginActivity;
 import com.finderlo.weixzz.UI.StatusDetail.StatusDetailActivity;
 import com.finderlo.weixzz.Util.ClientApiManger;
 import com.finderlo.weixzz.Util.Util;
-import com.finderlo.weixzz.Widgt.NestedListView;
-import com.finderlo.weixzz.XzzConstants;
 import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.net.RequestListener;
 
@@ -35,14 +35,16 @@ import java.util.ArrayList;
  */
 public class MainViewFragment extends Fragment {
 
-    private String TAG = "MainviewFragment";
+    private String TAG = "MainViewFragment";
     Toolbar mToolbar;
 
-    NestedListView mListViewStatuses;
+//    NestedListView mListViewStatuses;
 
     ArrayList<Status> mDataList;
-//    StatusAdapter mAdapter;
-StatusViewAdapter mAdapter;
+//    StatusViewAdapter mAdapter;
+
+    RecyclerView mRecyclerView;
+    StatusViewRecyclerAdapter mAdapter;
 
     View.OnClickListener lister_fresh = new View.OnClickListener() {
         @Override
@@ -51,13 +53,7 @@ StatusViewAdapter mAdapter;
         }
     };
 
-    public void setListViewStatuses(NestedListView listViewStatuses) {
-        mListViewStatuses = listViewStatuses;
-    }
 
-    public void setToolbar(Toolbar toolbar) {
-        mToolbar = toolbar;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,14 +72,23 @@ StatusViewAdapter mAdapter;
         mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
         mToolbar.setTitle("Weixzz");
 
-        mListViewStatuses = (NestedListView) view.findViewById(R.id.listView_Statuses);
-//        mAdapter = new StatusAdapter(getActivity(),
-//                R.layout.mainview_listitem,
-//                mDataList);
-        mAdapter = new StatusViewAdapter(getActivity(),mDataList);
-        mListViewStatuses.setAdapter(mAdapter);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.listView_Statuses);
+        mAdapter = new StatusViewRecyclerAdapter(getActivity(),mDataList);
+        mAdapter.setOnItemClickListener(new StatusViewRecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int positon) {
+                Status status = mDataList.get(positon);
+                Intent intent = new Intent(getActivity(), StatusDetailActivity.class);
+                intent.putExtra(Constants.STATUS_IDSTR, status.idstr);
+                startActivity(intent);
+            }
+        });
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        mAdapter = new StatusViewAdapter(getActivity(), mDataList);
+//        mListViewStatuses.setAdapter(mAdapter);
 
-        mListViewStatuses.setOnItemClickListener(itemListClickListener);
+//        mListViewStatuses.setOnItemClickListener(itemListClickListener);
 
 
         return view;
@@ -101,21 +106,13 @@ StatusViewAdapter mAdapter;
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Status status = mDataList.get(i);
             Intent intent = new Intent(getActivity(), StatusDetailActivity.class);
-            intent.putExtra(XzzConstants.STATUS_IDSTR, status.idstr);
+            intent.putExtra(Constants.STATUS_IDSTR, status.idstr);
             startActivity(intent);
         }
     };
 
     public Toolbar getToolbar() {
         return mToolbar;
-    }
-
-    public NestedListView getListViewStatuses() {
-        return mListViewStatuses;
-    }
-
-    public ArrayList getDataList() {
-        return mDataList;
     }
 
     public void setDataList(ArrayList dataList) {

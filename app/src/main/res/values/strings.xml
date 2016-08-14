@@ -1,5 +1,9 @@
     <resources>
-        <drawable name="backgroundcolor">#3c615050</drawable>
+        <drawable name="backgroundcolor">#2c8d8787</drawable>
+        <drawable name="pinkcolor">#f48fb1</drawable>
+        <color name="pinkcolor">#f48fb1</color>
+
+
         <string name="app_name">WeiXzz</string>
         <string name="weibosdk_demo_token_to_string_format_1">Token：%1$s \\n有效期：%2$s</string>
         <string name="flag_is_V_Certification">已认证</string>

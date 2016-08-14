@@ -1,7 +1,10 @@
 package com.finderlo.weixzz.Util;
 
+import android.app.Activity;
 import android.content.Context;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.WindowManager;
 
 import com.finderlo.weixzz.Database.DatabaseTool;
 import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
@@ -15,6 +18,29 @@ import org.json.JSONObject;
  */
 public class Util {
     private static final String TAG = "Util";
+
+
+    public static int getScreenWidthDpi(Activity a){
+        WindowManager windowManager = (WindowManager) a.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+                windowManager.getDefaultDisplay().getMetrics(displayMetrics);
+        int width = displayMetrics.widthPixels;//屏幕宽度pixels
+        float density = displayMetrics.density;
+        int srceenWidth  = (int) (width/density);
+        Log.d(TAG, "getScreenWidthDpi: 当前屏幕的宽度Dpi:"+srceenWidth);
+        return srceenWidth;
+    }
+
+    public static int getScreenHightDpi(Context context){
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        windowManager.getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;//屏幕宽度pixels
+        float density = displayMetrics.density;
+        int srceenHeight  = (int) (height/density);
+        Log.d(TAG, "getScreenWidthDpi: 当前屏幕的高度Dpi:"+srceenHeight);
+        return srceenHeight;
+    }
 
     /**
      *将px值转换为dip或dp值,保证尺寸大小不变

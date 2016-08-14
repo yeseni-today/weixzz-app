@@ -7,14 +7,19 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.finderlo.weixzz.UI.Mainview.MainViewAcivity;
 import com.finderlo.weixzz.Util.AccessTokenManger;
+import com.finderlo.weixzz.Util.Util;
 
 /**
  * Created by Finderlo on 2016/8/5.
  */
 public class LoadDataActivity extends AppCompatActivity{
+
+    public static int PIC_WIDTH = 0;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        PIC_WIDTH = (Util.getScreenWidthDpi(this)-40)/3;
 
         if(AccessTokenManger.isAccessTokenExist(this)){
             // TODO: 2016/8/5 if token exist
