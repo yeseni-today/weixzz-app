@@ -12,8 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-import com.finderlo.weixzz.Database.DatabaseTool;
-import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
+import com.finderlo.weixzz.Dao.StatusDao;
+import com.finderlo.weixzz.Model.Status;
 import com.finderlo.weixzz.R;
 import java.util.ArrayList;
 public class MainViewAcivity extends AppCompatActivity
@@ -43,7 +43,9 @@ public class MainViewAcivity extends AppCompatActivity
 
 
         Fragment fragment = getFragmentManager().findFragmentById(R.id.Container);
-        ArrayList<Status> mDataList = DatabaseTool.getInstance(this).queryStatuses();
+
+        ArrayList<Status> mDataList = StatusDao.getInstance().queryLastStatuses(25);
+
         if (fragment==null){
             fragment = MainViewFragment.newInstance(mDataList);
             getFragmentManager().beginTransaction().add(R.id.Container,fragment,null).commit();

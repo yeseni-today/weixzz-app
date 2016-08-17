@@ -1,7 +1,6 @@
-package com.finderlo.weixzz.Util;
+package com.finderlo.weixzz.Utility;
 
 import android.content.Context;
-import android.widget.ImageView;
 
 import com.finderlo.weixzz.Widgt.BaseImageView;
 import com.squareup.picasso.Picasso;

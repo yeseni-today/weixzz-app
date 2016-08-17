@@ -5,8 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.Util.ImageLoader;
-import com.finderlo.weixzz.Widgt.MatrixImageView;
+import com.finderlo.weixzz.Utility.ImageLoader;
 import com.finderlo.weixzz.Widgt.ZoomImageView;
 
 public class ImageDetailActivity extends AppCompatActivity {

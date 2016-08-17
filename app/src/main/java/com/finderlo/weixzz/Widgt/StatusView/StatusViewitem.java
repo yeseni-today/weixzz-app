@@ -5,15 +5,12 @@ import android.text.util.Linkify;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
-import com.finderlo.weixzz.Util.Util;
+import com.finderlo.weixzz.Model.Status;
+import com.finderlo.weixzz.Utility.Util;
 import com.finderlo.weixzz.Widgt.AutoLinkTextView;
-
-import java.util.ArrayList;
 
 /**
  * Created by Finderlo on 2016/8/8.

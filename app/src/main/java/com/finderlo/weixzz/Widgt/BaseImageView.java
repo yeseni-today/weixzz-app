@@ -4,9 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import com.finderlo.weixzz.Util.ImageLoader;
-import com.finderlo.weixzz.Widgt.StatusView.ImageViews;
-
 /**
  * Created by Finderlo on 2016/8/10.
  */

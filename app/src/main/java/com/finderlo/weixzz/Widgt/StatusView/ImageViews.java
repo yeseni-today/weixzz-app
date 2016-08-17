@@ -2,11 +2,7 @@ package com.finderlo.weixzz.Widgt.StatusView;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -14,13 +10,10 @@ import android.widget.GridLayout;
 import android.widget.ImageView;
 
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
+import com.finderlo.weixzz.Model.Status;
 import com.finderlo.weixzz.UI.Login.LoadDataActivity;
-import com.finderlo.weixzz.Util.CallbackListener.HttpLoadPicCallbackListener;
-import com.finderlo.weixzz.Util.HttpUtil;
-import com.finderlo.weixzz.Util.ImageLoader;
-import com.finderlo.weixzz.Util.Util;
-import com.finderlo.weixzz.Util.WeiXzzApplication;
+import com.finderlo.weixzz.Utility.ImageLoader;
+import com.finderlo.weixzz.Utility.Util;
 import com.finderlo.weixzz.Widgt.BaseImageView;
 
 import java.util.ArrayList;

@@ -1,7 +1,6 @@
 package com.finderlo.weixzz.UI.StatusDetail;
 
 import android.app.Fragment;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -10,19 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.finderlo.weixzz.Adapter.StatusViewRecyclerAdapter;
 import com.finderlo.weixzz.Constants;
-import com.finderlo.weixzz.Database.DatabaseTool;
+import com.finderlo.weixzz.Dao.StatusDao;
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
-import com.finderlo.weixzz.Util.CallbackListener.HttpLoadPicCallbackListener;
-import com.finderlo.weixzz.Util.HttpUtil;
-import com.finderlo.weixzz.Widgt.AutoLinkTextView;
-import com.finderlo.weixzz.Widgt.StatusView.StatusViewitem;
+import com.finderlo.weixzz.Model.Status;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,8 +38,7 @@ public class StatusDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments()!=null){
             String status_idstr = getArguments().getString(Constants.STATUS_IDSTR);
-            mStatus = DatabaseTool.getInstance(
-                    getActivity()).queryStatus(DatabaseTool.TYPE_IDSTR,status_idstr);
+            mStatus = StatusDao.getInstance().queryStatus(StatusDao.TYPE_IDSTR,status_idstr);
         }else mStatus = Status.parse(Constants.TEST_STATUS_JSON_STRING_1);
         Log.d(TAG, "onCreate: "+mStatus.text);
 

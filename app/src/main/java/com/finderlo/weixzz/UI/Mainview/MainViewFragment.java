@@ -13,18 +13,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 
 import com.finderlo.weixzz.Adapter.StatusViewRecyclerAdapter;
 import com.finderlo.weixzz.Constants;
-import com.finderlo.weixzz.Database.DatabaseTool;
+import com.finderlo.weixzz.Dao.StatusDao;
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.SinaAPI.openapi.StatusesAPI;
-import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
+import com.finderlo.weixzz.Model.Status;
 import com.finderlo.weixzz.UI.Login.LoginActivity;
 import com.finderlo.weixzz.UI.StatusDetail.StatusDetailActivity;
-import com.finderlo.weixzz.Util.ClientApiManger;
-import com.finderlo.weixzz.Util.Util;
+import com.finderlo.weixzz.Utility.ClientApiManger;
+import com.finderlo.weixzz.Utility.Util;
 import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.net.RequestListener;
 
@@ -38,10 +37,8 @@ public class MainViewFragment extends Fragment {
     private String TAG = "MainViewFragment";
     Toolbar mToolbar;
 
-//    NestedListView mListViewStatuses;
 
     ArrayList<Status> mDataList;
-//    StatusViewAdapter mAdapter;
 
     RecyclerView mRecyclerView;
     StatusViewRecyclerAdapter mAdapter;
@@ -73,6 +70,7 @@ public class MainViewFragment extends Fragment {
         mToolbar.setTitle("Weixzz");
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.listView_Statuses);
+        Util.sort(mDataList);
         mAdapter = new StatusViewRecyclerAdapter(getActivity(),mDataList);
         mAdapter.setOnItemClickListener(new StatusViewRecyclerAdapter.OnItemClickListener() {
             @Override
@@ -85,10 +83,7 @@ public class MainViewFragment extends Fragment {
         });
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        mAdapter = new StatusViewAdapter(getActivity(), mDataList);
-//        mListViewStatuses.setAdapter(mAdapter);
 
-//        mListViewStatuses.setOnItemClickListener(itemListClickListener);
 
 
         return view;
@@ -101,15 +96,7 @@ public class MainViewFragment extends Fragment {
         return mainViewFragment;
     }
 
-    private AdapterView.OnItemClickListener itemListClickListener = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Status status = mDataList.get(i);
-            Intent intent = new Intent(getActivity(), StatusDetailActivity.class);
-            intent.putExtra(Constants.STATUS_IDSTR, status.idstr);
-            startActivity(intent);
-        }
-    };
+
 
     public Toolbar getToolbar() {
         return mToolbar;
@@ -154,11 +141,12 @@ public class MainViewFragment extends Fragment {
      * 数据库中微博刷新时,刷新适配器
      **/
     private void refreshDatalist() {
-        ArrayList<Status> mStatuses = DatabaseTool.getInstance(getActivity()).queryStatuses();
+        ArrayList<Status> mStatuses = StatusDao.getInstance().queryStatuses();
         mDataList.clear();
         for (Status s : mStatuses) {
             mDataList.add(s);
         }
+        Util.sort(mDataList);
         mAdapter.notifyDataSetChanged();
     }
 

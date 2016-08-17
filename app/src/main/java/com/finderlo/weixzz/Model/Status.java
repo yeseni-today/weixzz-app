@@ -14,7 +14,10 @@
  * limitations under the License.
  */
 
-package com.finderlo.weixzz.SinaAPI.openapi.models;
+package com.finderlo.weixzz.Model;
+
+import com.finderlo.weixzz.SinaAPI.openapi.models.Geo;
+import com.finderlo.weixzz.SinaAPI.openapi.models.Visible;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,6 +32,9 @@ import java.util.ArrayList;
  * @since 2013-11-22
  */
 public class Status {
+
+    public String jsonString;
+
     
     /** 微博创建时间 */
     public String created_at;
@@ -107,6 +113,10 @@ public class Status {
         }
         
         Status status = new Status();
+
+        /**Custom field*/
+        status.jsonString = jsonObject.toString();
+
         status.created_at       = jsonObject.optString("created_at");
         status.id               = jsonObject.optString("id");
         status.mid              = jsonObject.optString("mid");
@@ -160,5 +170,9 @@ public class Status {
         //status.ad = jsonObject.optString("ad", "");
         
         return status;
+    }
+
+    public String toJsonString() {
+        return jsonString;
     }
 }

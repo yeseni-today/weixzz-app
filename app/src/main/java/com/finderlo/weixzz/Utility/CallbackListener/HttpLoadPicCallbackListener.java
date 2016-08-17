@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.Util.CallbackListener;
+package com.finderlo.weixzz.Utility.CallbackListener;
 
 import android.graphics.Bitmap;
 

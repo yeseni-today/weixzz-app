@@ -2,14 +2,13 @@ package com.finderlo.weixzz.Widgt.StatusView;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
-import com.finderlo.weixzz.Util.ImageLoader;
+import com.finderlo.weixzz.Model.Status;
+import com.finderlo.weixzz.Utility.ImageLoader;
 import com.finderlo.weixzz.Widgt.RoundImageView;
 
 /**

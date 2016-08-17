@@ -3,14 +3,10 @@ package com.finderlo.weixzz.UI;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.FrameLayout;
 
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.Util.ImageLoader;
+import com.finderlo.weixzz.Utility.ImageLoader;
 import com.finderlo.weixzz.Widgt.MatrixImageView;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class TestActivity extends AppCompatActivity {
 

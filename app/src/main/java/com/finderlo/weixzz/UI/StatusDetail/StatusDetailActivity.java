@@ -10,8 +10,8 @@ import android.util.Log;
 
 import com.finderlo.weixzz.Constants;
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
-import com.finderlo.weixzz.Util.Util;
+import com.finderlo.weixzz.Model.Status;
+import com.finderlo.weixzz.Utility.Util;
 
 public class StatusDetailActivity extends AppCompatActivity {
 

@@ -1,19 +1,22 @@
-package com.finderlo.weixzz.Util;
+package com.finderlo.weixzz.Utility;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 
 /**
  * Created by Finderlo on 2016/8/1 0001.
  */
 public class WeiXzzApplication extends Application {
 
+    private static final String TAG = WeiXzzApplication.class.getSimpleName();
     private static Context sContext;
 
     @Override
     public void onCreate() {
+        sContext = getApplicationContext();
         super.onCreate();
-        sContext = this;
+        Log.d(TAG, "onCreate: "+Util.booleanToString(sContext==null));
     }
 
     public static Context getContext(){

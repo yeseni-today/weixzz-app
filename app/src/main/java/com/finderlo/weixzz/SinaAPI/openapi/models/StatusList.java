@@ -18,6 +18,8 @@ package com.finderlo.weixzz.SinaAPI.openapi.models;
 
 import android.text.TextUtils;
 
+import com.finderlo.weixzz.Model.Status;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

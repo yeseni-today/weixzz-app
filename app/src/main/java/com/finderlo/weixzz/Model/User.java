@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.finderlo.weixzz.SinaAPI.openapi.models;
+package com.finderlo.weixzz.Model;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,6 +26,11 @@ import org.json.JSONObject;
  * @since 2013-11-24
  */
 public class User {
+
+    public String jsonString;
+
+
+
 
     /** 用户UID（int64） */
     public String id;
@@ -101,6 +106,7 @@ public class User {
     public String mbtype;
     public String mbrank;
     public String block_word;
+
     
     public static User parse(String jsonString) {
         try {
@@ -162,4 +168,6 @@ public class User {
         
         return user;
     }
+
+
 }

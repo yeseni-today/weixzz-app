@@ -2,15 +2,16 @@ package com.finderlo.weixzz.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.SinaAPI.openapi.models.Status;
-import com.finderlo.weixzz.Util.ImageLoader;
+import com.finderlo.weixzz.Model.Status;
+import com.finderlo.weixzz.Utility.ImageLoader;
+import com.finderlo.weixzz.Utility.TimeLineUtil;
 import com.finderlo.weixzz.Widgt.AutoLinkTextView;
 import com.finderlo.weixzz.Widgt.RoundImageView;
 import com.finderlo.weixzz.Widgt.StatusView.ImageViews;
@@ -25,6 +26,7 @@ public class StatusViewRecyclerAdapter extends RecyclerView.Adapter<StatusViewRe
     private List<Status> mStatusList;
 
     private Context mContext;
+    private String TAG = StatusViewRecyclerAdapter.class.getSimpleName();
 
     public StatusViewRecyclerAdapter(Context context, List<Status> list) {
         mStatusList = list;
@@ -49,7 +51,8 @@ public class StatusViewRecyclerAdapter extends RecyclerView.Adapter<StatusViewRe
 
         holder.username.setText(mStatus.user.name);
         holder.isverifed.setText(mStatus.user.verified ? "已认证" : "未认证");
-        holder.verfied_reason.setText(mStatus.user.verified_reason);
+//        holder.verfied_reason.setText(mStatus.user.verified_reason);
+        holder.verfied_reason.setText(TimeLineUtil.getInstance().parse4Timeline(mStatus.created_at));
 
         ImageLoader.load(mContext, mStatus.user.profile_image_url, holder.user_pic);
 
@@ -57,14 +60,17 @@ public class StatusViewRecyclerAdapter extends RecyclerView.Adapter<StatusViewRe
         holder.statusContent.setText(mStatus.text);
         holder.pics.setImageSrc(mStatus);
 
+        if (mStatus.retweeted_status != null) {
+            holder.retweetedStatusContent.setText(mStatus.retweeted_status.text);
+            holder.retweetedStatusContent.setVisibility(View.VISIBLE);
 
-        if (mStatus.retweeted_status == null) return;
-        holder.retweetedStatusContent.setText(mStatus.retweeted_status.text);
-        holder.retweetedStatusContent.setVisibility(View.VISIBLE);
+            if (mStatus.retweeted_status.pic_urls != null) {
+                holder.retweetedStatusPics.setImageSrc(mStatus.retweeted_status);
+                holder.retweetedStatusPics.setVisibility(View.VISIBLE);
+            }
+        }
+        
 
-        if (mStatus.retweeted_status.pic_urls == null) return;
-        holder.retweetedStatusPics.setImageSrc(mStatus.retweeted_status);
-        holder.retweetedStatusPics.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -124,12 +130,15 @@ public class StatusViewRecyclerAdapter extends RecyclerView.Adapter<StatusViewRe
         if (mStatus.retweeted_status != null) {
             retweetedStatusContent.setText(mStatus.retweeted_status.text);
             retweetedStatusContent.setVisibility(View.VISIBLE);
+
+            if (mStatus.retweeted_status.pic_urls != null) {
+                retweetedStatusPics.setImageSrc(mStatus.retweeted_status);
+                retweetedStatusPics.setVisibility(View.VISIBLE);
+            }
+
         }
 
-        if (mStatus.retweeted_status.pic_urls != null) {
-            retweetedStatusPics.setImageSrc(mStatus.retweeted_status);
-            retweetedStatusPics.setVisibility(View.VISIBLE);
-        }
+
 
         return view;
 
