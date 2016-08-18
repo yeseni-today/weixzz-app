@@ -15,7 +15,7 @@ import com.finderlo.weixzz.Adapter.StatusViewRecyclerAdapter;
 import com.finderlo.weixzz.Constants;
 import com.finderlo.weixzz.Dao.StatusDao;
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.Model.Status;
+import com.finderlo.weixzz.model.bean.Status;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,6 @@ public class StatusDetailFragment extends Fragment {
             mStatus = StatusDao.getInstance().queryStatus(StatusDao.TYPE_IDSTR,status_idstr);
         }else mStatus = Status.parse(Constants.TEST_STATUS_JSON_STRING_1);
         Log.d(TAG, "onCreate: "+mStatus.text);
-
 
 
 

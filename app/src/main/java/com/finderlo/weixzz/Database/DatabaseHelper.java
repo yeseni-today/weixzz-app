@@ -7,7 +7,7 @@ import android.util.Log;
 
 import com.finderlo.weixzz.Database.Table.StatusTable;
 import com.finderlo.weixzz.Database.Table.UserTable;
-import com.finderlo.weixzz.Utility.WeiXzzApplication;
+import com.finderlo.weixzz.base.WeiXzzApplication;
 
 /**
  * Created by Finderlo on 2016/8/1 0001.

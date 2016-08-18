@@ -2,14 +2,13 @@ package com.finderlo.weixzz.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.Model.Status;
+import com.finderlo.weixzz.model.bean.Status;
 import com.finderlo.weixzz.Utility.ImageLoader;
 import com.finderlo.weixzz.Utility.TimeLineUtil;
 import com.finderlo.weixzz.Widgt.AutoLinkTextView;
@@ -69,7 +68,7 @@ public class StatusViewRecyclerAdapter extends RecyclerView.Adapter<StatusViewRe
                 holder.retweetedStatusPics.setVisibility(View.VISIBLE);
             }
         }
-        
+
 
     }
 
@@ -137,8 +136,6 @@ public class StatusViewRecyclerAdapter extends RecyclerView.Adapter<StatusViewRe
             }
 
         }
-
-
 
         return view;
 

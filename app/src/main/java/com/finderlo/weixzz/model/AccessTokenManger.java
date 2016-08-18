@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.finderlo.weixzz.Utility;
+package com.finderlo.weixzz.model;
 
 import android.content.Context;
 import android.content.SharedPreferences;

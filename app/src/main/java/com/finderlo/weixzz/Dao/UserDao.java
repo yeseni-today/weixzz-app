@@ -7,7 +7,7 @@ import android.util.Log;
 
 import com.finderlo.weixzz.Constants;
 import com.finderlo.weixzz.Database.DatabaseHelper;
-import com.finderlo.weixzz.Model.User;
+import com.finderlo.weixzz.model.bean.User;
 
 /**
  * Created by Finderlo on 2016/8/16.

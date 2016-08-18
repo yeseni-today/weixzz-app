@@ -4,15 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
-import com.finderlo.weixzz.Constants;
 import com.finderlo.weixzz.UI.Mainview.MainViewAcivity;
-import com.finderlo.weixzz.Utility.AccessTokenManger;
+import com.finderlo.weixzz.model.AccessTokenManger;
 import com.finderlo.weixzz.Utility.Util;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * Created by Finderlo on 2016/8/5.

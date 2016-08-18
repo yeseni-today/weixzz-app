@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.Utility;
+package com.finderlo.weixzz.model;
 
 import android.content.Context;
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.finderlo.weixzz.Model;
+package com.finderlo.weixzz.model.bean;
 
 import com.finderlo.weixzz.SinaAPI.openapi.models.Geo;
 import com.finderlo.weixzz.SinaAPI.openapi.models.Visible;

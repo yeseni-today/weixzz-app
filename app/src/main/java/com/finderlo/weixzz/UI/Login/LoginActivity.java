@@ -13,7 +13,7 @@ import com.finderlo.weixzz.Constants;
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.SinaAPI.widget.LoginButton;
 import com.finderlo.weixzz.UI.Mainview.MainViewAcivity;
-import com.finderlo.weixzz.Utility.AccessTokenManger;
+import com.finderlo.weixzz.model.AccessTokenManger;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.auth.WeiboAuthListener;
 import com.sina.weibo.sdk.exception.WeiboException;

@@ -7,7 +7,7 @@ import android.util.Log;
 
 import com.finderlo.weixzz.Constants;
 import com.finderlo.weixzz.Database.DatabaseHelper;
-import com.finderlo.weixzz.Model.Status;
+import com.finderlo.weixzz.model.bean.Status;
 
 import java.util.ArrayList;
 
@@ -104,8 +104,9 @@ public class StatusDao {
      **/
     public Status queryStatus(String status_id_type, String status_id) {
         Status status = null;
-        if ("idstr".equals(status_id_type) && !"".equals(status_id) && null != status_id) {
-            Cursor cursor = sDatabase.rawQuery("select * from Status where idstr = ? ", new String[]{status_id});
+        if (TYPE_IDSTR.equals(status_id_type) && !"".equals(status_id)) {
+            Cursor cursor = sDatabase.rawQuery("select * from "+TABLE_NAME_STATUS+" where "+status_id_type+" = "+status_id+" ",
+                    null);
             status = queryStatus(cursor);
             if (cursor != null) cursor.close();
         }

@@ -1,6 +1,7 @@
 package com.finderlo.weixzz.Utility;
 
 import android.content.Context;
+import android.widget.ImageView;
 
 import com.finderlo.weixzz.Widgt.BaseImageView;
 import com.squareup.picasso.Picasso;
@@ -13,5 +14,9 @@ public class ImageLoader {
     public static void load(Context context, String imageUrl, BaseImageView imageView) {
         Picasso.with(context).load(imageUrl).into(imageView);
         imageView.setPic_Url(imageUrl);
+    }
+
+    public static void load(Context context, String imageUrl, ImageView imageView) {
+        Picasso.with(context).load(imageUrl).into(imageView);
     }
 }

@@ -13,7 +13,7 @@ import android.view.MenuItem;
 
 
 import com.finderlo.weixzz.Dao.StatusDao;
-import com.finderlo.weixzz.Model.Status;
+import com.finderlo.weixzz.model.bean.Status;
 import com.finderlo.weixzz.R;
 import java.util.ArrayList;
 public class MainViewAcivity extends AppCompatActivity
@@ -26,9 +26,10 @@ public class MainViewAcivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mainview_navactivity);
+        setContentView(R.layout.mainview_drawerlayout);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("WeiXzz");
         setSupportActionBar(toolbar);
         /**这是主layout的drawer*/
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

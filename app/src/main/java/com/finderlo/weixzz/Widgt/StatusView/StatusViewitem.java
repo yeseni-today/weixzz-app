@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.Model.Status;
+import com.finderlo.weixzz.model.bean.Status;
 import com.finderlo.weixzz.Utility.Util;
 import com.finderlo.weixzz.Widgt.AutoLinkTextView;
 

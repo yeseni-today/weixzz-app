@@ -8,8 +8,8 @@ import android.view.WindowManager;
 
 import com.finderlo.weixzz.Dao.StatusDao;
 import com.finderlo.weixzz.Dao.UserDao;
-import com.finderlo.weixzz.Model.Status;
-import com.finderlo.weixzz.Model.User;
+import com.finderlo.weixzz.model.bean.Status;
+import com.finderlo.weixzz.model.bean.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;

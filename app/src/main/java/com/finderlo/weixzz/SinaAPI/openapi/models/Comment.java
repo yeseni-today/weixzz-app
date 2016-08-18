@@ -16,8 +16,8 @@
 
 package com.finderlo.weixzz.SinaAPI.openapi.models;
 
-import com.finderlo.weixzz.Model.Status;
-import com.finderlo.weixzz.Model.User;
+import com.finderlo.weixzz.model.bean.Status;
+import com.finderlo.weixzz.model.bean.User;
 
 import org.json.JSONObject;
 

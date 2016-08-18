@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,10 +18,10 @@ import com.finderlo.weixzz.Constants;
 import com.finderlo.weixzz.Dao.StatusDao;
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.SinaAPI.openapi.StatusesAPI;
-import com.finderlo.weixzz.Model.Status;
+import com.finderlo.weixzz.model.bean.Status;
 import com.finderlo.weixzz.UI.Login.LoginActivity;
 import com.finderlo.weixzz.UI.StatusDetail.StatusDetailActivity;
-import com.finderlo.weixzz.Utility.ClientApiManger;
+import com.finderlo.weixzz.model.ClientApiManger;
 import com.finderlo.weixzz.Utility.Util;
 import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.net.RequestListener;
@@ -35,8 +34,6 @@ import java.util.ArrayList;
 public class MainViewFragment extends Fragment {
 
     private String TAG = "MainViewFragment";
-    Toolbar mToolbar;
-
 
     ArrayList<Status> mDataList;
 
@@ -66,11 +63,10 @@ public class MainViewFragment extends Fragment {
 
         fabButton.setOnClickListener(lister_fresh);
 
-        mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        mToolbar.setTitle("Weixzz");
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.listView_Statuses);
         Util.sort(mDataList);
+
         mAdapter = new StatusViewRecyclerAdapter(getActivity(),mDataList);
         mAdapter.setOnItemClickListener(new StatusViewRecyclerAdapter.OnItemClickListener() {
             @Override
@@ -81,6 +77,7 @@ public class MainViewFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -98,9 +95,6 @@ public class MainViewFragment extends Fragment {
 
 
 
-    public Toolbar getToolbar() {
-        return mToolbar;
-    }
 
     public void setDataList(ArrayList dataList) {
         mDataList = dataList;
