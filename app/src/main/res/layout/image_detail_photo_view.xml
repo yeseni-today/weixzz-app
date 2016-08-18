@@ -10,8 +10,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:scaleType="fitCenter"
-
-        android:id="@+id/imageView"
-        android:background="@color/abc_primary_text_material_light"/>
+        android:src="@drawable/user_default_pic"
+        android:id="@+id/imageView"/>
 
 </FrameLayout>

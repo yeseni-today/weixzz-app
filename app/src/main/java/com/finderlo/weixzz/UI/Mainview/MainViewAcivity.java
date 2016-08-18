@@ -1,6 +1,7 @@
 package com.finderlo.weixzz.UI.Mainview;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -8,20 +9,30 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
+import com.finderlo.weixzz.Dao.MentionsDao;
 import com.finderlo.weixzz.Dao.StatusDao;
+import com.finderlo.weixzz.UI.Login.LoginActivity;
+import com.finderlo.weixzz.Utility.Util;
+import com.finderlo.weixzz.base.BaseActivity;
+import com.finderlo.weixzz.model.APIManger;
+import com.finderlo.weixzz.model.StatusesAPI;
 import com.finderlo.weixzz.model.bean.Status;
 import com.finderlo.weixzz.R;
+import com.sina.weibo.sdk.exception.WeiboException;
+import com.sina.weibo.sdk.net.RequestListener;
+
 import java.util.ArrayList;
-public class MainViewAcivity extends AppCompatActivity
+public class MainViewAcivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MainViewActivity";
 
-
+    Fragment mContainerFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +54,13 @@ public class MainViewAcivity extends AppCompatActivity
 
 
 
-        Fragment fragment = getFragmentManager().findFragmentById(R.id.Container);
+        mContainerFragment = getFragmentManager().findFragmentById(R.id.Container);
 
         ArrayList<Status> mDataList = StatusDao.getInstance().queryLastStatuses(25);
 
-        if (fragment==null){
-            fragment = MainViewFragment.newInstance(mDataList);
-            getFragmentManager().beginTransaction().add(R.id.Container,fragment,null).commit();
+        if (mContainerFragment==null){
+            mContainerFragment = MainViewFragment.newInstance(mDataList);
+            getFragmentManager().beginTransaction().add(R.id.Container,mContainerFragment,null).commit();
         }
 
     }
@@ -102,14 +113,49 @@ public class MainViewAcivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if (id == R.id.nav_gallery) {
+        switch (id){
+            case R.id.nav_menu_mention_me:
+                ArrayList<Status> data = queryLastStatus();
+                replaceMainFragment(data);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    public void replaceMainFragment(ArrayList<Status> data){
+        mContainerFragment = MainViewFragment.newInstance(data);
+        getFragmentManager().beginTransaction().replace(R.id.Container,mContainerFragment,null).commit();
+    }
 
 
+    /**
+     * 从服务器获取最新的50条微博消息 提到我的
+     **/
+    private ArrayList<Status> queryLastStatus() {
+         ArrayList<Status> data = new ArrayList<Status>();
+        showProgressDialog();
+        StatusesAPI mStatusesAPI = APIManger.getStatusesAPI();
+        if (null == mStatusesAPI) {
+            startActivity(new Intent(this, LoginActivity.class));
+            this.finish();
+            return data;
+        }
+        mStatusesAPI.mentions(0, 0, 50, 1, 0, 0,0,false, new RequestListener() {
+            @Override
+            public void onComplete(String s) {
+                Util.handleMentiosJSONStringData(MainViewAcivity.this, s);
+                closeProgressDialog();
+            }
+
+            @Override
+            public void onWeiboException(WeiboException e) {
+                e.printStackTrace();
+            }
+        });
+
+        data = MentionsDao.getInstance().queryLastStatuses(25);
+        return data;
+    }
 
 
 

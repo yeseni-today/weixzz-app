@@ -7,6 +7,10 @@
             <!--android:icon="@drawable/ic_menu_camera"-->
             <!--android:title="Import" />-->
         <item
+            android:id="@+id/nav_menu_mention_me"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="提到我的" />
+        <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
             android:title="收藏(不可用)" />

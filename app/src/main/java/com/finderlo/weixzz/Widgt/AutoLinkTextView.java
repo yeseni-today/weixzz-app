@@ -8,7 +8,8 @@ import android.text.SpannableString;
 import android.text.style.ClickableSpan;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.widget.TextView;
+
+import com.finderlo.weixzz.base.BaseTextView;
 
 
 public class AutoLinkTextView extends BaseTextView {

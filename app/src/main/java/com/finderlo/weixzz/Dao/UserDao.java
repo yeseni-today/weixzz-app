@@ -16,8 +16,11 @@ import com.finderlo.weixzz.model.bean.User;
 public class UserDao {
     private static final String TAG = "UserDao";
     private static final String TABLE_NAME_USER = " User ";
+
     public static final String TYPE_ID = " id ";
     public static final String TYPE_IDSTR = " idstr ";
+    public static final String JSON = " json ";
+
 
     private static DatabaseHelper sDatabaseHelper;
     private static UserDao sUserDao;

@@ -20,7 +20,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-import com.finderlo.weixzz.SinaAPI.openapi.StatusesAPI;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 
 /**

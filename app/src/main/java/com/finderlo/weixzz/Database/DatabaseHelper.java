@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.finderlo.weixzz.Database.Table.MentionsTable;
 import com.finderlo.weixzz.Database.Table.StatusTable;
 import com.finderlo.weixzz.Database.Table.UserTable;
 import com.finderlo.weixzz.base.WeiXzzApplication;
@@ -28,8 +29,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(UserTable.CREATE_TABLE_SQL_STATUS);
-        sqLiteDatabase.execSQL(StatusTable.CREATE_TABLE_SQL_STATUS);
+        sqLiteDatabase.execSQL(UserTable.CREATE_TABLE_SQL);
+        sqLiteDatabase.execSQL(StatusTable.CREATE_TABLE_SQL);
+        sqLiteDatabase.execSQL(MentionsTable.CREATE_TABLE_SQL);
         Log.d(TAG, "onCreate: 表创建成功");
     }
 

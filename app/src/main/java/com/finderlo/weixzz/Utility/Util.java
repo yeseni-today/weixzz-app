@@ -6,6 +6,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
 
+import com.finderlo.weixzz.Dao.MentionsDao;
 import com.finderlo.weixzz.Dao.StatusDao;
 import com.finderlo.weixzz.Dao.UserDao;
 import com.finderlo.weixzz.model.bean.Status;
@@ -138,7 +139,7 @@ public class Util {
     }
 
     /**
-     * 处理返回的微博json数据,将其存储到数据库中
+     * 处理返回的微博json数据,将其存储到Status,User表中
      **/
     public static void handleJSONStringData(Context context, String data) {
         JSONArray array;
@@ -153,10 +154,35 @@ public class Util {
                 StatusDao.getInstance().insertStatus(status,statusjsonString);
                 UserDao.getInstance().insertUser(user,userjsonString);
 
-
             }
 
             Log.i(TAG, "handleJSONStringData: complete");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.e(TAG, "onComplete: 转换为json数组失败", e);
+        }
+    }
+
+    /**
+     * 处理返回的微博json数据,将其存储到Mentions表中
+     **/
+    public static void handleMentiosJSONStringData(Context context, String data) {
+        JSONArray array;
+
+        try {
+            array = new JSONObject(data).getJSONArray("statuses");
+            for (int i = 0; i < array.length(); i++) {
+                String statusjsonString = array.getString(i);
+                Status status = Status.parse(statusjsonString);
+                String userjsonString = array.getJSONObject(i).getString("user");
+                User user = status.user;
+//                StatusDao.getInstance().insertStatus(status,statusjsonString);
+//                UserDao.getInstance().insertUser(user,userjsonString);
+                MentionsDao.getInstance().insertMention(status,statusjsonString);
+            }
+
+            Log.i(TAG, "handleMentiosJSONStringData: complete");
 
         } catch (JSONException e) {
             e.printStackTrace();

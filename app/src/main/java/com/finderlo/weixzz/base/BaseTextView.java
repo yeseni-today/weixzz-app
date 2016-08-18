@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.Widgt;
+package com.finderlo.weixzz.base;
 
 import android.content.Context;
 import android.util.AttributeSet;

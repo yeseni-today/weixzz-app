@@ -42,45 +42,21 @@ public class StatusDetailFragment extends Fragment {
         }else mStatus = Status.parse(Constants.TEST_STATUS_JSON_STRING_1);
         Log.d(TAG, "onCreate: "+mStatus.text);
 
-
-
     }
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.statusdetail_fragment,container,false);
-//        imageViews_count_2to9 = new ImageView[9];
-//
-//
-//        retweetedimageViews_count_2to9 = new ImageView[9];
-//        for (int i = 0; i < 9; i++) {
-//            imageViews_count_2to9[i] = (ImageView) view.findViewById(imageView_grid[i]);
-//            retweetedimageViews_count_2to9[i] = (ImageView) view.findViewById(retweetedimageView_grid[i]);
-//        }
-//        mImageView_count_1 = (ImageView) view.findViewById(R.id.statusdetail_pic_count_one_imageview);
-//        mRetweetedImageView_count_1 = (ImageView) view.findViewById(R.id.statusdetail_retweeted_pic_count_one_imageview);
-//
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            list.add("Comment "+ i);
-        }
-        ListView listView = (ListView) view.findViewById(R.id.statusdetail_comment_listview);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,list);
-        listView.setAdapter(arrayAdapter);
-//
-//        initView(view);
-//
-//        AppBarLayout appBarLayout = (AppBarLayout) view.findViewById(R.id.addbar_layout);
-//        appBarLayout.invalidate();
-//        LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.detail_container);
+        view = inflater.inflate(R.layout.statusdetail_fragment2,container,false);
 
-//        StatusViewitem statusViewitem = new StatusViewitem(getActivity());
-//        statusViewitem.setStatus(getActivity(),mStatus);
-//        statusViewitem.setHeadViewVisible(false);
-//        linearLayout.addView(statusViewitem);
-//        linearLayout.invalidate();
+//        List<String> list = new ArrayList<>();
+//        for (int i = 0; i < 20; i++) {
+//            list.add("Comment "+ i);
+//        }
+//        ListView listView = (ListView) view.findViewById(R.id.statusdetail_comment_listview);
+//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,list);
+//        listView.setAdapter(arrayAdapter);
 
         FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.statusdetail_statuscoent_framlayout);
 

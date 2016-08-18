@@ -6,4 +6,6 @@
     <color name="colorPrimaryDark">#f48fb1</color>
     <!--<color name="colorAccent">#FF4081</color>-->
     <color name="colorAccent">#f48fb1</color>
+
+    <color name="alpha">#00493737</color>
 </resources>

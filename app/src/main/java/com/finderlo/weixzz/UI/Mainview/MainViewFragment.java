@@ -17,11 +17,11 @@ import com.finderlo.weixzz.Adapter.StatusViewRecyclerAdapter;
 import com.finderlo.weixzz.Constants;
 import com.finderlo.weixzz.Dao.StatusDao;
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.SinaAPI.openapi.StatusesAPI;
+import com.finderlo.weixzz.model.StatusesAPI;
 import com.finderlo.weixzz.model.bean.Status;
 import com.finderlo.weixzz.UI.Login.LoginActivity;
 import com.finderlo.weixzz.UI.StatusDetail.StatusDetailActivity;
-import com.finderlo.weixzz.model.ClientApiManger;
+import com.finderlo.weixzz.model.APIManger;
 import com.finderlo.weixzz.Utility.Util;
 import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.net.RequestListener;
@@ -105,7 +105,7 @@ public class MainViewFragment extends Fragment {
      * 从服务器获取最新的50条微博消息
      **/
     private void queryLastStatus() {
-        StatusesAPI mStatusesAPI = ClientApiManger.getClientApiManger(getActivity()).getStatusesAPI();
+        StatusesAPI mStatusesAPI = APIManger.getStatusesAPI();
         showProgressDialog();
         if (null == mStatusesAPI) {
             startActivity(new Intent(getActivity(), LoginActivity.class));
