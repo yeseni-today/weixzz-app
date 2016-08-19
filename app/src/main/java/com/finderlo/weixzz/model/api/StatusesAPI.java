@@ -14,7 +14,7 @@
  * limitations under the License.
  */
  
-package com.finderlo.weixzz.SinaAPI.openapi.legacy;
+package com.finderlo.weixzz.model.api;
 
 import android.content.Context;
 import android.graphics.Bitmap;

@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import com.finderlo.weixzz.Dao.MentionsDao;
 import com.finderlo.weixzz.Dao.StatusDao;
 import com.finderlo.weixzz.Dao.UserDao;
+import com.finderlo.weixzz.base.WeiException;
 import com.finderlo.weixzz.model.bean.Status;
 import com.finderlo.weixzz.model.bean.User;
 
@@ -138,11 +139,17 @@ public class Util {
         return (int) (spValue * fontscale + 0.5f);
     }
 
+
+    public static final String JSONTYPE_TIMELINE_STATUS = "jsonType_timeline_Status";
+    public static final String JSONTYPE_MENTION_ME_STATUS = "jsontype_mention_me_status";
+
     /**
      * 处理返回的微博json数据,将其存储到Status,User表中
      **/
-    public static void handleJSONStringData(Context context, String data) {
+    public static ArrayList<Status> handleJSONStringData(String json_type, String data) {
         JSONArray array;
+
+        ArrayList<Status> list = new ArrayList<Status>();
 
         try {
             array = new JSONObject(data).getJSONArray("statuses");
@@ -151,43 +158,27 @@ public class Util {
                 Status status = Status.parse(statusjsonString);
                 String userjsonString = array.getJSONObject(i).getString("user");
                 User user = status.user;
-                StatusDao.getInstance().insertStatus(status,statusjsonString);
-                UserDao.getInstance().insertUser(user,userjsonString);
 
+                switch (json_type){
+                    case JSONTYPE_TIMELINE_STATUS:
+                        StatusDao.getInstance().insert(status);
+                        UserDao.getInstance().insert(user);
+                        break;
+                    case JSONTYPE_MENTION_ME_STATUS:
+                        MentionsDao.getInstance().insert(status);
+                        break;
+                }
+                list.add(status);
             }
-
             Log.i(TAG, "handleJSONStringData: complete");
-
         } catch (JSONException e) {
             e.printStackTrace();
             Log.e(TAG, "onComplete: 转换为json数组失败", e);
-        }
-    }
-
-    /**
-     * 处理返回的微博json数据,将其存储到Mentions表中
-     **/
-    public static void handleMentiosJSONStringData(Context context, String data) {
-        JSONArray array;
-
-        try {
-            array = new JSONObject(data).getJSONArray("statuses");
-            for (int i = 0; i < array.length(); i++) {
-                String statusjsonString = array.getString(i);
-                Status status = Status.parse(statusjsonString);
-                String userjsonString = array.getJSONObject(i).getString("user");
-                User user = status.user;
-//                StatusDao.getInstance().insertStatus(status,statusjsonString);
-//                UserDao.getInstance().insertUser(user,userjsonString);
-                MentionsDao.getInstance().insertMention(status,statusjsonString);
-            }
-
-            Log.i(TAG, "handleMentiosJSONStringData: complete");
-
-        } catch (JSONException e) {
+        } catch (WeiException e) {
             e.printStackTrace();
-            Log.e(TAG, "onComplete: 转换为json数组失败", e);
         }
+
+        return list;
     }
 
     /**

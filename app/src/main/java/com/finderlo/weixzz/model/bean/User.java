@@ -25,9 +25,7 @@ import org.json.JSONObject;
  * @author SINA
  * @since 2013-11-24
  */
-public class User {
-
-    public String jsonString;
+public class User extends AbsBean{
 
 
 
@@ -125,6 +123,10 @@ public class User {
         }
         
         User user = new User();
+
+        /**Custom field*/
+        user.jsonString = jsonObject.toString();
+
         user.id                 = jsonObject.optString("id", "");
         user.idstr              = jsonObject.optString("idstr", "");
         user.screen_name        = jsonObject.optString("screen_name", "");
@@ -170,4 +172,8 @@ public class User {
     }
 
 
+    @Override
+    public String getJsonString() {
+        return jsonString;
+    }
 }

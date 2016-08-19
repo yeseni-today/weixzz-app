@@ -3,7 +3,6 @@ package com.finderlo.weixzz.UI.Mainview;
 import android.animation.ObjectAnimator;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v13.app.FragmentPagerAdapter;
@@ -19,14 +18,8 @@ import android.widget.ImageView;
 import com.finderlo.weixzz.Dao.MentionsDao;
 import com.finderlo.weixzz.Dao.StatusDao;
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.UI.Login.LoginActivity;
-import com.finderlo.weixzz.Utility.Util;
 import com.finderlo.weixzz.base.BaseActivity;
-import com.finderlo.weixzz.model.APIManger;
-import com.finderlo.weixzz.model.StatusesAPI;
 import com.finderlo.weixzz.model.bean.Status;
-import com.sina.weibo.sdk.exception.WeiboException;
-import com.sina.weibo.sdk.net.RequestListener;
 
 import java.util.ArrayList;
 
@@ -58,7 +51,7 @@ public class MainViewActivity extends BaseActivity
 
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.Container_ViewPager);
-        viewPager.setAdapter(new ViewaAdapter(getFragmentManager()));
+        viewPager.setAdapter(new ViewAdapter(getFragmentManager()));
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             int currentPosition = 0;
             @Override
@@ -116,14 +109,15 @@ public class MainViewActivity extends BaseActivity
         animator.start();
     }
 
-    class ViewaAdapter extends FragmentPagerAdapter {
+    class ViewAdapter extends FragmentPagerAdapter {
 
         ArrayList<Fragment> mFragmentArrayList = new ArrayList<Fragment>();
-
-        public ViewaAdapter(FragmentManager fm) {
+        
+        @SuppressWarnings("unchecked")
+        ViewAdapter(FragmentManager fm) {
             super(fm);
-            mFragmentArrayList.add(MainViewFragment.newInstance(StatusDao.getInstance().queryLastStatuses(25)));
-            mFragmentArrayList.add(com.finderlo.weixzz.UI.others.MainViewFragment.newInstance(MentionsDao.getInstance().queryLastStatuses(25)));
+            mFragmentArrayList.add(MainViewFragment.newInstance((ArrayList<Status>) StatusDao.getInstance().query(25)));
+            mFragmentArrayList.add(MainViewFragment.newInstance((ArrayList<Status>) MentionsDao.getInstance().query(25)));
         }
 
 
@@ -189,49 +183,11 @@ public class MainViewActivity extends BaseActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        switch (id){
-            case R.id.nav_menu_mention_me:
-                ArrayList<Status> data = queryLastStatus();
-                replaceMainFragment(data);
-        }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
-    public void replaceMainFragment(ArrayList<Status> data){
-        mContainerFragment = com.finderlo.weixzz.UI.others.MainViewFragment.newInstance(data);
-        getFragmentManager().beginTransaction().replace(R.id.Container,mContainerFragment,null).commit();
-    }
 
 
-    /**
-     * 从服务器获取最新的50条微博消息 提到我的
-     **/
-    private ArrayList<Status> queryLastStatus() {
-         ArrayList<Status> data = new ArrayList<Status>();
-        showProgressDialog();
-        StatusesAPI mStatusesAPI = APIManger.getStatusesAPI();
-        if (null == mStatusesAPI) {
-            startActivity(new Intent(this, LoginActivity.class));
-            this.finish();
-            return data;
-        }
-        mStatusesAPI.mentions(0, 0, 50, 1, 0, 0,0,false, new RequestListener() {
-            @Override
-            public void onComplete(String s) {
-                Util.handleMentiosJSONStringData(MainViewActivity.this, s);
-                closeProgressDialog();
-            }
-
-            @Override
-            public void onWeiboException(WeiboException e) {
-                e.printStackTrace();
-            }
-        });
-
-        data = MentionsDao.getInstance().queryLastStatuses(25);
-        return data;
-    }
 
 
 

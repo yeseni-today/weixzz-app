@@ -31,9 +31,8 @@ import java.util.ArrayList;
  * @author SINA
  * @since 2013-11-22
  */
-public class Status {
+public class Status extends AbsBean{
 
-    public String jsonString;
 
     
     /** 微博创建时间 */
@@ -173,6 +172,11 @@ public class Status {
     }
 
     public String toJsonString() {
+        return jsonString;
+    }
+
+    @Override
+    public String getJsonString() {
         return jsonString;
     }
 }

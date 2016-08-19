@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.finderlo.weixzz.Constants;
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.SinaAPI.widget.LoginButton;
-import com.finderlo.weixzz.UI.others.MainViewAcivity;
+import com.finderlo.weixzz.UI.Mainview.MainViewActivity;
 import com.finderlo.weixzz.base.BaseActivity;
 import com.finderlo.weixzz.model.AccessTokenManger;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
@@ -79,7 +79,7 @@ public class LoginActivity extends BaseActivity {
                 String format = getString(R.string.weibosdk_demo_token_to_string_format_1);
                 Log.d(TAG, "onComplete: 授权有效期:"+String.format(format, mOauth2AccessToken.getToken(), date));
                 AccessTokenManger.refreshTokenInfo(LoginActivity.this,mOauth2AccessToken);
-                startActivity(new Intent(LoginActivity.this,MainViewAcivity.class));
+                startActivity(new Intent(LoginActivity.this,MainViewActivity.class));
                 finish();
             } else {
                 // 当您注册的应用程序签名不正确时，就会收到错误Code，请确保签名正确

@@ -8,6 +8,7 @@ import android.app.Fragment;
 
 public class BaseFragment extends Fragment {
 
+    protected String TAG = getClass().getSimpleName();
 
     protected BaseActivity getBaseActivity(){
         BaseActivity baseActivity = null;

@@ -3,6 +3,7 @@ package com.finderlo.weixzz.model;
 import android.content.Context;
 
 import com.finderlo.weixzz.Constants;
+import com.finderlo.weixzz.model.api.StatusesAPI;
 import com.finderlo.weixzz.base.WeiXzzApplication;
 
 /**
@@ -17,16 +18,6 @@ public class APIManger {
         sContext = WeiXzzApplication.getContext();
     }
 
-//    private APIManger(Context context){
-//        sContext = context.getApplicationContext();
-//    }
-
-//    public static APIManger getClientApiManger(Context context) {
-//        if (sAPIManger ==null){
-//            sAPIManger = new APIManger(context);
-//        }
-//        return sAPIManger;
-//    }
 
     /**这些是管理的API*/
     private static StatusesAPI sStatusesAPI;

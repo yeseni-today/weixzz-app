@@ -8,94 +8,47 @@ import android.util.Log;
 
 import com.finderlo.weixzz.Constants;
 import com.finderlo.weixzz.Database.DatabaseHelper;
+import com.finderlo.weixzz.base.WeiException;
+import com.finderlo.weixzz.model.bean.AbsBean;
 import com.finderlo.weixzz.model.bean.Status;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Finderlo on 2016/8/16.
  * Dao Data Access Object
  */
-public class MentionsDao {
-    private static final String TAG = "MentionsDao";
+public class MentionsDao extends AbsDao {
 
     private static final String TABLE_NAME = " Mentions ";
 
     public static final String USER_ID = " user_id ";
     public static final String USER_IDSTR = " user_idstr ";
-
-    public static final String TYPE_ID = " id ";
-    public static final String TYPE_IDSTR = " idstr ";
     public static final String TYPE_MID = " mid ";
 
-    public static final String JSON = " json ";
 
-    private static DatabaseHelper sDatabaseHelper;
     private static MentionsDao sMentionsDao;
-    private static SQLiteDatabase sDatabase;
+
 
 
     private MentionsDao() {
         sDatabaseHelper = DatabaseHelper.getInstance();
         sDatabase = sDatabaseHelper.getWritableDatabase();
     }
-
-    public static MentionsDao getInstance() {
-        if (sMentionsDao == null) {
-            sMentionsDao = new MentionsDao();
-        }
-        return sMentionsDao;
-    }
-
     /**
-     * insert a status object to database table.table name is "Status"
-     *
-     * @param status
-     * @param jsonString 这是数据代表的json数据
+     * 从数据库中查询所有的微博微博
      **/
-    public void insertMention(Status status, String jsonString) {
-        if (isDataAlreadyExist(TABLE_NAME, TYPE_IDSTR, status.idstr)) {
-            Log.i(TAG, "insertStatus: 微博数据已经存在,没有插入");
-            return;
-        }
-        ContentValues values = new ContentValues();
-        values.put(Constants.USER_ID, status.user.id);
-        values.put(Constants.USER_IDSTR, status.user_idstr);
-
-        values.put(Constants.STATUS_ID, status.id);
-        values.put(Constants.STATUS_MID, status.mid);
-        values.put(Constants.STATUS_IDSTR, status.idstr);
-        values.put("json", jsonString);
-
-        sDatabase.insert(TABLE_NAME, null, values);
-        Log.i(TAG, "insertStatus: 微博数据插入成功");
-
+    @Override
+    public List<? extends AbsBean> query() {
+        return query(0);
     }
 
     /**
      * 从数据库中查询所有的微博微博
      **/
-    public ArrayList<Status> queryStatuses() {
-
-//        Cursor cursor = sDatabase.query(TABLE_NAME, null, null, null, null, null, null, null);
-//        ArrayList<Status> list = new ArrayList<Status>();
-//        if (cursor.moveToFirst()) {
-//            do {
-//                Status status = queryStatus(cursor, cursor.getPosition());
-//                list.add(status);
-//            } while (cursor.moveToNext());
-//            Log.d(TAG, "queryStatuses success  list size" + list.size());
-//        }
-//        if (cursor != null) cursor.close();
-//        return list;
-        return queryLastStatuses(0);
-    }
-
-    /**
-     * 从数据库中查询所有的微博微博
-     **/
-    public ArrayList<Status> queryLastStatuses( int count) {
-
+    @Override
+    public List<? extends AbsBean> query(int count) {
         if (count==0) count = Integer.MAX_VALUE;
 
         Cursor cursor = sDatabase.query(TABLE_NAME, null, null, null, null, null, null, null);
@@ -110,6 +63,60 @@ public class MentionsDao {
         }
         if (cursor != null) cursor.close();
         return list;
+    }
+
+    @Override
+    public void insert(AbsBean bean) throws WeiException {
+        isCurrentBean(bean);
+        Status status = (Status) bean;
+        if (isDataAlreadyExist(TYPE_IDSTR, status.idstr)) {
+            Log.i(TAG, "insertStatus: 微博数据已经存在,没有插入");
+            return;
+        }
+
+        ContentValues values = new ContentValues();
+        values.put(Constants.USER_ID, status.user.id);
+        values.put(Constants.USER_IDSTR, status.user_idstr);
+
+        values.put(Constants.STATUS_ID, status.id);
+        values.put(Constants.STATUS_MID, status.mid);
+        values.put(Constants.STATUS_IDSTR, status.idstr);
+        values.put(JSON, status.getJsonString());
+
+        sDatabase.insert(TABLE_NAME, null, values);
+        Log.i(TAG, "insertStatus: 微博数据插入成功");
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public void insert(List<? extends AbsBean> list) throws WeiException {
+        ArrayList<Status> statuses = (ArrayList<Status>) list;
+        for (Status status:statuses){
+            insert(status);
+        }
+    }
+
+    @Override
+    public void clear() {
+
+    }
+
+    @Override
+    public String getTABLE_NAME() {
+        return TABLE_NAME;
+    }
+
+    @Override
+    void isCurrentBean(AbsBean bean) throws WeiException {
+        if (! (bean instanceof Status))
+            throw new WeiException("bean is not cast");
+    }
+
+    public static MentionsDao getInstance() {
+        if (sMentionsDao == null) {
+            sMentionsDao = new MentionsDao();
+        }
+        return sMentionsDao;
     }
 
 
@@ -151,23 +158,6 @@ public class MentionsDao {
         return status;
     }
 
-    /**
-     * @param tablename the data belong to table
-     * @param type      the type for id or idstr
-     * @param id        the id
-     * @return isDataAlreadyExist
-     **/
-    private boolean isDataAlreadyExist(String tablename, String type, String id) {
-        if (!(TYPE_ID.equals(type) || TYPE_IDSTR.equals(type) || TYPE_MID.equals(type))) {
-            return false;
-        }
-        if (sDatabase.rawQuery
-                ("select * from " + TABLE_NAME + " where " + type + " = " + id + " ", null)
-                .moveToFirst()) {
-            return true;
-        }
-        return false;
-    }
 
 
 }

@@ -1,6 +1,5 @@
-package com.finderlo.weixzz.UI.Mainview;
+package com.finderlo.weixzz.UI;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,7 +7,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,39 +14,28 @@ import android.widget.Toast;
 
 import com.finderlo.weixzz.Adapter.StatusViewRecyclerAdapter;
 import com.finderlo.weixzz.Constants;
-import com.finderlo.weixzz.Dao.StatusDao;
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.UI.Login.LoginActivity;
+import com.finderlo.weixzz.UI.Mainview.MainViewFragment;
 import com.finderlo.weixzz.UI.StatusDetail.StatusDetailActivity;
 import com.finderlo.weixzz.Utility.Util;
 import com.finderlo.weixzz.base.BaseFragment;
-import com.finderlo.weixzz.model.APIManger;
-import com.finderlo.weixzz.model.StatusesWrapAPI;
 import com.finderlo.weixzz.model.bean.Status;
-import com.sina.weibo.sdk.exception.WeiboException;
-import com.sina.weibo.sdk.net.RequestListener;
 
 import java.util.ArrayList;
 
 /**
- * Created by Finderlo on 2016/8/7.
+ * Created by Finderlo on 2016/8/19.
+ * 这是一个抽象类，这个fragment用于展示一个recyclerView，item是一条完整的微博信息
  */
-public class MainViewFragment extends BaseFragment {
 
-    private String TAG = "MainViewFragment";
+public abstract class TimelineFragment extends BaseFragment {
+
+
 
     ArrayList<Status> mDataList;
 
     RecyclerView mRecyclerView;
     StatusViewRecyclerAdapter mAdapter;
-
-    View.OnClickListener lister_fresh = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            queryLastStatus();
-        }
-    };
-
 
 
     @Override
@@ -59,12 +46,7 @@ public class MainViewFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.mainview_nav_mainview, container, false);
-
-        FloatingActionButton fabButton = (FloatingActionButton) view.findViewById(R.id.fab_refresh);
-
-        fabButton.setOnClickListener(lister_fresh);
-
+        View view = inflater.inflate(R.layout.abs_timeline_status_recycler, container, false);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.listView_Statuses);
         Util.sort(mDataList);
@@ -99,8 +81,6 @@ public class MainViewFragment extends BaseFragment {
 
         return view;
     }
-
-
     public static MainViewFragment newInstance(ArrayList<Status> list) {
         MainViewFragment mainViewFragment = new MainViewFragment();
         mainViewFragment.setDataList(list);
@@ -113,69 +93,4 @@ public class MainViewFragment extends BaseFragment {
     public void setDataList(ArrayList dataList) {
         mDataList = dataList;
     }
-
-
-    /**
-     * 从服务器获取最新的50条微博消息
-     **/
-    private void queryLastStatus() {
-        showProgressDialog();
-
-        StatusesWrapAPI.getInstance().friendsTimeline(0, 0, 50, 1, false, 0, false, new StatusesWrapAPI.StatusAPIRequestListener() {
-            @Override
-            public void onComplete(ArrayList<Status> statusArrayList) {
-                refreshDatalist(statusArrayList);
-                closeProgressDialog();
-            }
-
-            @Override
-            public void onError(Exception e) {
-
-            }
-        });
-
-    }
-
-    /**
-     * 数据库中微博刷新时,刷新适配器
-     **/
-    private void refreshDatalist(ArrayList<Status> mStatuses) {
-        mDataList.clear();
-        for (Status s : mStatuses) {
-            mDataList.add(s);
-        }
-        Util.sort(mDataList);
-        mAdapter.notifyDataSetChanged();
-    }
-
-
-    ProgressDialog mProgressDialog;
-
-    private void showProgressDialog() {
-        if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(getActivity());
-            mProgressDialog.setMessage("正在加载...");
-            mProgressDialog.setCanceledOnTouchOutside(false);
-
-        }
-        mProgressDialog.show();
-    }
-
-    private void showProgressDialog(String message) {
-        if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(getActivity());
-            mProgressDialog.setMessage(message);
-            mProgressDialog.setCanceledOnTouchOutside(false);
-
-        }
-        mProgressDialog.setMessage(message);
-        mProgressDialog.show();
-    }
-
-    private void closeProgressDialog() {
-        if (mProgressDialog != null) {
-            mProgressDialog.dismiss();
-        }
-    }
-
 }

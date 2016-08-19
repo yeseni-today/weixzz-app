@@ -2,34 +2,80 @@ package com.finderlo.weixzz.Dao;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.finderlo.weixzz.Constants;
-import com.finderlo.weixzz.Database.DatabaseHelper;
+import com.finderlo.weixzz.base.WeiException;
+import com.finderlo.weixzz.model.bean.AbsBean;
+import com.finderlo.weixzz.model.bean.Status;
 import com.finderlo.weixzz.model.bean.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Finderlo on 2016/8/16.
  * Dao Data Access Object
  */
-public class UserDao {
+public class UserDao extends AbsDao {
     private static final String TAG = "UserDao";
-    private static final String TABLE_NAME_USER = " User ";
+    private static final String TABLE_NAME = " User ";
 
-    public static final String TYPE_ID = " id ";
-    public static final String TYPE_IDSTR = " idstr ";
-    public static final String JSON = " json ";
-
-
-    private static DatabaseHelper sDatabaseHelper;
     private static UserDao sUserDao;
-    private static SQLiteDatabase sDatabase;
+
+    private UserDao(){}
+
+    @Override
+    public List<? extends AbsBean> query() {
+        return query(0);
+    }
+
+    @Override
+    public List<? extends AbsBean> query(int count) {
+        return null;
+    }
+
+    @Override
+    public void insert(AbsBean bean) throws WeiException {
+        isCurrentBean(bean);
+        User user = (User) bean;
+        if (isDataAlreadyExist(TYPE_IDSTR, user.idstr)) {
+            Log.i(TAG, "insertUser: 用户数据已经存在,没有插入");
+            return;
+        }
+
+        ContentValues values = new ContentValues();
+        values.put(Constants.USER_ID, user.id);
+        values.put(Constants.USER_IDSTR, user.idstr);
+        values.put(JSON, user.getJsonString());
+
+        sDatabase.insert(TABLE_NAME, null, values);
+        Log.i(TAG, "insertUser: 用户数据已经存在");
+    }
+
+    @Override
+    public void insert(List<? extends AbsBean> list) throws WeiException {
+        ArrayList<User> users = (ArrayList<User>) list;
+        for (User user:users){
+            insert(user);
+        }
+    }
+
+    @Override
+    public void clear() {
+
+    }
 
 
-    private UserDao(){
-        sDatabaseHelper = DatabaseHelper.getInstance();
-        sDatabase = sDatabaseHelper.getWritableDatabase();
+    @Override
+    public String getTABLE_NAME() {
+        return TABLE_NAME;
+    }
+
+    @Override
+    void isCurrentBean(AbsBean bean) throws WeiException {
+        if (! (bean instanceof User))
+            throw new WeiException("bean is not cast");
     }
 
     public static UserDao getInstance() {
@@ -38,25 +84,7 @@ public class UserDao {
         }
         return sUserDao;
     }
-    /**
-     * 插入数据库中一个用户信息
-     *
-     * @param user
-     * @param userjson 这是数据代表的json数据
-     **/
-    public void insertUser(User user, String userjson) {
-        if (isDataAlreadyExist(TABLE_NAME_USER, TYPE_IDSTR, user.idstr)) {
-            Log.i(TAG, "insertUser: 用户数据已经存在,没有插入");
-            return;
-        }
-        ContentValues values = new ContentValues();
-        values.put(Constants.USER_ID, user.id);
-        values.put(Constants.USER_IDSTR, user.idstr);
-        values.put("json", userjson);
 
-        sDatabase.insert(TABLE_NAME_USER, null, values);
-        Log.i(TAG, "insertUser: 用户数据已经存在");
-    }
 
     /**
      * 通过给定的idstr来查询用户
@@ -95,24 +123,7 @@ public class UserDao {
         return user;
     }
 
-    /**
-     * @param tablename the data belong to table
-     * @param type      the type for id or idstr
-     * @param id        the id
-     * @return isDataAlreadyExist
-     **/
-    private boolean isDataAlreadyExist(String tablename, String type, String id) {
-        if (!(TYPE_ID.equals(type) || TYPE_IDSTR.equals(type))) {
-            return false;
-        }
 
-        if (sDatabase.rawQuery
-                ("select * from " + tablename + " where " + type + " = " + id + " ", null)
-                .moveToFirst()) {
-            return true;
-        }
-        return false;
-    }
 
 
 }
