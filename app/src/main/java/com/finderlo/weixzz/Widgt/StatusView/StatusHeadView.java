@@ -41,10 +41,10 @@ public class StatusHeadView extends LinearLayout {
         TextView username = (TextView) findViewById(R.id.statusview_header_username);
         username.setText(mStatus.user.name);
 
-        TextView isverifed = (TextView) findViewById(R.id.statusview_header_flag_Verified);
+        TextView isverifed = (TextView) findViewById(R.id.statusview_header_blow_left_textview);
         isverifed.setText(mStatus.user.verified ? "已认证" : "未认证");
 
-        TextView verfied_reason = (TextView) findViewById(R.id.statusview_header_Verified_reason);
+        TextView verfied_reason = (TextView) findViewById(R.id.statusview_header_blow_right_textview);
         verfied_reason.setText(mStatus.user.verified_reason);
 
         RoundImageView user_pic = (RoundImageView) findViewById(R.id.statusview_header_image_user_pic);

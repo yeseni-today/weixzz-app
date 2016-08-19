@@ -1,8 +1,8 @@
-package com.finderlo.weixzz.Dao;
+package com.finderlo.weixzz.dao;
 
 import android.database.sqlite.SQLiteDatabase;
 
-import com.finderlo.weixzz.Database.DatabaseHelper;
+import com.finderlo.weixzz.database.DatabaseHelper;
 import com.finderlo.weixzz.base.WeiException;
 import com.finderlo.weixzz.model.bean.AbsBean;
 

@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.UI.StatusDetail;
+package com.finderlo.weixzz.ui.StatusDetail;
 
 import android.app.Fragment;
 import android.app.FragmentManager;

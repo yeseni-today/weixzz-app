@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.Adapter;
+package com.finderlo.weixzz.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -104,8 +104,8 @@ public class StatusViewRecyclerAdapter extends RecyclerView.Adapter<StatusViewRe
 
         username = (TextView) view.findViewById(R.id.statusview_header_username);
         user_pic = (RoundImageView) view.findViewById(R.id.statusview_header_image_user_pic);
-        isverifed = (TextView) view.findViewById(R.id.statusview_header_flag_Verified);
-        verfied_reason = (TextView) view.findViewById(R.id.statusview_header_Verified_reason);
+        isverifed = (TextView) view.findViewById(R.id.statusview_header_blow_left_textview);
+        verfied_reason = (TextView) view.findViewById(R.id.statusview_header_blow_right_textview);
 
         statusContent = (AutoLinkTextView) view.findViewById(R.id.statusview_status_content);
         pics = (ImageViews) view.findViewById(R.id.statusview_imageviews_gridlayout);
@@ -169,8 +169,8 @@ public class StatusViewRecyclerAdapter extends RecyclerView.Adapter<StatusViewRe
 
             username = (TextView) itemView.findViewById(R.id.statusview_header_username);
             user_pic = (RoundImageView) itemView.findViewById(R.id.statusview_header_image_user_pic);
-            isverifed = (TextView) itemView.findViewById(R.id.statusview_header_flag_Verified);
-            verfied_reason = (TextView) itemView.findViewById(R.id.statusview_header_Verified_reason);
+            isverifed = (TextView) itemView.findViewById(R.id.statusview_header_blow_left_textview);
+            verfied_reason = (TextView) itemView.findViewById(R.id.statusview_header_blow_right_textview);
 
             statusContent = (AutoLinkTextView) itemView.findViewById(R.id.statusview_status_content);
             pics = (ImageViews) itemView.findViewById(R.id.statusview_imageviews_gridlayout);

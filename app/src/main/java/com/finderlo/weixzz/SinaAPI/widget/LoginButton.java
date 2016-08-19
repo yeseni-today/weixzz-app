@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.finderlo.weixzz.SinaAPI.widget;
+package com.finderlo.weixzz.sinaApi.widget;
 
 import android.app.Activity;
 import android.content.Context;

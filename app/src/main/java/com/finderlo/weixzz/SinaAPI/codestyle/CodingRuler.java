@@ -6,7 +6,7 @@
  * 版权申明（开源代码一般都需要添加），如：Copyright (C) 2010-2013 SINA Corporation.
  */
 
-package com.finderlo.weixzz.SinaAPI.codestyle;
+package com.finderlo.weixzz.sinaApi.codestyle;
 
 /**
  * 类的大体描述放在这里。

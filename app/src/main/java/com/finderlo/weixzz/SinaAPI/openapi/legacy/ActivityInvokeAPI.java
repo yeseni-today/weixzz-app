@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.finderlo.weixzz.SinaAPI.openapi.legacy;
+package com.finderlo.weixzz.sinaApi.openapi.legacy;
 
 import android.app.Activity;
 import android.content.Intent;

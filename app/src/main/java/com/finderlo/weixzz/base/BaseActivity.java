@@ -21,7 +21,7 @@ public class BaseActivity extends AppCompatActivity {
 
     ProgressDialog mProgressDialog;
 
-    protected void showProgressDialog() {
+    public void showProgressDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(this);
             mProgressDialog.setMessage("正在加载...");
@@ -31,7 +31,7 @@ public class BaseActivity extends AppCompatActivity {
         mProgressDialog.show();
     }
 
-    protected void showProgressDialog(String message) {
+    public void showProgressDialog(String message) {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(this);
             mProgressDialog.setMessage(message);
@@ -42,7 +42,7 @@ public class BaseActivity extends AppCompatActivity {
         mProgressDialog.show();
     }
 
-    protected void closeProgressDialog() {
+    public void closeProgressDialog() {
         if (mProgressDialog != null) {
             mProgressDialog.dismiss();
         }

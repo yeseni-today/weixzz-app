@@ -14,9 +14,11 @@
  * limitations under the License.
  */
 
-package com.finderlo.weixzz.SinaAPI.openapi.models;
+package com.finderlo.weixzz.sinaApi.openapi.models;
 
 import android.text.TextUtils;
+
+import com.finderlo.weixzz.model.bean.Comment;
 
 import org.json.JSONArray;
 import org.json.JSONException;

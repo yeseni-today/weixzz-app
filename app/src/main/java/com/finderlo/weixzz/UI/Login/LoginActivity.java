@@ -1,9 +1,8 @@
-package com.finderlo.weixzz.UI.Login;
+package com.finderlo.weixzz.ui.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,8 +10,8 @@ import android.widget.Toast;
 
 import com.finderlo.weixzz.Constants;
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.SinaAPI.widget.LoginButton;
-import com.finderlo.weixzz.UI.Mainview.MainViewActivity;
+import com.finderlo.weixzz.sinaApi.widget.LoginButton;
+import com.finderlo.weixzz.ui.Mainview.MainViewActivity;
 import com.finderlo.weixzz.base.BaseActivity;
 import com.finderlo.weixzz.model.AccessTokenManger;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;

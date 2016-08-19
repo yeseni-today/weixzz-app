@@ -14,11 +14,11 @@
  * limitations under the License.
  */
  
-package com.finderlo.weixzz.SinaAPI.openapi.legacy;
+package com.finderlo.weixzz.sinaApi.openapi.legacy;
 
 import android.content.Context;
 
-import com.finderlo.weixzz.SinaAPI.openapi.AbsOpenAPI;
+import com.finderlo.weixzz.sinaApi.openapi.AbsOpenAPI;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.net.RequestListener;
 import com.sina.weibo.sdk.net.WeiboParameters;

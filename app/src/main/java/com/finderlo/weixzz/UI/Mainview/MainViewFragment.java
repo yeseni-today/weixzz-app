@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.UI.Mainview;
+package com.finderlo.weixzz.ui.Mainview;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -8,25 +8,19 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.finderlo.weixzz.Adapter.StatusViewRecyclerAdapter;
+import com.finderlo.weixzz.adapter.StatusViewRecyclerAdapter;
 import com.finderlo.weixzz.Constants;
-import com.finderlo.weixzz.Dao.StatusDao;
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.UI.Login.LoginActivity;
-import com.finderlo.weixzz.UI.StatusDetail.StatusDetailActivity;
+import com.finderlo.weixzz.ui.StatusDetail.StatusDetailActivity;
 import com.finderlo.weixzz.Utility.Util;
 import com.finderlo.weixzz.base.BaseFragment;
-import com.finderlo.weixzz.model.APIManger;
 import com.finderlo.weixzz.model.StatusesWrapAPI;
 import com.finderlo.weixzz.model.bean.Status;
-import com.sina.weibo.sdk.exception.WeiboException;
-import com.sina.weibo.sdk.net.RequestListener;
 
 import java.util.ArrayList;
 
@@ -106,6 +100,7 @@ public class MainViewFragment extends BaseFragment {
         mainViewFragment.setDataList(list);
         return mainViewFragment;
     }
+
 
 
 

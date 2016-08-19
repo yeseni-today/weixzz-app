@@ -11,7 +11,7 @@ import android.widget.ImageView;
 
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.model.bean.Status;
-import com.finderlo.weixzz.UI.Login.LoadDataActivity;
+import com.finderlo.weixzz.ui.Login.LoadDataActivity;
 import com.finderlo.weixzz.Utility.ImageLoader;
 import com.finderlo.weixzz.Utility.Util;
 import com.finderlo.weixzz.Widgt.BaseImageView;

@@ -16,8 +16,8 @@
 
 package com.finderlo.weixzz.model.bean;
 
-import com.finderlo.weixzz.SinaAPI.openapi.models.Geo;
-import com.finderlo.weixzz.SinaAPI.openapi.models.Visible;
+import com.finderlo.weixzz.sinaApi.openapi.models.Geo;
+import com.finderlo.weixzz.sinaApi.openapi.models.Visible;
 
 import org.json.JSONArray;
 import org.json.JSONException;

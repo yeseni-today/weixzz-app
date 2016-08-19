@@ -1,9 +1,9 @@
-package com.finderlo.weixzz.UI.Login;
+package com.finderlo.weixzz.ui.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import com.finderlo.weixzz.UI.Mainview.MainViewActivity;
+import com.finderlo.weixzz.ui.Mainview.MainViewActivity;
 import com.finderlo.weixzz.base.BaseActivity;
 import com.finderlo.weixzz.model.AccessTokenManger;
 import com.finderlo.weixzz.Utility.Util;

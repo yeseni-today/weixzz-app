@@ -1,12 +1,10 @@
-package com.finderlo.weixzz.Dao;
+package com.finderlo.weixzz.dao;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.finderlo.weixzz.Constants;
-import com.finderlo.weixzz.Database.DatabaseHelper;
 import com.finderlo.weixzz.base.WeiException;
 import com.finderlo.weixzz.model.bean.AbsBean;
 import com.finderlo.weixzz.model.bean.Status;

@@ -6,9 +6,9 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
 
-import com.finderlo.weixzz.Dao.MentionsDao;
-import com.finderlo.weixzz.Dao.StatusDao;
-import com.finderlo.weixzz.Dao.UserDao;
+import com.finderlo.weixzz.dao.MentionsDao;
+import com.finderlo.weixzz.dao.StatusDao;
+import com.finderlo.weixzz.dao.UserDao;
 import com.finderlo.weixzz.base.WeiException;
 import com.finderlo.weixzz.model.bean.Status;
 import com.finderlo.weixzz.model.bean.User;

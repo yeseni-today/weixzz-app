@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.UI.StatusDetail;
+package com.finderlo.weixzz.ui.StatusDetail;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -7,18 +7,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
-import android.widget.ListView;
 
-import com.finderlo.weixzz.Adapter.StatusViewRecyclerAdapter;
+import com.finderlo.weixzz.adapter.StatusViewRecyclerAdapter;
 import com.finderlo.weixzz.Constants;
-import com.finderlo.weixzz.Dao.StatusDao;
+import com.finderlo.weixzz.dao.StatusDao;
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.model.bean.Status;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Finderlo on 2016/8/4.

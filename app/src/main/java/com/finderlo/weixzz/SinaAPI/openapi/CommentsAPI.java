@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.finderlo.weixzz.SinaAPI.openapi;
+package com.finderlo.weixzz.sinaApi.openapi;
 
 import android.content.Context;
 import android.util.SparseArray;

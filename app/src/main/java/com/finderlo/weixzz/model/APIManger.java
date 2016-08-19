@@ -5,6 +5,7 @@ import android.content.Context;
 import com.finderlo.weixzz.Constants;
 import com.finderlo.weixzz.model.api.StatusesAPI;
 import com.finderlo.weixzz.base.WeiXzzApplication;
+import com.finderlo.weixzz.sinaApi.openapi.CommentsAPI;
 
 /**
  * Created by Finderlo on 2016/8/6.
@@ -29,5 +30,14 @@ public class APIManger {
             new Exception("Token为空").printStackTrace();
         }
         return sStatusesAPI;
+    }
+
+    private static CommentsAPI sCommentsAPI;
+
+    public static CommentsAPI getCommentsAPI(){
+        if (AccessTokenManger.isAccessTokenExist(sContext)){
+            sCommentsAPI = new CommentsAPI(sContext,Constants.APP_KEY,AccessTokenManger.readAccessToken(sContext));
+        }
+        return sCommentsAPI;
     }
 }

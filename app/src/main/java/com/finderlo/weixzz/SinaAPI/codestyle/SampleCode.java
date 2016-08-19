@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.finderlo.weixzz.SinaAPI.codestyle;
+package com.finderlo.weixzz.sinaApi.codestyle;
 
 /**
  * 类的大体描述放在这里。

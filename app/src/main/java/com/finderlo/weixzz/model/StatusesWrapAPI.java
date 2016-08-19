@@ -18,17 +18,14 @@ package com.finderlo.weixzz.model;
 
 import android.content.Context;
 
-import com.finderlo.weixzz.UI.Mainview.MainViewActivity;
 import com.finderlo.weixzz.Utility.Util;
 import com.finderlo.weixzz.base.WeiXzzApplication;
 import com.finderlo.weixzz.model.api.StatusesAPI;
 import com.finderlo.weixzz.model.bean.Status;
 import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.net.RequestListener;
-import com.sina.weibo.sdk.net.WeiboParameters;
 
 import java.util.ArrayList;
-import java.util.IdentityHashMap;
 
 /**
  * 该类封装了微博接口。

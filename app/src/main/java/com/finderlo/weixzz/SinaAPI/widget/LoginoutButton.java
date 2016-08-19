@@ -14,24 +14,20 @@
  * limitations under the License.
  */
 
-package com.finderlo.weixzz.SinaAPI.widget;
+package com.finderlo.weixzz.sinaApi.widget;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.SinaAPI.openapi.LogoutAPI;
+import com.finderlo.weixzz.sinaApi.openapi.LogoutAPI;
 import com.sina.weibo.sdk.auth.AuthInfo;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.auth.WeiboAuthListener;

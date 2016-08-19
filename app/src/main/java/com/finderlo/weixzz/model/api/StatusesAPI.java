@@ -20,7 +20,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 
-import com.finderlo.weixzz.SinaAPI.openapi.AbsOpenAPI;
+import com.finderlo.weixzz.sinaApi.openapi.AbsOpenAPI;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.net.RequestListener;
 import com.sina.weibo.sdk.net.WeiboParameters;

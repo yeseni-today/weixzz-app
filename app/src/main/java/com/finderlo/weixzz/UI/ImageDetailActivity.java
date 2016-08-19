@@ -1,13 +1,11 @@
-package com.finderlo.weixzz.UI;
+package com.finderlo.weixzz.ui;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
 
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.Utility.ImageLoader;
-import com.finderlo.weixzz.Widgt.ZoomImageView;
 import com.finderlo.weixzz.base.BaseActivity;
 
 import uk.co.senab.photoview.PhotoViewAttacher;

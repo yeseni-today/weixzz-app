@@ -27,28 +27,27 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:minWidth="85dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/statusview_header_username"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="7"
-
                 android:gravity="center_vertical"
+                android:lines="1"
                 android:text="User_name"
                 android:textSize="14sp"/>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="3"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/statusview_header_flag_Verified"
+                    android:id="@+id/statusview_header_blow_left_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
@@ -56,7 +55,7 @@
 
 
                 <TextView
-                    android:id="@+id/statusview_header_Verified_reason"
+                    android:id="@+id/statusview_header_blow_right_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"

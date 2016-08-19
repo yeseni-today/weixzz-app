@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.UI.Mainview;
+package com.finderlo.weixzz.ui.Mainview;
 
 import android.animation.ObjectAnimator;
 import android.app.Fragment;
@@ -15,11 +15,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.finderlo.weixzz.Dao.MentionsDao;
-import com.finderlo.weixzz.Dao.StatusDao;
+import com.finderlo.weixzz.dao.MentionsDao;
+import com.finderlo.weixzz.dao.StatusDao;
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.base.BaseActivity;
 import com.finderlo.weixzz.model.bean.Status;
+import com.finderlo.weixzz.ui.comment.CommentFragment;
 
 import java.util.ArrayList;
 
@@ -112,12 +113,13 @@ public class MainViewActivity extends BaseActivity
     class ViewAdapter extends FragmentPagerAdapter {
 
         ArrayList<Fragment> mFragmentArrayList = new ArrayList<Fragment>();
-        
+
         @SuppressWarnings("unchecked")
         ViewAdapter(FragmentManager fm) {
             super(fm);
             mFragmentArrayList.add(MainViewFragment.newInstance((ArrayList<Status>) StatusDao.getInstance().query(25)));
             mFragmentArrayList.add(MainViewFragment.newInstance((ArrayList<Status>) MentionsDao.getInstance().query(25)));
+            mFragmentArrayList.add(CommentFragment.newInstance());
         }
 
 

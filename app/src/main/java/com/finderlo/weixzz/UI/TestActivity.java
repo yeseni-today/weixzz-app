@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.UI;
+package com.finderlo.weixzz.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

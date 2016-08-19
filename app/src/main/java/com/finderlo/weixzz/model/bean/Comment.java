@@ -14,11 +14,9 @@
  * limitations under the License.
  */
 
-package com.finderlo.weixzz.SinaAPI.openapi.models;
+package com.finderlo.weixzz.model.bean;
 
-import com.finderlo.weixzz.model.bean.Status;
-import com.finderlo.weixzz.model.bean.User;
-
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -27,7 +25,7 @@ import org.json.JSONObject;
  * @author SINA
  * @since 2013-11-24
  */
-public class Comment {
+public class Comment extends AbsBean {
 
     /** 评论创建时间 */
     public String created_at;
@@ -48,12 +46,28 @@ public class Comment {
     /** 评论来源评论，当本评论属于对另一评论的回复时返回此字段 */
     public Comment reply_comment;
 
+
+
+    public static Comment parse(String jsonString) {
+        try {
+            JSONObject jsonObject = new JSONObject(jsonString);
+            return Comment.parse(jsonObject);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     public static Comment parse(JSONObject jsonObject) {
         if (null == jsonObject) {
             return null;
         }
 
         Comment comment = new Comment();
+        /**Custom field*/
+        comment.jsonString = jsonObject.toString();
+
         comment.created_at    = jsonObject.optString("created_at");
         comment.id            = jsonObject.optString("id");
         comment.text          = jsonObject.optString("text");
@@ -65,5 +79,10 @@ public class Comment {
         comment.reply_comment = Comment.parse(jsonObject.optJSONObject("reply_comment"));
         
         return comment;
+    }
+
+    @Override
+    public String getJsonString() {
+        return jsonString;
     }
 }
