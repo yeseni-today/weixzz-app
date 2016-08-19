@@ -24,8 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".UI.Login.LoginActivity"/>
-        <activity android:name=".UI.Mainview.MainViewAcivity"/>
-        <activity android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"/>
+
         <activity android:name=".UI.StatusDetail.StatusDetailActivity">
         </activity>
         <activity android:name=".UI.ImageDetailActivity">
@@ -35,7 +34,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".UI.Mainview.MainViewActivity">
+        </activity>
+
+        <!--这些是测试用的activity-->
+        <activity android:name=".UI.others.MainViewAcivity"/>
         <activity android:name=".UI.TestActivity"/>
+        <!--微博sdk中的web视图-->
+        <activity android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"/>
     </application>
 
 </manifest>

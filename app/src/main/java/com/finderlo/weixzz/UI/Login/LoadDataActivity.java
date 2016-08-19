@@ -3,16 +3,15 @@ package com.finderlo.weixzz.UI.Login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-
-import com.finderlo.weixzz.UI.Mainview.MainViewAcivity;
+import com.finderlo.weixzz.UI.Mainview.MainViewActivity;
+import com.finderlo.weixzz.base.BaseActivity;
 import com.finderlo.weixzz.model.AccessTokenManger;
 import com.finderlo.weixzz.Utility.Util;
 
 /**
  * Created by Finderlo on 2016/8/5.
  */
-public class LoadDataActivity extends AppCompatActivity{
+public class LoadDataActivity extends BaseActivity {
 
     public static int PIC_WIDTH = 0;
     private String TAG = LoadDataActivity.class.getSimpleName();
@@ -26,7 +25,7 @@ public class LoadDataActivity extends AppCompatActivity{
 
         if(AccessTokenManger.isAccessTokenExist(this)){
             // TODO: 2016/8/5 if token exist
-            Intent intent = new Intent(LoadDataActivity.this, MainViewAcivity.class);
+            Intent intent = new Intent(LoadDataActivity.this, MainViewActivity.class);
             startActivity(intent);
 
             finish();

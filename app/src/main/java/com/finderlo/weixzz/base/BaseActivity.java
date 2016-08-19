@@ -1,12 +1,23 @@
 package com.finderlo.weixzz.base;
 
 import android.app.ProgressDialog;
+import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 /**
  * Created by Finderlo on 2016/8/18.
  */
 public class BaseActivity extends AppCompatActivity {
+
+    private String TAG = BaseActivity.class.getSimpleName();
+
+    @Override
+    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+        Log.d(TAG, "Current Activity:  "+getClass().getSimpleName());
+    }
 
     ProgressDialog mProgressDialog;
 

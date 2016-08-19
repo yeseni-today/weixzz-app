@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.UI.Mainview;
+package com.finderlo.weixzz.UI.others;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
@@ -6,26 +6,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.finderlo.weixzz.Adapter.StatusViewRecyclerAdapter;
 import com.finderlo.weixzz.Constants;
 import com.finderlo.weixzz.Dao.StatusDao;
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.UI.Login.LoginActivity;
-import com.finderlo.weixzz.UI.StatusDetail.StatusDetailActivity;
-import com.finderlo.weixzz.Utility.Util;
-import com.finderlo.weixzz.base.BaseFragment;
-import com.finderlo.weixzz.model.APIManger;
 import com.finderlo.weixzz.model.StatusesAPI;
 import com.finderlo.weixzz.model.bean.Status;
+import com.finderlo.weixzz.UI.Login.LoginActivity;
+import com.finderlo.weixzz.UI.StatusDetail.StatusDetailActivity;
+import com.finderlo.weixzz.model.APIManger;
+import com.finderlo.weixzz.Utility.Util;
 import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.net.RequestListener;
 
@@ -34,7 +31,7 @@ import java.util.ArrayList;
 /**
  * Created by Finderlo on 2016/8/7.
  */
-public class MainViewFragment extends BaseFragment {
+public class MainViewFragment extends Fragment {
 
     private String TAG = "MainViewFragment";
 
@@ -60,7 +57,7 @@ public class MainViewFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.mainview_nav_mainview, container, false);
+        View view = inflater.inflate(R.layout.mainview_other_nav_mainview, container, false);
 
         FloatingActionButton fabButton = (FloatingActionButton) view.findViewById(R.id.fab_refresh);
 
@@ -84,18 +81,6 @@ public class MainViewFragment extends BaseFragment {
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                Toast.makeText(getActivity(),"Refreshing...",Toast.LENGTH_SHORT).show();
-                if ((Math.random())>0.5){
-                    Toast.makeText(getActivity(),"success",Toast.LENGTH_SHORT).show();
-                }else Toast.makeText(getActivity(),"fail",Toast.LENGTH_SHORT).show();
-                swipeRefreshLayout.setRefreshing(false);
-            }
-
-        });
 
 
         return view;

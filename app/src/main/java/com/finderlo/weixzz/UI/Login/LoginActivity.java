@@ -12,7 +12,8 @@ import android.widget.Toast;
 import com.finderlo.weixzz.Constants;
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.SinaAPI.widget.LoginButton;
-import com.finderlo.weixzz.UI.Mainview.MainViewAcivity;
+import com.finderlo.weixzz.UI.others.MainViewAcivity;
+import com.finderlo.weixzz.base.BaseActivity;
 import com.finderlo.weixzz.model.AccessTokenManger;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.auth.WeiboAuthListener;
@@ -24,7 +25,7 @@ import java.text.SimpleDateFormat;
 /**
  * Created by Finderlo on 2016/8/5.
  */
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     private static  final  String TAG = "LoginActivity";
 

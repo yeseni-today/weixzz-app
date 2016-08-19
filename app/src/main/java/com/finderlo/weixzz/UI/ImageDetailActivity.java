@@ -8,10 +8,11 @@ import android.widget.ImageView;
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.Utility.ImageLoader;
 import com.finderlo.weixzz.Widgt.ZoomImageView;
+import com.finderlo.weixzz.base.BaseActivity;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
 
-public class ImageDetailActivity extends AppCompatActivity {
+public class ImageDetailActivity extends BaseActivity {
 
     private static final String TAG = "TestActivity";
 
