@@ -1,11 +1,14 @@
 package com.finderlo.weixzz.ui.timeline;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.finderlo.weixzz.adapter.homeTimeline.HomeStatusAdapter;
 import com.finderlo.weixzz.dao.timeline.BaseTimelineDao;
 import com.finderlo.weixzz.dao.timeline.StatusDao;
 import com.finderlo.weixzz.model.model.StatusListModel;
+import com.finderlo.weixzz.model.model.StatusModel;
+import com.finderlo.weixzz.ui.StatusDetail.StatusDetailActivity;
 
 /**
  * Created by Finderlo on 2016/8/7.
@@ -42,6 +45,12 @@ public class HomeTimelineFragment extends BaseHomeTimelineFragment {
     @Override
     protected HomeStatusAdapter bindAdapter() {
         HomeStatusAdapter adapter =  new HomeStatusAdapter(getActivity(), (StatusListModel) mDao.getList());
+        adapter.setOnItemClickListener(new HomeStatusAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int positon) {
+                StatusDetailActivity.start(getActivity(), (StatusModel) mDao.getList().get(positon));
+            }
+        });
         return adapter;
     }
 

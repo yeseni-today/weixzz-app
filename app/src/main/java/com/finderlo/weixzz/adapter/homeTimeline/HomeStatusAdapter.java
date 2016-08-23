@@ -32,7 +32,9 @@ public class HomeStatusAdapter extends BaseHomeAdapter<StatusListModel> {
     public HomeStatusAdapter(Context context, StatusListModel list) {
         super(context,list);
         mListModel = list;
-        mStatusModelList =  list.getList();
+        if (list!=null){
+            mStatusModelList =  list.getList();
+        }
     }
 
 

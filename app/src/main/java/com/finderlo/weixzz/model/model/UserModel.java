@@ -65,7 +65,7 @@ public class UserModel implements Parcelable{
     public int verified_type;    //** 暂未支持 */
 
     public String remark;    //** 用户备注信息，只有在查询用户关系时才返回此字段 */
-    public StatusModel mStatusModel;    //** 用户的最近一条微博信息字段 */
+    public StatusModel status;    //** 用户的最近一条微博信息字段 */
     public boolean allow_all_comment;    //** 是否允许所有人对我的微博进行评论，true：是，false：否 */
     public String avatar_large;    //** 用户大头像地址 */
     public String avatar_hd;    //** 用户高清大头像地址 */

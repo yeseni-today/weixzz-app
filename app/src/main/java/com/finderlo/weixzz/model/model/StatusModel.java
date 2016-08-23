@@ -19,6 +19,7 @@ package com.finderlo.weixzz.model.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.SpannableString;
+import android.util.Log;
 
 import com.finderlo.weixzz.sinaApi.openapi.models.Visible;
 
@@ -31,6 +32,8 @@ import java.util.ArrayList;
  * @since 2013-11-22
  */
 public class StatusModel implements Parcelable {
+
+    public static final String TAG = "StatusModel";
 
 
     public String created_at;    // 微博创建时间 */
@@ -72,10 +75,10 @@ public class StatusModel implements Parcelable {
     /**
      * 微博配图地址。多图时返回多图链接。无配图返回"[]"
      */
-    public ArrayList<PictureUrl> pic_urls;
+    public ArrayList<PictureUrl> pic_urls = new ArrayList<PictureUrl>();
 
     public transient SpannableString span, origSpan;
-    public transient long millis;
+//    public transient long millis;
 
 
 
@@ -149,6 +152,7 @@ public class StatusModel implements Parcelable {
     }
 
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -157,8 +161,10 @@ public class StatusModel implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(created_at);
+
         dest.writeLong(id);
         dest.writeLong(mid);
+
         dest.writeString(idstr);
         dest.writeString(text);
         dest.writeString(source);
@@ -169,14 +175,20 @@ public class StatusModel implements Parcelable {
         dest.writeString(thumbnail_pic);
         dest.writeString(bmiddle_pic);
         dest.writeString(original_pic);
+
         dest.writeParcelable(geo, flags);
         dest.writeParcelable(user, flags);
         dest.writeParcelable(retweeted_status, flags);
+
         dest.writeInt(reposts_count);
         dest.writeInt(comments_count);
         dest.writeInt(attitudes_count);
-        dest.writeTypedList(pic_urls);
-        dest.writeLong(millis);
+
+
+            dest.writeTypedList(pic_urls);
+
+
+//        dest.writeLong(millis);
 
     }
 
@@ -192,6 +204,8 @@ public class StatusModel implements Parcelable {
             ret.text = in.readString();
             ret.source = in.readString();
 
+            Log.d(TAG, "createFromParcel: ret.text"+ret.text);
+
             boolean[] array = new boolean[3];
             in.readBooleanArray(array);
 
@@ -199,22 +213,34 @@ public class StatusModel implements Parcelable {
             ret.truncated = array[1];
             ret.liked = array[2];
 
+            Log.d(TAG, "createFromParcel: ret.liked"+String.valueOf(ret.liked));
+
             ret.in_reply_to_status_id = in.readString();
             ret.in_reply_to_user_id = in.readString();
             ret.in_reply_to_screen_name = in.readString();
             ret.thumbnail_pic = in.readString();
             ret.bmiddle_pic = in.readString();
             ret.original_pic = in.readString();
+
             ret.geo = in.readParcelable(GeoModel.class.getClassLoader());
             ret.user = in.readParcelable(UserModel.class.getClassLoader());
             ret.retweeted_status = in.readParcelable(StatusModel.class.getClassLoader());
+
+            Log.d(TAG, "createFromParcel: ret.user"+ret.user.screen_name);
+
             ret.reposts_count = in.readInt();
             ret.comments_count = in.readInt();
             ret.attitudes_count = in.readInt();
 
-            in.readTypedList(ret.pic_urls, PictureUrl.CREATOR);
 
-            ret.millis = in.readLong();
+
+
+                in.readTypedList(ret.pic_urls, PictureUrl.CREATOR);
+
+
+
+
+//            ret.millis = in.readLong();
 
 
             return ret;
