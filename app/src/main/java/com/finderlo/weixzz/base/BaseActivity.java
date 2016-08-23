@@ -11,7 +11,7 @@ import android.util.Log;
  */
 public class BaseActivity extends AppCompatActivity {
 
-    private String TAG = BaseActivity.class.getSimpleName();
+    protected String TAG = this.getClass().getSimpleName();
 
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {

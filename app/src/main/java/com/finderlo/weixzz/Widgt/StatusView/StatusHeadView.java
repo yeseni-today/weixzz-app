@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.model.bean.Status;
+import com.finderlo.weixzz.model.model.StatusModel;
 import com.finderlo.weixzz.Utility.ImageLoader;
 import com.finderlo.weixzz.Widgt.RoundImageView;
 
@@ -16,7 +16,7 @@ import com.finderlo.weixzz.Widgt.RoundImageView;
  */
 public class StatusHeadView extends LinearLayout {
 
-    private Status mStatus;
+    private StatusModel mStatusModel;
     private Context mContext;
 
     public StatusHeadView(Context context) {
@@ -32,23 +32,23 @@ public class StatusHeadView extends LinearLayout {
         setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
     }
 
-    public void setStatus(Status status) {
-        mStatus = status;
+    public void setStatusModel(StatusModel statusModel) {
+        mStatusModel = statusModel;
         initView();
     }
 
     private void initView() {
         TextView username = (TextView) findViewById(R.id.statusview_header_username);
-        username.setText(mStatus.user.name);
+        username.setText(mStatusModel.user.name);
 
         TextView isverifed = (TextView) findViewById(R.id.statusview_header_blow_left_textview);
-        isverifed.setText(mStatus.user.verified ? "已认证" : "未认证");
+        isverifed.setText(mStatusModel.user.verified ? "已认证" : "未认证");
 
         TextView verfied_reason = (TextView) findViewById(R.id.statusview_header_blow_right_textview);
-        verfied_reason.setText(mStatus.user.verified_reason);
+        verfied_reason.setText(mStatusModel.user.verified_reason);
 
         RoundImageView user_pic = (RoundImageView) findViewById(R.id.statusview_header_image_user_pic);
-        ImageLoader.load(mContext,mStatus.user.profile_image_url,user_pic);
+        ImageLoader.load(mContext, mStatusModel.user.profile_image_url,user_pic);
 
     }
 

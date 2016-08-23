@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.model.bean.Status;
+import com.finderlo.weixzz.model.model.StatusModel;
 import com.finderlo.weixzz.Utility.Util;
 import com.finderlo.weixzz.Widgt.AutoLinkTextView;
 
@@ -21,7 +21,7 @@ public class StatusViewitem extends LinearLayout{
     public static final int TYPE_RETWEETED_STATUS = 2;
 
     private int mType = 1;
-    private Status mStatus;
+    private StatusModel mStatusModel;
 
 
     public StatusViewitem(Context context) {
@@ -39,26 +39,26 @@ public class StatusViewitem extends LinearLayout{
     private void initView(Context context) {
         if (mType==TYPE_STATUS){
             headView = new StatusHeadView(context);
-            headView.setStatus(mStatus);
+            headView.setStatusModel(mStatusModel);
             addView(headView);
         }
 
-        initStatusContent(context,mStatus.text);
-        initStatusPics(context,mStatus);
+        initStatusContent(context, mStatusModel.text);
+        initStatusPics(context, mStatusModel);
 
-        if (mStatus.retweeted_status!=null){
+        if (mStatusModel.retweeted_status !=null){
             StatusViewitem statusViewitem = new StatusViewitem(context);
-            statusViewitem.setStatus(context,mStatus.retweeted_status,TYPE_RETWEETED_STATUS);
+            statusViewitem.setStatus(context, mStatusModel.retweeted_status,TYPE_RETWEETED_STATUS);
             statusViewitem.setIsRetweetedStatus(true);
             addView(statusViewitem);
         }
 
     }
 
-    private void initStatusPics(Context context, Status status) {
-        if (null == mStatus.pic_urls||mStatus.pic_urls.size()==0)  return;
+    private void initStatusPics(Context context, StatusModel statusModel) {
+        if (null == mStatusModel.pic_urls|| mStatusModel.pic_urls.size()==0)  return;
         ImageViews imageViews = new ImageViews(context);
-        imageViews.setImageSrc(status);
+        imageViews.setImageSrc(statusModel);
         addView(imageViews);
     }
 
@@ -77,13 +77,13 @@ public class StatusViewitem extends LinearLayout{
     }
 
 
-    public void setStatus(Context context,Status status){
-        mStatus = status;
+    public void setStatus(Context context,StatusModel statusModel){
+        mStatusModel = statusModel;
         initView(context);
     }
 
-    public void setStatus(Context context,Status status,int type){
-        mStatus = status;
+    public void setStatus(Context context, StatusModel statusModel, int type){
+        mStatusModel = statusModel;
         if (TYPE_RETWEETED_STATUS == type){
             mType = TYPE_RETWEETED_STATUS;
             setBackground(getResources().getDrawable(R.drawable.backgroundcolor));

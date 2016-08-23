@@ -6,12 +6,8 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
 
-import com.finderlo.weixzz.dao.MentionsDao;
-import com.finderlo.weixzz.dao.StatusDao;
-import com.finderlo.weixzz.dao.UserDao;
-import com.finderlo.weixzz.base.WeiException;
-import com.finderlo.weixzz.model.bean.Status;
-import com.finderlo.weixzz.model.bean.User;
+import com.finderlo.weixzz.model.model.StatusModel;
+import com.finderlo.weixzz.model.model.UserModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,7 +28,7 @@ public class Util {
      * @param
      * @return
      **/
-    public static void sort(ArrayList<Status> data) {
+    public static void sort(ArrayList<StatusModel> data) {
         if (data==null) return;
 
         for (int i = 0; i < data.size() - 1; i++) {
@@ -46,14 +42,14 @@ public class Util {
             }
         }
     }
-    private static void swap(ArrayList<Status> statuses,int a,int b) {
-        Status temp;Status temp1;
+    private static void swap(ArrayList<StatusModel> statuses, int a, int b) {
+        StatusModel temp;StatusModel temp1;
         temp = statuses.get(a);temp1 = statuses.get(b);
         statuses.remove(a);statuses.add(a,temp1);
         statuses.remove(b);statuses.add(b,temp);
     }
-    private static boolean compareTime(Status status, Status t1) {
-        long time1 = Date.parse(status.created_at);
+    private static boolean compareTime(StatusModel statusModel, StatusModel t1) {
+        long time1 = Date.parse(statusModel.created_at);
         long time2 = Date.parse(t1.created_at);
         return time1 > time2;
     }
@@ -137,48 +133,6 @@ public class Util {
     public static int sp2px(Context context, float spValue) {
         final float fontscale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontscale + 0.5f);
-    }
-
-
-    public static final String JSONTYPE_TIMELINE_STATUS = "jsonType_timeline_Status";
-    public static final String JSONTYPE_MENTION_ME_STATUS = "jsontype_mention_me_status";
-
-    /**
-     * 处理返回的微博json数据,将其存储到Status,User表中
-     **/
-    public static ArrayList<Status> handleJSONStringData(String json_type, String data) {
-        JSONArray array;
-
-        ArrayList<Status> list = new ArrayList<Status>();
-
-        try {
-            array = new JSONObject(data).getJSONArray("statuses");
-            for (int i = 0; i < array.length(); i++) {
-                String statusjsonString = array.getString(i);
-                Status status = Status.parse(statusjsonString);
-                String userjsonString = array.getJSONObject(i).getString("user");
-                User user = status.user;
-
-                switch (json_type){
-                    case JSONTYPE_TIMELINE_STATUS:
-                        StatusDao.getInstance().insert(status);
-                        UserDao.getInstance().insert(user);
-                        break;
-                    case JSONTYPE_MENTION_ME_STATUS:
-                        MentionsDao.getInstance().insert(status);
-                        break;
-                }
-                list.add(status);
-            }
-            Log.i(TAG, "handleJSONStringData: complete");
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Log.e(TAG, "onComplete: 转换为json数组失败", e);
-        } catch (WeiException e) {
-            e.printStackTrace();
-        }
-
-        return list;
     }
 
     /**

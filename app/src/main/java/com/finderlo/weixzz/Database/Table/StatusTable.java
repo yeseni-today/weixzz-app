@@ -5,13 +5,16 @@ package com.finderlo.weixzz.database.Table;
  */
 public class StatusTable {
 
-    public static final String TABLE_NAME_STATUS = " Status ";
-    public static final String CREATE_TABLE_SQL = "create table " +TABLE_NAME_STATUS+
-            "( " +
-            "tableId                    integer primary key autoincrement ," +
-            "id                         text ,"     +
-            "mid                        text ,"     +
-            "idstr                      text ,"     +
-            "json                       text "      +
-            ")";
+    public static final String NAME = " home_timeline ";
+
+    public static final String ID = "id";
+    public static final String GROUP_ID = "group_id";
+    public static final String JSON = "json";
+
+    public static final String CREATE = "create table " + NAME
+            + "("
+            + ID + " integer primary key autoincrement,"
+            + GROUP_ID  + " text ,"
+            + JSON + " text"
+            + ");";
 }

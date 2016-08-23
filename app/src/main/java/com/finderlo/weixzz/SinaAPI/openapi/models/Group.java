@@ -16,7 +16,7 @@
 
 package com.finderlo.weixzz.sinaApi.openapi.models;
 
-import com.finderlo.weixzz.model.bean.User;
+import com.finderlo.weixzz.model.model.UserModel;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -53,7 +53,7 @@ public class Group {
     /** 头像信息 **/
     public String profile_image_url;
     /** 分组所属用户信息 **/
-    public User user;
+    public UserModel mUserModel;
     /** 分组创建时间 **/
     public String createAtTime;
 
@@ -63,7 +63,7 @@ public class Group {
         }
 
         Group group = new Group();
-        group.user = User.parse(jsonObject.optJSONObject("user"));
+//        group.mUserModel = UserModel.parse(jsonObject.optJSONObject("mUserModel"));
         group.id                = jsonObject.optString("id");
         group.idStr             = jsonObject.optString("idstr");
         group.name              = jsonObject.optString("name");

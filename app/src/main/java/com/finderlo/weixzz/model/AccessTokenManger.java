@@ -39,7 +39,6 @@ public class AccessTokenManger {
     private static final String TAG = "AccessTokenManger";
 
     private static Oauth2AccessToken sOauth2AccessToken;
-    private static StatusesWrapAPI sStatusesAPI;
     private static Context sContext;
 
 

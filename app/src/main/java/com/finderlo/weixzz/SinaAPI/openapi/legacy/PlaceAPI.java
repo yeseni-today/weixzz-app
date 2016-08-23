@@ -610,7 +610,7 @@ public class PlaceAPI extends AbsOpenAPI {
     private WeiboParameters buildPoiis(String poiid, String status, boolean isPublic) {
         WeiboParameters params = new WeiboParameters(mAppKey);
         params.put("poiid", poiid);
-        params.put("status", status);
+        params.put("mStatusModel", status);
         params.put("public", isPublic ? 1 : 0);
         return params;
     }

@@ -15,19 +15,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.finderlo.weixzz.dao.MentionsDao;
-import com.finderlo.weixzz.dao.StatusDao;
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.base.BaseActivity;
-import com.finderlo.weixzz.model.bean.Status;
-import com.finderlo.weixzz.ui.comment.CommentFragment;
+import com.finderlo.weixzz.dao.HttpClientUtils;
+import com.finderlo.weixzz.model.AccessTokenManger;
+import com.finderlo.weixzz.ui.timeline.CommentTimelineFragment;
+import com.finderlo.weixzz.ui.timeline.HomeTimelineFragment;
+import com.finderlo.weixzz.ui.timeline.MentionsTimelineFragment;
+import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 
 import java.util.ArrayList;
 
 public class MainViewActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final String TAG = "MainViewActivity";
 
     Fragment mContainerFragment;
 
@@ -45,31 +46,38 @@ public class MainViewActivity extends BaseActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                        this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
 
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.Container_ViewPager);
         viewPager.setAdapter(new ViewAdapter(getFragmentManager()));
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             int currentPosition = 0;
+
             @Override
             public void onPageSelected(int position) {
-                switch (position){
+                switch (position) {
                     case 0:
-                        if (currentPosition==1){
+                        if (currentPosition == 1) {
                             hideAnimator(itemMentionMe);
                         }
                         showAnimator(itemHome);
                         break;
                     case 1:
-                        if (currentPosition==0){
+                        if (currentPosition == 0) {
                             hideAnimator(itemHome);
+                        }else if (currentPosition == 2){
+                            hideAnimator(itemComment);
                         }
                         showAnimator(itemMentionMe);
                         break;
+                    case 2:
+                        if (currentPosition == 1){
+                            hideAnimator(itemComment);
+                        }
+                        showAnimator(itemMentionMe);
                 }
                 currentPosition = position;
             }
@@ -85,27 +93,31 @@ public class MainViewActivity extends BaseActivity
             }
         });
 
-//        MenuItem itemHome = (MenuItem) findViewById(R.id.action_home);
-//        ObjectAnimator animator = ObjectAnimator.ofFloat(itemHome,"alpha",0.3f,1f);
 
-         itemHome = (ImageView) findViewById(R.id.action_home);
-         itemMentionMe = (ImageView) findViewById(R.id.action_mention_me);
+        itemHome = (ImageView) findViewById(R.id.action_home);
+        itemMentionMe = (ImageView) findViewById(R.id.action_mention_me);
+        itemComment = (ImageView) findViewById(R.id.action_message);
         itemHome.setAlpha(0.3f);
         itemMentionMe.setAlpha(0.3f);
+
+        Oauth2AccessToken token = AccessTokenManger.readAccessToken(this);
+        HttpClientUtils.setAccessToken(token.getToken());
 
 
     }
 
     ImageView itemHome;
     ImageView itemMentionMe;
+    ImageView itemComment;
 
-    private void showAnimator(View view){
-        ObjectAnimator animator = ObjectAnimator.ofFloat(view,"alpha",0.3f,1f);
+    private void showAnimator(View view) {
+        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "alpha", 0.3f, 1f);
         animator.setDuration(1000);
         animator.start();
     }
-    private void hideAnimator(View view){
-        ObjectAnimator animator = ObjectAnimator.ofFloat(view,"alpha",1f,0.3f);
+
+    private void hideAnimator(View view) {
+        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "alpha", 1f, 0.3f);
         animator.setDuration(1000);
         animator.start();
     }
@@ -114,12 +126,11 @@ public class MainViewActivity extends BaseActivity
 
         ArrayList<Fragment> mFragmentArrayList = new ArrayList<Fragment>();
 
-        @SuppressWarnings("unchecked")
         ViewAdapter(FragmentManager fm) {
             super(fm);
-            mFragmentArrayList.add(MainViewFragment.newInstance((ArrayList<Status>) StatusDao.getInstance().query(25)));
-            mFragmentArrayList.add(MainViewFragment.newInstance((ArrayList<Status>) MentionsDao.getInstance().query(25)));
-            mFragmentArrayList.add(CommentFragment.newInstance());
+            mFragmentArrayList.add(HomeTimelineFragment.newInstance(""));
+            mFragmentArrayList.add(MentionsTimelineFragment.newInstance());
+            mFragmentArrayList.add(CommentTimelineFragment.newInstance(""));
         }
 
 
@@ -135,9 +146,8 @@ public class MainViewActivity extends BaseActivity
     }
 
 
-
     /**
-     *用户按下返回键的逻辑
+     * 用户按下返回键的逻辑
      **/
     @Override
     public void onBackPressed() {
@@ -178,7 +188,7 @@ public class MainViewActivity extends BaseActivity
 //    }
 
     /**
-     *侧边栏上的按钮被按下
+     * 侧边栏上的按钮被按下
      **/
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -188,9 +198,6 @@ public class MainViewActivity extends BaseActivity
 
         return true;
     }
-
-
-
 
 
 }

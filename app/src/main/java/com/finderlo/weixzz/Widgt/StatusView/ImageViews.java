@@ -10,7 +10,7 @@ import android.widget.GridLayout;
 import android.widget.ImageView;
 
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.model.bean.Status;
+import com.finderlo.weixzz.model.model.StatusModel;
 import com.finderlo.weixzz.ui.Login.LoadDataActivity;
 import com.finderlo.weixzz.Utility.ImageLoader;
 import com.finderlo.weixzz.Utility.Util;
@@ -26,7 +26,7 @@ public class ImageViews extends GridLayout {
 
     private int mImageCount = 0;
     Context mContext;
-    private Status mStatus;
+    private StatusModel mStatusModel;
 
     public ImageViews(Context context) {
         super(context);
@@ -48,15 +48,15 @@ public class ImageViews extends GridLayout {
 
     CardImage[] images;
 
-    public void setImageSrc(Status status) {
-        ArrayList<String> list = status.pic_urls;
+    public void setImageSrc(StatusModel statusModel) {
+        ArrayList<StatusModel.PictureUrl> list = statusModel.pic_urls;
         if (null == list || list.size() == 0) return;
 
         mImageCount = list.size();
         images = new CardImage[mImageCount];
         for (int i = 0; i < mImageCount; i++) {
             images[i] = new CardImage(mContext);
-            images[i].setBitmapUrl(mContext, list.get(i));
+            images[i].setBitmapUrl(mContext, list.get(i).getMedium());
             addView(images[i]);
         }
         invalidate();

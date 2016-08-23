@@ -586,7 +586,7 @@ public class StatusesAPI extends AbsOpenAPI {
     public void repost(long id, String status, int commentType, RequestListener listener) {
         WeiboParameters params = new WeiboParameters(mAppKey);
         params.put("id", id);
-        params.put("status", status);
+        params.put("mStatusModel", status);
         params.put("is_comment", commentType);
         requestAsync(SERVER_URL_PRIX + "/repost.json", params, HTTPMETHOD_POST, listener);
     }
@@ -704,7 +704,7 @@ public class StatusesAPI extends AbsOpenAPI {
     // 组装微博请求参数
     private WeiboParameters buildUpdateParams(String content, String lat, String lon) {
         WeiboParameters params = new WeiboParameters(mAppKey);
-        params.put("status", content);
+        params.put("mStatusModel", content);
         if (!TextUtils.isEmpty(lon)) {
             params.put("long", lon);
         }

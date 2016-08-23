@@ -26,7 +26,6 @@ import java.text.SimpleDateFormat;
  */
 public class LoginActivity extends BaseActivity {
 
-    private static  final  String TAG = "LoginActivity";
 
     private LoginButton mLoginButton;
 

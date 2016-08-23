@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.adapter.comment;
+package com.finderlo.weixzz.adapter.homeTimeline;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,62 +11,58 @@ import android.widget.TextView;
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.Utility.ImageLoader;
 import com.finderlo.weixzz.Utility.TimeLineUtil;
-import com.finderlo.weixzz.Widgt.AutoLinkTextView;
 import com.finderlo.weixzz.Widgt.RoundImageView;
-import com.finderlo.weixzz.Widgt.StatusView.ImageViews;
-import com.finderlo.weixzz.model.bean.Comment;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.finderlo.weixzz.model.model.CommentListModel;
+import com.finderlo.weixzz.model.model.CommentModel;
 
 /**
  * Created by Finderlo on 2016/8/19.
  */
 
-public class CommentViewAdapter extends RecyclerView.Adapter<CommentViewAdapter.ViewHolder> {
+public class HomeCommentAdapter extends BaseHomeAdapter<CommentListModel> {
 
-    private ArrayList<Comment> mComments ;
-    private Context mContext;
-    private LayoutInflater mLayoutInflater;
 
-    public CommentViewAdapter(Context context,ArrayList<Comment> comments) {
-        mContext = context;
-        mComments = comments;
+    public HomeCommentAdapter(Context context, CommentListModel comments) {
+        super(context,comments);
+        mListModel = comments;
     }
 
     @Override
-    public CommentViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         mLayoutInflater = LayoutInflater.from(parent.getContext());
         View view = mLayoutInflater.inflate(R.layout.comment_recycler_item,null);
         return new ViewHolder(view);
     }
 
+
+
     @Override
-    public void onBindViewHolder(CommentViewAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+        ViewHolder holder = (ViewHolder) viewHolder;
 
-        Comment comment = mComments.get(position);
+        CommentModel commentModel = mListModel.get(position);
 
-        holder.mUsername.setText(comment.user.screen_name);
-        holder.mLeftText.setText(TimeLineUtil.getInstance().parse4Timeline(comment.created_at));
-        holder.mRightText.setText(comment.source);
-        ImageLoader.load(mContext,comment.user.profile_image_url,holder.mUserPic);
+        holder.mUsername.setText(commentModel.user.screen_name);
+        holder.mLeftText.setText(TimeLineUtil.getInstance().parse4Timeline(commentModel.created_at));
+        holder.mRightText.setText(commentModel.source);
+        ImageLoader.load(mContext, commentModel.user.profile_image_url,holder.mUserPic);
 
-        holder.mCommentContent.setText(comment.text);
+        holder.mCommentContent.setText(commentModel.text);
 
-        if (comment.reply_comment!=null){
-            ImageLoader.load(mContext,comment.reply_comment.user.profile_image_url,holder.mImageView);
-            holder.mStatusUserName.setText("回复 "+comment.reply_comment.user.screen_name);
-            holder.mStatusContent.setText(comment.reply_comment.text);
+        if (commentModel.reply_comment !=null){
+            ImageLoader.load(mContext, commentModel.reply_comment.user.profile_image_url,holder.mImageView);
+            holder.mStatusUserName.setText("回复 "+ commentModel.reply_comment.user.screen_name);
+            holder.mStatusContent.setText(commentModel.reply_comment.text);
         }else {
 
-            if ("".equals(comment.status.original_pic)){
-                ImageLoader.load(mContext,comment.status.user.profile_image_url,holder.mImageView);
+            if ("".equals(commentModel.status.original_pic)){
+                ImageLoader.load(mContext, commentModel.status.user.profile_image_url,holder.mImageView);
             }else {
-                ImageLoader.load(mContext,comment.status.original_pic,holder.mImageView);
+                ImageLoader.load(mContext, commentModel.status.original_pic,holder.mImageView);
             }
 
-            holder.mStatusUserName.setText("评论 "+comment.status.user.screen_name);
-            holder.mStatusContent.setText(comment.status.text);
+            holder.mStatusUserName.setText("评论 "+ commentModel.status.user.screen_name);
+            holder.mStatusContent.setText(commentModel.status.text);
 
         }
 
@@ -74,7 +70,7 @@ public class CommentViewAdapter extends RecyclerView.Adapter<CommentViewAdapter.
 
     @Override
     public int getItemCount() {
-        return mComments.size();
+        return mListModel.getSize();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

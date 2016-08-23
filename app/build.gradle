@@ -35,7 +35,6 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    //    compile(name: 'com.android.support:appcompat-v7:24.1.1', ext: 'aar')
     compile 'com.android.support:appcompat-v7:24.1.1'
     compile 'com.android.support:design:24.1.1'
     compile 'com.jakewharton:butterknife:8.1.0'

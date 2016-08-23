@@ -30,10 +30,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(UserTable.CREATE_TABLE_SQL);
-        sqLiteDatabase.execSQL(StatusTable.CREATE_TABLE_SQL);
-        sqLiteDatabase.execSQL(MentionsTable.CREATE_TABLE_SQL);
-        sqLiteDatabase.execSQL(CommentTable.CREATE_TABLE_SQL);
+        sqLiteDatabase.execSQL(StatusTable.CREATE);
+        sqLiteDatabase.execSQL(CommentTable.CREATE);
+        sqLiteDatabase.execSQL(MentionsTable.CREATE);
+
         Log.d(TAG, "onCreate: 表创建成功");
     }
 
@@ -49,12 +49,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return sDatabaseHelper;
     }
 
-    public static synchronized DatabaseHelper getInstance(){
-        if (sDatabaseHelper==null){
-            sContext = WeiXzzApplication.getContext();
-            sDatabaseHelper=new DatabaseHelper(sContext,DB_NAME,null,DB_VERSION);
-        }
-        return sDatabaseHelper;
-    }
 
 }

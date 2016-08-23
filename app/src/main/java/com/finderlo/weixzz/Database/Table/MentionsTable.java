@@ -5,15 +5,13 @@ package com.finderlo.weixzz.database.Table;
  */
 public class MentionsTable {
 
-    public static final String TABLE_NAME_MENTIONS = " Mentions ";
-    public static final String CREATE_TABLE_SQL = "create table " + TABLE_NAME_MENTIONS +
-            "( " +
-            "tableId                    integer primary key autoincrement ," +
-            "user_id                    text ,"     +
-            "user_idstr                    text ,"     +
-            "id                         text ,"     +
-            "mid                        text ,"     +
-            "idstr                      text ,"     +
-            "json                       text "      +
-            ")";
+    public static final String NAME = " mention_timeline ";
+    public static final String ID = "id";
+    public static final String JSON = "json";
+
+    public static final String CREATE = "create table " + NAME
+            + "("
+            + ID + " integer primary key autoincrement,"
+            + JSON + " text"
+            + ");";
 }
