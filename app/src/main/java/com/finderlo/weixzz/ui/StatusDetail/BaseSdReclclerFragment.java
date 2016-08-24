@@ -1,11 +1,9 @@
-package com.finderlo.weixzz.ui.timeline;
+package com.finderlo.weixzz.ui.StatusDetail;
 
-import android.graphics.Canvas;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,55 +11,55 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.finderlo.weixzz.Widgt.RecyclerViewDivider;
-import com.finderlo.weixzz.adapter.homeTimeline.BaseHomeAdapter;
 import com.finderlo.weixzz.R;
+import com.finderlo.weixzz.adapter.statusDetail.CommentSdAdapter;
 import com.finderlo.weixzz.base.BaseFragment;
-import com.finderlo.weixzz.dao.timeline.BaseTimelineDao;
+import com.finderlo.weixzz.dao.statusdetail.BaseStatusDetailDao;
+import com.finderlo.weixzz.dao.statusdetail.CommentSdDao;
+import com.finderlo.weixzz.model.model.CommentListModel;
 
 /**
- * Created by Finderlo on 2016/8/19.
- * 这是一个抽象类，这个fragment用于展示一个recyclerView
+ * Created by Finderlo on 2016/8/24.
  */
 
-public abstract class BaseHomeTimelineFragment extends BaseFragment
-        implements SwipeRefreshLayout.OnRefreshListener {
+public abstract class BaseSdReclclerFragment extends BaseFragment{
 
+    protected static final String ARG_STATUS_ID = "arg_status_id";
+    long mStatusId;
 
-    protected BaseHomeAdapter mAdapter;
-    protected BaseTimelineDao mDao;
+    RecyclerView.Adapter mAdapter;
 
-
-    protected RecyclerView mRecyclerView;
-    protected SwipeRefreshLayout mSwipeRefresh;
-
+    BaseStatusDetailDao mDao;
     private boolean mRefreshing = false;
 
+
+    public BaseSdReclclerFragment() {
+        super();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments()!=null){
+            mStatusId = getArguments().getLong(ARG_STATUS_ID);
+        }
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.abs_timeline_status_recycler, container, false);
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.abs_timeline_fragment_content_recyclerView);
+        View view = inflater.inflate(R.layout.testlayout,container,false);
 
-        mDao = bindDao();
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        mDao = bindDAO();
         mDao.loadFromCache();
-
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        mRecyclerView.addItemDecoration(new RecyclerViewDivider(getActivity(),LinearLayoutManager.HORIZONTAL));
-
         mAdapter = bindAdapter();
-        mRecyclerView.setAdapter(mAdapter);
 
-        mSwipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
-        mSwipeRefresh.setOnRefreshListener(this);
+        recyclerView.setAdapter(mAdapter);
 
         if (isFirstCreate){
 //            onRefresh();
@@ -76,22 +74,21 @@ public abstract class BaseHomeTimelineFragment extends BaseFragment
         return view;
     }
 
-    protected abstract BaseHomeAdapter bindAdapter();
+    protected abstract RecyclerView.Adapter bindAdapter() ;
 
-    protected abstract BaseTimelineDao bindDao();
+    protected abstract BaseStatusDetailDao bindDAO();
 
 
     public  void onRefresh(){
         if (!mRefreshing){
-            if (mSwipeRefresh!=null){
-                mSwipeRefresh.setRefreshing(true);
-            }
+//            if (mSwipeRefresh!=null){
+//                mSwipeRefresh.setRefreshing(true);
+//            }
             new Refresher().execute(true);
         }
     }
 
-
-    private class Refresher extends AsyncTask<Boolean,Void ,Boolean>{
+    private class Refresher extends AsyncTask<Boolean,Void ,Boolean> {
 
         @Override
         protected void onPreExecute() {
@@ -101,18 +98,21 @@ public abstract class BaseHomeTimelineFragment extends BaseFragment
 
         @Override
         protected Boolean doInBackground(Boolean... booleen) {
+            Log.d(TAG, "doInBackground: 正在刷新");
             load(booleen[0]);
             return booleen[0];
         }
 
         @Override
         protected void onPostExecute(Boolean aBoolean) {
+            Log.d(TAG, "onPostExecute: 刷新成功");
             super.onPostExecute(aBoolean);
+            Log.d(TAG, "onPostExecute: "+mDao.getList().getSize());
             mAdapter.notifyDataSetChanged();
             mRefreshing = false;
-            if (mSwipeRefresh!=null){
-                mSwipeRefresh.setRefreshing(false);
-            }
+//            if (mSwipeRefresh!=null){
+//                mSwipeRefresh.setRefreshing(false);
+//            }
         }
     }
 
@@ -121,5 +121,4 @@ public abstract class BaseHomeTimelineFragment extends BaseFragment
         mDao.load(param);
         mDao.cache();
     }
-
 }

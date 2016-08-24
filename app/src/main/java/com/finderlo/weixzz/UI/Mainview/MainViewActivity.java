@@ -97,8 +97,8 @@ public class MainViewActivity extends BaseActivity
         itemHome = (ImageView) findViewById(R.id.action_home);
         itemMentionMe = (ImageView) findViewById(R.id.action_mention_me);
         itemComment = (ImageView) findViewById(R.id.action_message);
-        itemHome.setAlpha(0.3f);
         itemMentionMe.setAlpha(0.3f);
+        itemComment.setAlpha(0.3f);
 
         Oauth2AccessToken token = AccessTokenManger.readAccessToken(this);
         HttpClientUtils.setAccessToken(token.getToken());

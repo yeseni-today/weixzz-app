@@ -4,14 +4,13 @@ package com.finderlo.weixzz.dao.timeline;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.media.audiofx.Equalizer;
 import android.util.Log;
 
 import com.finderlo.weixzz.Constants;
 import com.finderlo.weixzz.dao.HttpClientUtils;
 import com.finderlo.weixzz.dao.UrlConstants;
 import com.finderlo.weixzz.dao.WeiboParameters;
-import com.finderlo.weixzz.database.Table.CommentTable;
+import com.finderlo.weixzz.database.Table.CommentTimelineTable;
 import com.finderlo.weixzz.model.model.CommentListModel;
 import com.google.gson.Gson;
 
@@ -21,7 +20,7 @@ import static com.finderlo.weixzz.BuildConfig.DEBUG;
  * Created by Finderlo on 2016/8/19.
  */
 
-public class CommentDao extends BaseTimelineDao<CommentListModel> {
+public class CommentTlDao extends BaseTimelineDao<CommentListModel> {
 
     public static final String TYPE_COMMENT_BY_ME = " commentByMe ";
     public static final String TYPE_COMMENT_TO_ME = " commentToMe ";
@@ -29,7 +28,7 @@ public class CommentDao extends BaseTimelineDao<CommentListModel> {
 
     public String mType = TYPE_COMMENT_ALL;
 
-    public CommentDao(Context context, String commentType) {
+    public CommentTlDao(Context context, String commentType) {
         super(context);
 
         if (TYPE_COMMENT_BY_ME.equals(commentType)){
@@ -43,11 +42,11 @@ public class CommentDao extends BaseTimelineDao<CommentListModel> {
     @Override
     public void cache() {
         mDatabase.beginTransaction();
-        mDatabase.delete(CommentTable.NAME, CommentTable.TYPE + " = ? ", new String[]{mType});
+        mDatabase.delete(CommentTimelineTable.NAME, CommentTimelineTable.TYPE + " = ? ", new String[]{mType});
         ContentValues values = new ContentValues();
-        values.put(CommentTable.TYPE, mType);
-        values.put(CommentTable.JSON, new Gson().toJson(mListModel));
-        mDatabase.insert(CommentTable.NAME, null, values);
+        values.put(CommentTimelineTable.TYPE, mType);
+        values.put(CommentTimelineTable.JSON, new Gson().toJson(mListModel));
+        mDatabase.insert(CommentTimelineTable.NAME, null, values);
         mDatabase.setTransactionSuccessful();
         mDatabase.endTransaction();
     }
@@ -124,7 +123,7 @@ public class CommentDao extends BaseTimelineDao<CommentListModel> {
     @Override
     public Cursor query() {
         return mDatabase.rawQuery(
-                "select * from " + CommentTable.NAME + " where " + CommentTable.TYPE + " = '" + mType + "' ",
+                "select * from " + CommentTimelineTable.NAME + " where " + CommentTimelineTable.TYPE + " = '" + mType + "' ",
                 null);
     }
 

@@ -40,7 +40,7 @@ public class HomeStatusAdapter extends BaseHomeAdapter<StatusListModel> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.statusview, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.statusview,null,true);
         return new StatusViewHolder(view);
     }
 

@@ -5,11 +5,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.finderlo.weixzz.database.Table.CommentTable;
+import com.finderlo.weixzz.database.Table.CommentStatusDetailTable;
+import com.finderlo.weixzz.database.Table.CommentTimelineTable;
 import com.finderlo.weixzz.database.Table.MentionsTable;
+import com.finderlo.weixzz.database.Table.RepostStatusTable;
 import com.finderlo.weixzz.database.Table.StatusTable;
-import com.finderlo.weixzz.database.Table.UserTable;
-import com.finderlo.weixzz.base.WeiXzzApplication;
 
 /**
  * Created by Finderlo on 2016/8/1 0001.
@@ -31,8 +31,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(StatusTable.CREATE);
-        sqLiteDatabase.execSQL(CommentTable.CREATE);
+        sqLiteDatabase.execSQL(CommentTimelineTable.CREATE);
         sqLiteDatabase.execSQL(MentionsTable.CREATE);
+
+        sqLiteDatabase.execSQL(CommentStatusDetailTable.CREATE);
+        sqLiteDatabase.execSQL(RepostStatusTable.CREATE);
 
         Log.d(TAG, "onCreate: 表创建成功");
     }

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.finderlo.weixzz.adapter.homeTimeline.BaseHomeAdapter;
 import com.finderlo.weixzz.adapter.homeTimeline.HomeCommentAdapter;
 import com.finderlo.weixzz.dao.timeline.BaseTimelineDao;
-import com.finderlo.weixzz.dao.timeline.CommentDao;
+import com.finderlo.weixzz.dao.timeline.CommentTlDao;
 import com.finderlo.weixzz.model.model.CommentListModel;
 
 
@@ -44,7 +44,7 @@ public class CommentTimelineFragment extends BaseHomeTimelineFragment {
 
     @Override
     protected BaseTimelineDao bindDao() {
-        return new CommentDao(getActivity(),mType);
+        return new CommentTlDao(getActivity(),mType);
     }
 }
 

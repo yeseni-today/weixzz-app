@@ -38,7 +38,7 @@
         </activity>
 
         <!--这些是测试用的activity-->
-        <activity android:name=".ui.others.MainViewAcivity"/>
+        <activity android:name=".ui.Login.WebLoginActivity"/>
         <activity android:name=".ui.TestActivity"/>
         <!--微博sdk中的web视图-->
         <activity android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"/>

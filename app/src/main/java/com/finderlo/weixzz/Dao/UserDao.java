@@ -66,7 +66,7 @@
 //        return TABLE_NAME;
 //    }
 //
-//    public static UserDao getInstance() {
+//    public static UserDao newInstance() {
 //        if (sUserDao == null) {
 //            sUserDao = new UserDao();
 //        }

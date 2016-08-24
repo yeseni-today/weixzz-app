@@ -15,6 +15,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Finderlo on 2016/8/3.
@@ -28,6 +29,10 @@ public class Util {
      * @param
      * @return
      **/
+    public static int expireTimeInDays(long time) {
+        return (int) TimeUnit.MILLISECONDS.toDays(time - System.currentTimeMillis());
+    }
+
     public static void sort(ArrayList<StatusModel> data) {
         if (data==null) return;
 

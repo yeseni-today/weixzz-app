@@ -31,7 +31,7 @@ public class LoadDataActivity extends BaseActivity {
             finish();
         }else {
             // TODO: 2016/8/5  token isn't exist ,need login
-            Intent intent = new Intent(LoadDataActivity.this,LoginActivity.class);
+            Intent intent = new Intent(LoadDataActivity.this,WebLoginActivity.class);
             startActivity(intent);
 
             finish();
