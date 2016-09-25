@@ -3,10 +3,10 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         debug {
-            storeFile file('D:/文档/WeiXzzdebugKeystore.jks')
-            keyAlias 'debugKeystore'
-            keyPassword '123456'
-            storePassword '123456'
+//            storeFile file('D:/文档/WeiXzzdebugKeystore.jks')
+//            keyAlias 'debugKeystore'
+//            keyPassword '123456'
+//            storePassword '123456'
         }
     }
 
@@ -43,4 +43,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:24.1.1'
     compile project(path: ':photoview')
     compile 'com.android.support:support-v13:24.1.1'
+    compile project(':HeaderAndFooterRecyclerView')
 }

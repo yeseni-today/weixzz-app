@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.Widgt.StatusView;
+package com.finderlo.weixzz.widgt.StatusView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +14,7 @@ import com.finderlo.weixzz.model.model.StatusModel;
 import com.finderlo.weixzz.ui.Login.LoadDataActivity;
 import com.finderlo.weixzz.Utility.ImageLoader;
 import com.finderlo.weixzz.Utility.Util;
-import com.finderlo.weixzz.Widgt.BaseImageView;
+import com.finderlo.weixzz.widgt.BaseImageView;
 
 import java.util.ArrayList;
 

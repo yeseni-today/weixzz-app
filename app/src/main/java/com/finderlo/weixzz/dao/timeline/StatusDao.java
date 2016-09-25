@@ -11,6 +11,7 @@ import com.finderlo.weixzz.dao.UrlConstants;
 import com.finderlo.weixzz.dao.WeiboParameters;
 import com.finderlo.weixzz.database.Table.StatusTable;
 import com.finderlo.weixzz.model.model.StatusListModel;
+import com.finderlo.weixzz.model.model.StatusModel;
 import com.google.gson.Gson;
 
 import static com.finderlo.weixzz.BuildConfig.DEBUG;
@@ -66,6 +67,14 @@ public class StatusDao extends BaseTimelineDao<StatusListModel> {
     }
 
     @Override
+    public void loadMore() {
+        int size = mListModel.getSize();
+        StatusModel statusModel = mListModel.get(size - 1);
+        StatusListModel modelList = getHomeTimeLine(statusModel.id,Constants.HOME_TIMELINE_PAGE_SIZE,1);
+        mListModel.addAll(false,modelList);
+    }
+
+    @Override
     public Cursor query() {
         return mDatabase.rawQuery("select * from " + StatusTable.NAME
                 + " where "
@@ -80,10 +89,14 @@ public class StatusDao extends BaseTimelineDao<StatusListModel> {
 
 
     public static StatusListModel getHomeTimeLine(int count, int page) {
+        return getHomeTimeLine(0, count, page);
+    }
 
+    public static StatusListModel getHomeTimeLine(long maxId, int count, int page) {
         WeiboParameters params = new WeiboParameters();
         params.put("count", count);
         params.put("page", page);
+        params.put("max_id", maxId);
 
         try {
             String json = HttpClientUtils.doGetRequstWithAceesToken(UrlConstants.HOME_TIMELINE, params);

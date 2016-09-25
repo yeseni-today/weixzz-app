@@ -3,7 +3,7 @@ package com.finderlo.weixzz.Utility;
 import android.content.Context;
 import android.widget.ImageView;
 
-import com.finderlo.weixzz.Widgt.BaseImageView;
+import com.finderlo.weixzz.widgt.BaseImageView;
 import com.squareup.picasso.Picasso;
 
 /**

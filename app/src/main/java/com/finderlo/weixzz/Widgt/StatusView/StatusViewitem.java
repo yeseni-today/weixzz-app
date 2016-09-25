@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.Widgt.StatusView;
+package com.finderlo.weixzz.widgt.StatusView;
 
 import android.content.Context;
 import android.text.util.Linkify;
@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.model.model.StatusModel;
 import com.finderlo.weixzz.Utility.Util;
-import com.finderlo.weixzz.Widgt.AutoLinkTextView;
+import com.finderlo.weixzz.widgt.AutoLinkTextView;
 
 /**
  * Created by Finderlo on 2016/8/8.

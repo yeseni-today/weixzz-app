@@ -1,6 +1,5 @@
 package com.finderlo.weixzz.ui.timeline;
 
-import android.graphics.Canvas;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,11 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.finderlo.weixzz.Widgt.RecyclerViewDivider;
+import com.cundong.recyclerview.EndlessRecyclerOnScrollListener;
+import com.cundong.recyclerview.HeaderAndFooterRecyclerViewAdapter;
+import com.finderlo.weixzz.dao.timeline.BaseTimelineDao;
+import com.finderlo.weixzz.widgt.EndlessOnScrollListener;
+import com.finderlo.weixzz.widgt.RecyclerViewDivider;
 import com.finderlo.weixzz.adapter.homeTimeline.BaseHomeAdapter;
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.base.BaseFragment;
-import com.finderlo.weixzz.dao.timeline.BaseTimelineDao;
 
 /**
  * Created by Finderlo on 2016/8/19.
@@ -29,7 +31,7 @@ public abstract class BaseHomeTimelineFragment extends BaseFragment
 
 
     protected BaseHomeAdapter mAdapter;
-    protected BaseTimelineDao mDao;
+    protected com.finderlo.weixzz.dao.timeline.BaseTimelineDao mDao;
 
 
     protected RecyclerView mRecyclerView;
@@ -58,10 +60,15 @@ public abstract class BaseHomeTimelineFragment extends BaseFragment
         mRecyclerView.addItemDecoration(new RecyclerViewDivider(getActivity(),LinearLayoutManager.HORIZONTAL));
 
         mAdapter = bindAdapter();
-        mRecyclerView.setAdapter(mAdapter);
+
+        HeaderAndFooterRecyclerViewAdapter headerAndFooterRecyclerViewAdapter = new HeaderAndFooterRecyclerViewAdapter(mAdapter);
+        headerAndFooterRecyclerViewAdapter.addFooterView(inflater.inflate(R.layout.foot_layout,null));
+        mRecyclerView.setAdapter(headerAndFooterRecyclerViewAdapter);
+        mRecyclerView.addOnScrollListener(mOnScrollListener);
 
         mSwipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
         mSwipeRefresh.setOnRefreshListener(this);
+
 
         if (isFirstCreate){
 //            onRefresh();
@@ -74,6 +81,24 @@ public abstract class BaseHomeTimelineFragment extends BaseFragment
         }
 
         return view;
+    }
+
+    private EndlessRecyclerOnScrollListener mOnScrollListener = new EndlessRecyclerOnScrollListener() {
+
+        @Override
+        public void onLoadNextPage(View view) {
+            super.onLoadNextPage(view);
+            onLoadMore(0);
+        }
+    };
+
+    protected  void onLoadMore(int currentPage){
+        if (!mRefreshing){
+            if (mSwipeRefresh!=null){
+                mSwipeRefresh.setRefreshing(true);
+            }
+            new Refresher().execute(false);
+        }
     }
 
     protected abstract BaseHomeAdapter bindAdapter();
@@ -101,7 +126,11 @@ public abstract class BaseHomeTimelineFragment extends BaseFragment
 
         @Override
         protected Boolean doInBackground(Boolean... booleen) {
-            load(booleen[0]);
+            if (booleen[0]){
+                load(booleen[0]);
+            }else {
+                mDao.loadMore();
+            }
             return booleen[0];
         }
 

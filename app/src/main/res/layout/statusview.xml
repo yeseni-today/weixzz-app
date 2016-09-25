@@ -15,7 +15,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"/>
 
-    <com.finderlo.weixzz.Widgt.AutoLinkTextView
+    <com.finderlo.weixzz.widgt.AutoLinkTextView
         android:id="@+id/statusview_status_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
         android:text="微博测试内容"
         android:textSize="16sp"/>
 
-    <com.finderlo.weixzz.Widgt.StatusView.ImageViews
+    <com.finderlo.weixzz.widgt.StatusView.ImageViews
         android:id="@+id/statusview_imageviews_gridlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
         android:background="#3c615050"
         android:orientation="vertical">
 
-        <com.finderlo.weixzz.Widgt.AutoLinkTextView
+        <com.finderlo.weixzz.widgt.AutoLinkTextView
             android:id="@+id/statusview_retweeted_status_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
             android:textSize="16sp"
             android:visibility="gone"/>
 
-        <com.finderlo.weixzz.Widgt.StatusView.ImageViews
+        <com.finderlo.weixzz.widgt.StatusView.ImageViews
             android:id="@+id/statusview_retweeted_imageviews_gridlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.Widgt.StatusView;
+package com.finderlo.weixzz.widgt.StatusView;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.model.model.StatusModel;
 import com.finderlo.weixzz.Utility.ImageLoader;
-import com.finderlo.weixzz.Widgt.RoundImageView;
+import com.finderlo.weixzz.widgt.RoundImageView;
 
 /**
  * Created by Finderlo on 2016/8/8.

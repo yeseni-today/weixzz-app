@@ -47,6 +47,11 @@ public class MentionsDao extends BaseTimelineDao<StatusListModel> {
         return listModel;
     }
 
+    @Override
+    public void loadMore() {
+
+    }
+
     private StatusListModel getMentionsTimeline(int count, int page) {
         WeiboParameters param = new WeiboParameters();
         param.put("count",count);

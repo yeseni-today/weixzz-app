@@ -66,6 +66,11 @@ public class CommentTlDao extends BaseTimelineDao<CommentListModel> {
         return listModel;
     }
 
+    @Override
+    public void loadMore() {
+
+    }
+
     private CommentListModel getCommentToMeTimeLine(int count, int page) {
         WeiboParameters param = new WeiboParameters();
         param.put("count", count);

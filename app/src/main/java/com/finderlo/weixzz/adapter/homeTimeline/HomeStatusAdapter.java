@@ -12,9 +12,9 @@ import com.finderlo.weixzz.model.model.StatusListModel;
 import com.finderlo.weixzz.model.model.StatusModel;
 import com.finderlo.weixzz.Utility.ImageLoader;
 import com.finderlo.weixzz.Utility.TimeLineUtil;
-import com.finderlo.weixzz.Widgt.AutoLinkTextView;
-import com.finderlo.weixzz.Widgt.RoundImageView;
-import com.finderlo.weixzz.Widgt.StatusView.ImageViews;
+import com.finderlo.weixzz.widgt.AutoLinkTextView;
+import com.finderlo.weixzz.widgt.RoundImageView;
+import com.finderlo.weixzz.widgt.StatusView.ImageViews;
 
 import java.util.List;
 

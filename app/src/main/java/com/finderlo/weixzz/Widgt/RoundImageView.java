@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.Widgt;
+package com.finderlo.weixzz.widgt;
 
 /**
  * Created by Finderlo on 2016/8/3.
@@ -37,8 +37,6 @@ import
         android.graphics.drawable.NinePatchDrawable;
 
 import android.util.AttributeSet;
-
-import android.widget.ImageView;
 
 import com.finderlo.weixzz.R;
 

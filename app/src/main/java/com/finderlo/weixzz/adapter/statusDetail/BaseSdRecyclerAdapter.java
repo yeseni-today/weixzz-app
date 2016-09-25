@@ -8,12 +8,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.Utility.ImageLoader;
-import com.finderlo.weixzz.Widgt.AutoLinkTextView;
-import com.finderlo.weixzz.Widgt.RoundImageView;
+import com.finderlo.weixzz.widgt.AutoLinkTextView;
+import com.finderlo.weixzz.widgt.RoundImageView;
 import com.finderlo.weixzz.model.model.BaseListModel;
-import com.finderlo.weixzz.model.model.CommentListModel;
-import com.finderlo.weixzz.model.model.CommentModel;
 
 /**
  * Created by Finderlo on 2016/8/24.

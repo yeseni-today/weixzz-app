@@ -6,7 +6,7 @@
 
     <include layout="@layout/statusview_head"/>
 
-    <com.finderlo.weixzz.Widgt.AutoLinkTextView
+    <com.finderlo.weixzz.widgt.AutoLinkTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/content"

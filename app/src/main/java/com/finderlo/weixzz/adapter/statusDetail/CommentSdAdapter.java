@@ -1,19 +1,10 @@
 package com.finderlo.weixzz.adapter.statusDetail;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.Utility.ImageLoader;
-import com.finderlo.weixzz.Widgt.AutoLinkTextView;
-import com.finderlo.weixzz.Widgt.RoundImageView;
 import com.finderlo.weixzz.model.model.CommentListModel;
 import com.finderlo.weixzz.model.model.CommentModel;
-import com.finderlo.weixzz.model.model.UserModel;
 
 /**
  * Created by Finderlo on 2016/8/24.

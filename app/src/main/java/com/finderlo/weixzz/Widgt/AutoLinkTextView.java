@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.Widgt;
+package com.finderlo.weixzz.widgt;
 
 /**
  * Created by Finderlo on 2016/8/6.

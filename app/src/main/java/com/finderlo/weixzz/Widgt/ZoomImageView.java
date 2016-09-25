@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.Widgt;
+package com.finderlo.weixzz.widgt;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -6,12 +6,10 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
 
 /**
  * @ClassName: MatrixImageView

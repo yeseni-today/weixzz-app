@@ -24,6 +24,8 @@ public abstract class BaseTimelineDao<BeanList extends BaseListModel> implements
 
     protected DatabaseHelper mDatabaseHelper;
     protected SQLiteDatabase mDatabase;
+
+
     protected BeanList mListModel;
 
     private Context mContext;
@@ -74,6 +76,8 @@ public abstract class BaseTimelineDao<BeanList extends BaseListModel> implements
     }
 
     public abstract BeanList load();
+
+    public abstract void loadMore();
 
 
     @Override
