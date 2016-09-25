@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.Utility;
+package com.finderlo.weixzz.utility;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,11 +7,6 @@ import android.util.Log;
 import android.view.WindowManager;
 
 import com.finderlo.weixzz.model.model.StatusModel;
-import com.finderlo.weixzz.model.model.UserModel;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Date;

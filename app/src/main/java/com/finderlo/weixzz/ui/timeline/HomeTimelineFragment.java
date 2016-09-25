@@ -8,7 +8,7 @@ import com.finderlo.weixzz.dao.timeline.BaseTimelineDao;
 import com.finderlo.weixzz.dao.timeline.StatusDao;
 import com.finderlo.weixzz.model.model.StatusListModel;
 import com.finderlo.weixzz.model.model.StatusModel;
-import com.finderlo.weixzz.ui.StatusDetail.StatusDetailActivity;
+import com.finderlo.weixzz.ui.statusDetail.StatusDetailActivity;
 
 /**
  * Created by Finderlo on 2016/8/7.

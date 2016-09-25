@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.Utility.ImageLoader;
+import com.finderlo.weixzz.utility.ImageLoader;
 import com.finderlo.weixzz.widgt.MatrixImageView;
 
 public class TestActivity extends AppCompatActivity {

@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import com.finderlo.weixzz.ui.Mainview.MainViewActivity;
 import com.finderlo.weixzz.base.BaseActivity;
 import com.finderlo.weixzz.model.AccessTokenManger;
-import com.finderlo.weixzz.Utility.Util;
+import com.finderlo.weixzz.utility.Util;
 
 /**
  * Created by Finderlo on 2016/8/5.

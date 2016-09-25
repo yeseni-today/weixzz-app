@@ -2,8 +2,7 @@ package com.finderlo.weixzz.adapter.statusDetail;
 
 import android.content.Context;
 
-import com.finderlo.weixzz.Utility.ImageLoader;
-import com.finderlo.weixzz.model.model.CommentModel;
+import com.finderlo.weixzz.utility.ImageLoader;
 import com.finderlo.weixzz.model.model.RepostListModel;
 import com.finderlo.weixzz.model.model.StatusModel;
 

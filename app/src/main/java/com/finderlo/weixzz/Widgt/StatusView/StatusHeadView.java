@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.model.model.StatusModel;
-import com.finderlo.weixzz.Utility.ImageLoader;
+import com.finderlo.weixzz.utility.ImageLoader;
 import com.finderlo.weixzz.widgt.RoundImageView;
 
 /**

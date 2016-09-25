@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
-import com.finderlo.weixzz.Utility.Util;
+import com.finderlo.weixzz.utility.Util;
 
 /**
  * Created by Finderlo on 2016/8/1 0001.

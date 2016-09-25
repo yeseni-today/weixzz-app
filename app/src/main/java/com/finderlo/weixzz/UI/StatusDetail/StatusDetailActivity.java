@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.ui.StatusDetail;
+package com.finderlo.weixzz.ui.statusDetail;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -8,18 +8,14 @@ import android.graphics.Color;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.adapter.statusDetail.StadetailViewPagerAdapter;
 import com.finderlo.weixzz.base.BaseActivity;
 import com.finderlo.weixzz.model.model.StatusModel;
-import com.finderlo.weixzz.Utility.Util;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

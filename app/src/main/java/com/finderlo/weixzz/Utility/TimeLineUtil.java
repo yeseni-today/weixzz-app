@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.Utility;
+package com.finderlo.weixzz.utility;
 
 import java.util.Calendar;
 import java.util.Date;

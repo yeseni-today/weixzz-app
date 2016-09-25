@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.ui.StatusDetail;
+package com.finderlo.weixzz.ui.statusDetail;
 
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;

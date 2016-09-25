@@ -11,9 +11,10 @@ import android.widget.ImageView;
 
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.model.model.StatusModel;
+import com.finderlo.weixzz.ui.ImageDetailActivity;
 import com.finderlo.weixzz.ui.Login.LoadDataActivity;
-import com.finderlo.weixzz.Utility.ImageLoader;
-import com.finderlo.weixzz.Utility.Util;
+import com.finderlo.weixzz.utility.ImageLoader;
+import com.finderlo.weixzz.utility.Util;
 import com.finderlo.weixzz.widgt.BaseImageView;
 
 import java.util.ArrayList;
@@ -50,12 +51,13 @@ public class ImageViews extends GridLayout {
 
     public void setImageSrc(StatusModel statusModel) {
         ArrayList<StatusModel.PictureUrl> list = statusModel.pic_urls;
+        mStatusModel = statusModel;
         if (null == list || list.size() == 0) return;
 
         mImageCount = list.size();
         images = new CardImage[mImageCount];
         for (int i = 0; i < mImageCount; i++) {
-            images[i] = new CardImage(mContext);
+            images[i] = new CardImage(mContext,i);
             images[i].setBitmapUrl(mContext, list.get(i).getMedium());
             addView(images[i]);
         }
@@ -76,9 +78,12 @@ public class ImageViews extends GridLayout {
         BaseImageView mImageView;
         Context mContext;
 
-        public CardImage(Context context) {
+        private int mIndex;
+
+        public CardImage(Context context,int index) {
             super(context);
             mContext = context;
+            mIndex = index;
 
 
             LayoutParams imagelayoutParams = new LayoutParams(
@@ -104,10 +109,7 @@ public class ImageViews extends GridLayout {
         OnClickListener mOnClickListener = new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setAction("image_detail");
-                intent.putExtra("image_url", mImageView.getPic_Url());
-                mContext.startActivity(intent);
+                ImageDetailActivity.start(mContext,mStatusModel,mIndex);
             }
         };
 

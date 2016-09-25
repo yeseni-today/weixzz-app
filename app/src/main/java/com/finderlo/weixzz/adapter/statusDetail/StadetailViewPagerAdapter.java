@@ -6,8 +6,8 @@ import android.app.FragmentManager;
 import android.support.v13.app.FragmentPagerAdapter;
 
 import com.finderlo.weixzz.model.model.StatusModel;
-import com.finderlo.weixzz.ui.StatusDetail.StatusDetailCommentFragment;
-import com.finderlo.weixzz.ui.StatusDetail.StatusDetailRepostFragment;
+import com.finderlo.weixzz.ui.statusDetail.StatusDetailCommentFragment;
+import com.finderlo.weixzz.ui.statusDetail.StatusDetailRepostFragment;
 
 import java.util.ArrayList;
 import java.util.List;

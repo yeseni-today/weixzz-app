@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.ui.StatusDetail;
+package com.finderlo.weixzz.ui.statusDetail;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,11 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.adapter.statusDetail.CommentSdAdapter;
 import com.finderlo.weixzz.base.BaseFragment;
 import com.finderlo.weixzz.dao.statusdetail.BaseStatusDetailDao;
-import com.finderlo.weixzz.dao.statusdetail.CommentSdDao;
-import com.finderlo.weixzz.model.model.CommentListModel;
 
 /**
  * Created by Finderlo on 2016/8/24.

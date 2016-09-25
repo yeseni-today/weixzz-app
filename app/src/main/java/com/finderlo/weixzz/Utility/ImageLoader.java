@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.Utility;
+package com.finderlo.weixzz.utility;
 
 import android.content.Context;
 import android.widget.ImageView;

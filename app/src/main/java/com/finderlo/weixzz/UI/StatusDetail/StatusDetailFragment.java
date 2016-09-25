@@ -1,16 +1,13 @@
-package com.finderlo.weixzz.ui.StatusDetail;
+package com.finderlo.weixzz.ui.statusDetail;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.finderlo.weixzz.adapter.homeTimeline.HomeStatusAdapter;
-import com.finderlo.weixzz.Constants;
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.base.BaseFragment;
 import com.finderlo.weixzz.model.model.StatusModel;

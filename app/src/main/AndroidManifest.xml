@@ -25,7 +25,7 @@
         </activity>
         <activity android:name=".ui.Login.LoginActivity"/>
 
-        <activity android:name=".ui.StatusDetail.StatusDetailActivity">
+        <activity android:name=".ui.statusDetail.StatusDetailActivity">
         </activity>
         <activity android:name=".ui.ImageDetailActivity">
             <intent-filter>
