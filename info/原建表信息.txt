@@ -1,0 +1,37 @@
+
+    private static final String CREATETABLE_USER = "create table User ( " +
+            "tableId                    integer primary key autoincrement ," +
+            "id                         text ,"     +
+            "idstr                      text ,"     +
+            "screen_name                text ,"     +
+            "name                       text ,"     +
+            "province                   integer ,"  +
+            "city                       integer ,"  +
+            "location                   text ,"     +
+            "description                text ,"     +
+            "url                        text ,"     +
+            "profile_image_url          text ,"     +
+            "domain                     text ,"     +
+            "profile_url                text ,"     +
+            "weihao                     text ,"     +
+            "gender                     text ,"     +
+            "followers_count            integer ,"  +
+            "friends_count              integer ,"  +
+            "statuses_count             integer ,"  +
+            "favourites_count           integer ,"  +
+            "created_at                 text ,"     +
+            "following                  text ,"     +
+            "allow_all_act_msg          text ,"     +
+            "geo_enabled                text ,"     +
+            "verified                   text ,"     +
+            "verified_type              integer ,"  +
+            "remark                     text ,"     +
+            "allow_all_comment          text ,"     +
+            "avatar_large               text ,"     +
+            "avatar_hd                  text ,"     +
+            "verified_reason            text ,"     +
+            "follow_me                  text ,"     +
+            "online_status              integer ,"  +
+            "bi_followers_count         integer ,"  +
+            "lang                       text "      +
+            ")";
