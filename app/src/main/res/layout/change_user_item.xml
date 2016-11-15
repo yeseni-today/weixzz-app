@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/change_user_item_name"
+    android:text="小明"
+    android:textSize="24sp"
+    android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/change_user_item_uid"
+        android:text="uid"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:paddingStart="25dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/change_user_item_token"
+        android:text="token"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:paddingStart="25dp"/>
+
+</LinearLayout>
