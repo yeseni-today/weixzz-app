@@ -1,2 +1,0 @@
-include ':app', ':photoview', 'HeaderAndFooterRecyclerView'
-project(':photoview').projectDir = new File('library/photoview')
