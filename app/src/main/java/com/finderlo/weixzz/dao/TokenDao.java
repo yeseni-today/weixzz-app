@@ -25,6 +25,7 @@ import static com.finderlo.weixzz.database.Table.TokenTable.*;
 
 /**
  * Created by Finderlo on 2016/11/13.
+ * TokenDao 管理Dao,通过数据库来存储所有已经登录的信息
  */
 
 public class TokenDao {

@@ -14,7 +14,7 @@ import java.io.IOException;
 public class UserCenterDao {
 
     public UserModel getCurrentUserModel(Context context) throws IOException {
-        String currentUserUid = LoginDao.getInstance(context).getUid();
+        String currentUserUid = TokenDao.getInstance(context).getCurrentTokenModel().getUid();
 
         WeiboParameters weiboParameters = new WeiboParameters();
         weiboParameters.put("uid",currentUserUid);

@@ -21,6 +21,8 @@ public class BaseActivity extends AppCompatActivity {
 
     ProgressDialog mProgressDialog;
 
+    
+
     public void showProgressDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(this);

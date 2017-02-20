@@ -15,6 +15,7 @@ import static com.finderlo.weixzz.BuildConfig.DEBUG;
 
 /**
  * Created by Administrator on 2015-7-17.
+ * http发送请求
  */
 public class HttpClientUtils {
     private static final String TAG = HttpClientUtils.class.getSimpleName();

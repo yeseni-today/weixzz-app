@@ -1,7 +1,6 @@
 package com.finderlo.weixzz.ui.usercenter;
 
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -12,8 +11,7 @@ import android.widget.TextView;
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.base.BaseFragment;
 import com.finderlo.weixzz.model.model.UserModel;
-import com.finderlo.weixzz.ui.statusDetail.StatusDetailFragment;
-import com.finderlo.weixzz.utility.ImageLoader;
+import com.finderlo.weixzz.util.ImageLoader;
 import com.finderlo.weixzz.widgt.RoundImageView;
 
 /**

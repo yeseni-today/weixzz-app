@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,9 +16,10 @@ import com.finderlo.weixzz.dao.TokenDao;
 import com.finderlo.weixzz.model.model.TokenModel;
 import com.finderlo.weixzz.ui.login.WebLoginActivity;
 import com.finderlo.weixzz.ui.mainview.MainViewActivity;
-import com.finderlo.weixzz.ui.usercenter.UserCenterActivity;
 
 import java.util.List;
+
+import static com.finderlo.weixzz.R.layout.change_user_item;
 
 public class AccountManageActivity extends AppCompatActivity {
 
@@ -30,7 +30,7 @@ public class AccountManageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test2);
         mListView = (ListView) findViewById(R.id.listview);
-        mListView.setAdapter(new SAdapter(this,TokenDao.getInstance(this).getAll()));
+        mListView.setAdapter(new SAdapter(this, TokenDao.getInstance(this).getAll()));
 
         findViewById(R.id.change_user_aty_add_new).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,8 +41,8 @@ public class AccountManageActivity extends AppCompatActivity {
         });
     }
 
-    public static void start(Context context){
-        Intent intent  = new Intent(context,AccountManageActivity.class);
+    public static void start(Context context) {
+        Intent intent = new Intent(context, AccountManageActivity.class);
         context.startActivity(intent);
     }
 
@@ -52,9 +52,9 @@ public class AccountManageActivity extends AppCompatActivity {
         List<TokenModel> mModels;
         Context mContext;
 
-        public SAdapter(Context context,List<TokenModel> models) {
+        public SAdapter(Context context, List<TokenModel> models) {
             mModels = models;
-            mContext =context;
+            mContext = context;
         }
 
         @Override
@@ -74,15 +74,13 @@ public class AccountManageActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.change_user_item,parent,false);
+            View view = LayoutInflater.from(mContext).inflate(change_user_item, parent, false);
             TextView name = (TextView) view.findViewById(R.id.change_user_item_name);
             TextView uid = (TextView) view.findViewById(R.id.change_user_item_uid);
-            TextView token = (TextView) view.findViewById(R.id.change_user_item_token);
 
             final TokenModel model = mModels.get(position);
             name.setText(model.getUserName());
             uid.setText(model.getUid());
-            token.setText(model.getToken());
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

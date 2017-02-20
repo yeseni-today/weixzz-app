@@ -68,7 +68,7 @@ public class UserCenterActivity extends BaseActivity {
         mTabLayout.setupWithViewPager(mViewPager);
     }
 
-    class GetUserInfo extends AsyncTask<Context,Void,UserModel>{
+    class GetUserInfo extends AsyncTask<Context, Void, UserModel> {
 
         @Override
         protected void onPreExecute() {
@@ -79,7 +79,7 @@ public class UserCenterActivity extends BaseActivity {
         @Override
         protected UserModel doInBackground(Context... params) {
             try {
-                 return new UserCenterDao().getCurrentUserModel(params[0]);
+                return new UserCenterDao().getCurrentUserModel(params[0]);
             } catch (IOException e) {
                 e.printStackTrace();
                 return null;
@@ -91,8 +91,8 @@ public class UserCenterActivity extends BaseActivity {
             super.onPostExecute(result);
             closeProgressDialog();
             mUserModel = result;
-            if (mUserModel==null){
-                Toast.makeText(UserCenterActivity.this,"加载失败",Toast.LENGTH_SHORT).show();
+            if (mUserModel == null) {
+                Toast.makeText(UserCenterActivity.this, "加载失败", Toast.LENGTH_SHORT).show();
                 UserCenterActivity.this.finish();
             }
 
@@ -106,15 +106,16 @@ public class UserCenterActivity extends BaseActivity {
             }
 
 
-        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbarLayout.setExpandedTitleColor(Color.argb(00,49,37,37));
-        collapsingToolbarLayout.setTitle(mUserModel.name);
-
+            CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+            collapsingToolbarLayout.setExpandedTitleColor(Color.argb(00, 49, 37, 37));
+            if (!(mUserModel == null)) {
+                collapsingToolbarLayout.setTitle(mUserModel.name);
+            }
         }
     }
 
-    public static void start(Context context){
-        Intent intent  = new Intent(context,UserCenterActivity.class);
+    public static void start(Context context) {
+        Intent intent = new Intent(context, UserCenterActivity.class);
         context.startActivity(intent);
     }
 }

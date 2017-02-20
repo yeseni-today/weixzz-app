@@ -31,6 +31,7 @@ public class TokenTable {
     public static final String KEY_USER_NAME = "username";
 
     public static final String TABLE_NAME_Token = " TokensTable ";
+
     public static final String CREATE_TABLE_SQL = "create table " + TABLE_NAME_Token +
             " ( " +
             " tableId integer primary key autoincrement , "

@@ -38,10 +38,8 @@ import android.widget.Toast;
 
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.dao.TokenDao;
-import com.finderlo.weixzz.ui.setting.AccountManageActivity;
-import com.finderlo.weixzz.utility.Util;
+import com.finderlo.weixzz.util.Util;
 import com.finderlo.weixzz.base.BaseActivity;
-import com.finderlo.weixzz.dao.LoginDao;
 import com.finderlo.weixzz.dao.UrlConstants;
 import com.finderlo.weixzz.ui.mainview.MainViewActivity;
 

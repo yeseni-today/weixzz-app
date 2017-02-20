@@ -18,6 +18,7 @@ import static com.finderlo.weixzz.BuildConfig.DEBUG;
 
 /**
  * Created by Finderlo on 2016/8/19.
+ * 评论时间线微博dao层
  */
 
 public class CommentTlDao extends BaseTimelineDao<CommentListModel> {

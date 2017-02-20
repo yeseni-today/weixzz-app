@@ -1,13 +1,20 @@
-package com.finderlo.weixzz.utility;
+package com.finderlo.weixzz.util;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
 
+import com.finderlo.weixzz.dao.HttpClientUtils;
+import com.finderlo.weixzz.dao.UrlConstants;
+import com.finderlo.weixzz.dao.WeiboParameters;
 import com.finderlo.weixzz.model.model.StatusModel;
+import com.finderlo.weixzz.model.model.UserModel;
+import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -18,6 +25,20 @@ import java.util.concurrent.TimeUnit;
 public class Util {
     private static final String TAG = "Util";
 
+@Nullable
+    public static UserModel findUserByUid(String uid){
+        WeiboParameters parameters = new WeiboParameters();
+        parameters.put("uid",uid);
+        try {
+            return new Gson()
+                    .fromJson(
+                            HttpClientUtils.doGetRequstWithAceesToken
+                                    (UrlConstants.USER_SHOW,parameters),UserModel.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     /**
      * for sort
      *

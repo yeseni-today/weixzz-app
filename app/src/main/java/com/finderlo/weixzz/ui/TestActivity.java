@@ -77,13 +77,9 @@ public class TestActivity extends AppCompatActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
             View view = LayoutInflater.from(mContext).inflate(R.layout.change_user_item,parent,false);
             TextView name = (TextView) view.findViewById(R.id.change_user_item_name);
-            TextView uid = (TextView) view.findViewById(R.id.change_user_item_uid);
-            TextView token = (TextView) view.findViewById(R.id.change_user_item_token);
 
             final TokenModel model = mModels.get(position);
             name.setText(model.getUserName());
-            uid.setText(model.getUid());
-            token.setText(model.getToken());
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

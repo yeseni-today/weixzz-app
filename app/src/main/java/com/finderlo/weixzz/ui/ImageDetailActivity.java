@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,7 @@ import android.widget.ImageView;
 
 import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.model.model.StatusModel;
-import com.finderlo.weixzz.utility.ImageLoader;
+import com.finderlo.weixzz.util.ImageLoader;
 import com.finderlo.weixzz.base.BaseActivity;
 
 import uk.co.senab.photoview.PhotoViewAttacher;

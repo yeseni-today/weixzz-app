@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.utility.ImageLoader;
-import com.finderlo.weixzz.utility.TimeLineUtil;
+import com.finderlo.weixzz.util.ImageLoader;
+import com.finderlo.weixzz.util.TimeLineUtil;
 import com.finderlo.weixzz.widgt.RoundImageView;
 import com.finderlo.weixzz.model.model.CommentListModel;
 import com.finderlo.weixzz.model.model.CommentModel;

@@ -12,8 +12,8 @@ import com.finderlo.weixzz.R;
 import com.finderlo.weixzz.model.model.StatusModel;
 import com.finderlo.weixzz.ui.ImageDetailActivity;
 import com.finderlo.weixzz.ui.login.LoadDataActivity;
-import com.finderlo.weixzz.utility.ImageLoader;
-import com.finderlo.weixzz.utility.Util;
+import com.finderlo.weixzz.util.ImageLoader;
+import com.finderlo.weixzz.util.Util;
 import com.finderlo.weixzz.widgt.BaseImageView;
 
 import java.util.ArrayList;

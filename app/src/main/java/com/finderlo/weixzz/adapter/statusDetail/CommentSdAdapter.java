@@ -2,7 +2,7 @@ package com.finderlo.weixzz.adapter.statusDetail;
 
 import android.content.Context;
 
-import com.finderlo.weixzz.utility.ImageLoader;
+import com.finderlo.weixzz.util.ImageLoader;
 import com.finderlo.weixzz.model.model.CommentListModel;
 import com.finderlo.weixzz.model.model.CommentModel;
 

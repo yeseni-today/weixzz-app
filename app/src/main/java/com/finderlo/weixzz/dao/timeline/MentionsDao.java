@@ -20,6 +20,7 @@ import static com.finderlo.weixzz.BuildConfig.DEBUG;
 /**
  * Created by Finderlo on 2016/8/16.
  * Dao Data Access Object
+ * 提到我的dao层
  */
 public class MentionsDao extends BaseTimelineDao<StatusListModel> {
 

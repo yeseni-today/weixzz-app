@@ -17,6 +17,7 @@ import java.io.IOException;
 
 /**
  * Created by Finderlo on 2016/8/24.
+ * 评论微博的dao层
  */
 
 public class CommentSdDao extends BaseStatusDetailDao<CommentListModel> {

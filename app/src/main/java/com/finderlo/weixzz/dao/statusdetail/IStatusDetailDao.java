@@ -10,8 +10,12 @@ import com.finderlo.weixzz.model.model.BaseListModel;
 
 public interface IStatusDetailDao {
     public void loadFromCache();
+
     public void cache();
+
     public void load(boolean isRefresh);
+
     public Cursor query();
+
     public BaseListModel getList();
 }

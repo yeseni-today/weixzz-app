@@ -13,6 +13,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,7 +30,7 @@ import com.finderlo.weixzz.ui.usercenter.UserCenterActivity;
 import java.util.ArrayList;
 
 /**
- * 进入主页显示的activity，包含了最近微博、@我的微博、转发微博
+ * 进入主页显示的activity，包含了最近微博、@我的微博、转发微博和侧边工具栏
  */
 public class MainViewActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -37,6 +38,11 @@ public class MainViewActivity extends BaseActivity
     //内容fragment
     Fragment mContainerFragment;
 
+     ViewPager mViewPager;
+    /**这是主layout的drawer*/
+    DrawerLayout mDrawerLayout;
+    /**这是侧边栏的naviView*/
+    NavigationView mNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,20 +52,20 @@ public class MainViewActivity extends BaseActivity
         toolbar.setTitle("WeiXzz");
         setSupportActionBar(toolbar);
 
-        /**这是主layout的drawer*/
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        /**这是侧边栏的naviView*/
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+       mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        mNavigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+                this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        mDrawerLayout.setDrawerListener(toggle);
         toggle.syncState();
 
         //viewpager用来三张页面的切换。即显示承载通过viewpager
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.Container_ViewPager);
-        viewPager.setAdapter(new ViewAdapter(getFragmentManager()));
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mViewPager = (ViewPager) findViewById(R.id.Container_ViewPager);
+        mViewPager.setAdapter(new ViewAdapter(getFragmentManager()));
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             int currentPosition = 0;
 
             //viewpager的切换对应toolbar上引导图标的显示方式
@@ -69,7 +75,7 @@ public class MainViewActivity extends BaseActivity
                     case 0:
                         if (currentPosition == 1) {
                             hideAnimator(itemMentionMe);
-                        }else if (currentPosition == 2){
+                        } else if (currentPosition == 2) {
                             hideAnimator(itemComment);
                         }
                         showAnimator(itemHome);
@@ -85,7 +91,7 @@ public class MainViewActivity extends BaseActivity
                     case 2:
                         if (currentPosition == 1) {
                             hideAnimator(itemMentionMe);
-                        }else if (currentPosition == 0){
+                        } else if (currentPosition == 0) {
                             hideAnimator(itemHome);
                         }
                         showAnimator(itemComment);
@@ -112,24 +118,26 @@ public class MainViewActivity extends BaseActivity
         itemHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewPager.setCurrentItem(0,true);
+                mViewPager.setCurrentItem(0, true);
             }
         });
         itemMentionMe.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {viewPager.setCurrentItem(1,true);
+            public void onClick(View v) {
+                mViewPager.setCurrentItem(1, true);
             }
         });
         itemComment.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {viewPager.setCurrentItem(2,true);
+            public void onClick(View v) {
+                mViewPager.setCurrentItem(2, true);
             }
         });
 
         itemMentionMe.setAlpha(0.3f);
         itemComment.setAlpha(0.3f);
 
-
+        //屏幕右下角的发送微博按钮
         FloatingActionButton fabAddNewStatus = (FloatingActionButton) findViewById(R.id.fab_add_new);
         fabAddNewStatus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -231,13 +239,17 @@ public class MainViewActivity extends BaseActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id== R.id.nav_user||id == R.id.mainview_user_name_textview || id == R.id.mainview_user_pic_RoundImageView) {
+        if (id == R.id.nav_user || id == R.id.mainview_user_name_textview || id == R.id.mainview_user_pic_RoundImageView) {
             UserCenterActivity.start(this);
-        }else if (id == R.id.nav_account_manage){
+        }
+        if (id == R.id.nav_account_manage) {
             AccountManageActivity.start(this);
         }
-
-
+        if (id == R.id.nav_menu_mention_me){
+            mViewPager.setCurrentItem(1,true);
+        }
+        mDrawerLayout.closeDrawer(Gravity.LEFT,true);
+//        mDrawerLayout.closeDrawer(mNavigationView,true);
         Log.e(TAG, "onNavigationItemSelected: " + id);
 
         return true;

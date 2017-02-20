@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import com.finderlo.weixzz.dao.TokenDao;
 import com.finderlo.weixzz.ui.mainview.MainViewActivity;
 import com.finderlo.weixzz.base.BaseActivity;
-import com.finderlo.weixzz.utility.Util;
+import com.finderlo.weixzz.util.Util;
 
 /**
  * 应用初始化的activity
