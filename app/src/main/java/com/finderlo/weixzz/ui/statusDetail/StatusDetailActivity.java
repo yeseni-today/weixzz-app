@@ -13,7 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.adapter.statusDetail.StadetailViewPagerAdapter;
+import com.finderlo.weixzz.adapter.status.StadetailViewPagerAdapter;
 import com.finderlo.weixzz.base.BaseActivity;
 import com.finderlo.weixzz.model.model.StatusModel;
 import com.google.gson.Gson;

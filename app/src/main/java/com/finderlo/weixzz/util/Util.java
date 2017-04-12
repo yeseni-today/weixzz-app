@@ -25,50 +25,52 @@ import java.util.concurrent.TimeUnit;
 public class Util {
     private static final String TAG = "Util";
 
-@Nullable
-    public static UserModel findUserByUid(String uid){
+    @Nullable
+    public static UserModel findUserByUid(String uid) {
         WeiboParameters parameters = new WeiboParameters();
-        parameters.put("uid",uid);
+        parameters.put("uid", uid);
         try {
             return new Gson()
                     .fromJson(
                             HttpClientUtils.doGetRequstWithAceesToken
-                                    (UrlConstants.USER_SHOW,parameters),UserModel.class);
+                                    (UrlConstants.USER_SHOW, parameters), UserModel.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
     }
-    /**
-     * for sort
-     *
-     * @param
-     * @return
-     **/
+
+
     public static int expireTimeInDays(long time) {
         return (int) TimeUnit.MILLISECONDS.toDays(time - System.currentTimeMillis());
     }
 
     public static void sort(ArrayList<StatusModel> data) {
-        if (data==null) return;
+        if (data == null) return;
 
         for (int i = 0; i < data.size() - 1; i++) {
             int m = i;
-            while (!compareTime(data.get(m),data.get(m+1))) {
-                swap(data, m, m+1);
+            while (!compareTime(data.get(m), data.get(m + 1))) {
+                swap(data, m, m + 1);
                 m--;
-                if (m<0) {
+                if (m < 0) {
                     break;
                 }
             }
         }
     }
+
     private static void swap(ArrayList<StatusModel> statuses, int a, int b) {
-        StatusModel temp;StatusModel temp1;
-        temp = statuses.get(a);temp1 = statuses.get(b);
-        statuses.remove(a);statuses.add(a,temp1);
-        statuses.remove(b);statuses.add(b,temp);
+        StatusModel temp;
+        StatusModel temp1;
+        temp = statuses.get(a);
+        temp1 = statuses.get(b);
+        statuses.remove(a);
+        statuses.add(a, temp1);
+        statuses.remove(b);
+        statuses.add(b, temp);
     }
+
     private static boolean compareTime(StatusModel statusModel, StatusModel t1) {
         long time1 = Date.parse(statusModel.created_at);
         long time2 = Date.parse(t1.created_at);

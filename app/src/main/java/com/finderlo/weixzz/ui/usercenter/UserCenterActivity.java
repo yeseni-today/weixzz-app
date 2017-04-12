@@ -9,24 +9,16 @@ import android.os.AsyncTask;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.finderlo.weixzz.R;
-import com.finderlo.weixzz.adapter.statusDetail.StadetailViewPagerAdapter;
 import com.finderlo.weixzz.base.BaseActivity;
 import com.finderlo.weixzz.dao.UserCenterDao;
-import com.finderlo.weixzz.model.model.StatusModel;
 import com.finderlo.weixzz.model.model.UserModel;
-import com.finderlo.weixzz.ui.AddNewStatus;
-import com.finderlo.weixzz.ui.statusDetail.StatusDetailFragment;
-import com.google.gson.Gson;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class UserCenterActivity extends BaseActivity {
 

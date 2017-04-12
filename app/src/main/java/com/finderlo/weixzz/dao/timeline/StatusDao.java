@@ -111,7 +111,7 @@ public class StatusDao extends BaseTimelineDao<StatusListModel> {
             return new Gson().fromJson(json, StatusListModel.class);
         } catch (Exception e) {
             if (DEBUG) {
-                Log.d(TAG, "Can't get  home timeline, " + e.getClass().getSimpleName());
+                Log.d(TAG, "Can't get home timeline, " + e.getClass().getSimpleName());
                 Log.d(TAG, Log.getStackTraceString(e));
             }
             return null;

@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.util.callbackListener;
+package com.finderlo.weixzz.util.callback;
 
 /**
  * Created by Finderlo on 2016/8/3.

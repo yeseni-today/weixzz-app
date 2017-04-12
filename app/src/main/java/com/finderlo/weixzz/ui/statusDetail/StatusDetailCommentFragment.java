@@ -3,7 +3,7 @@ package com.finderlo.weixzz.ui.statusDetail;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 
-import com.finderlo.weixzz.adapter.statusDetail.CommentSdAdapter;
+import com.finderlo.weixzz.adapter.status.CommentSdAdapter;
 import com.finderlo.weixzz.dao.statusdetail.BaseStatusDetailDao;
 import com.finderlo.weixzz.dao.statusdetail.CommentSdDao;
 import com.finderlo.weixzz.model.model.CommentListModel;

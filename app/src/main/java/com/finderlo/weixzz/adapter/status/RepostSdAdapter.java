@@ -1,4 +1,4 @@
-package com.finderlo.weixzz.adapter.statusDetail;
+package com.finderlo.weixzz.adapter.status;
 
 import android.content.Context;
 

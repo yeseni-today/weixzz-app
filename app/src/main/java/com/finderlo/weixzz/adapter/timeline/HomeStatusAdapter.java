@@ -2,6 +2,7 @@ package com.finderlo.weixzz.adapter.timeline;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -164,8 +165,9 @@ public class HomeStatusAdapter extends BaseHomeAdapter<StatusListModel> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    Log.d(TAG, "onClick: ONE");
                     if (mOnItemClickListener != null) {
-                        mOnItemClickListener.onItemClick(view, getPosition());
+                        mOnItemClickListener.onItemClick(view, getAdapterPosition());
                     }
                 }
             });
@@ -176,10 +178,31 @@ public class HomeStatusAdapter extends BaseHomeAdapter<StatusListModel> {
             verfied_reason = (TextView) itemView.findViewById(R.id.statusview_header_blow_right_textview);
 
             statusContent = (AutoLinkTextView) itemView.findViewById(R.id.statusview_status_content);
+
+            statusContent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d(TAG, "onClick: TWO");
+                    if (mOnItemClickListener != null) {
+                        mOnItemClickListener.onItemClick(v, getAdapterPosition());
+                    }
+                }
+            });
+
             pics = (ImageViews) itemView.findViewById(R.id.statusview_imageviews_gridlayout);
 
             retweetedStatusContent = (AutoLinkTextView) itemView.findViewById(
                     R.id.statusview_retweeted_status_content);
+
+            retweetedStatusContent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.d(TAG, "onClick: THREE");
+                    if (mOnItemClickListener != null) {
+                        mOnItemClickListener.onItemClick(view, getAdapterPosition());
+                    }
+                }
+            });
             retweetedStatusPics = (ImageViews) itemView.findViewById(
                     R.id.statusview_retweeted_imageviews_gridlayout);
         }
