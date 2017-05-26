@@ -1,30 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
     android:id="@+id/login_aty"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.sina.weibo.sdk.widget.LoginButton
         android:id="@+id/btn_sina_login"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
-    <Button android:id="@+id/btn_to_demo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Demo door"/>
+    <Button
+        android:id="@+id/btn_to_demo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Demo door" />
 
-    <Button android:id="@+id/btn_TokenInfo"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btn_TokenInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-    android:text="获取当前用户的最新微博"
-    android:id="@+id/btn_get_last_weibo"/>
+    <Button
+        android:id="@+id/btn_get_last_weibo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取当前用户的最新微博" />
 
-    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
-    android:text="微博"
-    android:id="@+id/btn_weibo"/>
+    <Button
+        android:id="@+id/btn_weibo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="微博" />
 
 </LinearLayout>

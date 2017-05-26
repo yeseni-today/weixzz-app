@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.finderlo.weixzz">
+    package="me.ticknick.weixzz">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.statusDetail.StatusDetailActivity" />
+        <activity android:name=".ui.status.StatusDetailActivity" />
         <activity android:name=".ui.ImageDetailActivity">
             <intent-filter>
                 <action android:name="image_detail" />
@@ -38,16 +38,16 @@
 
         <!-- 微博sdk中的web视图 -->
         <activity android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser" />
-        <activity android:name=".ui.AddNewStatus"></activity>
+        <activity android:name=".ui.NewStatusActivity"></activity>
         <activity
             android:name=".ui.usercenter.UserCenterActivity"
             android:launchMode="singleInstance"></activity>
         <activity android:name=".ui.TestActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
     </application>
 

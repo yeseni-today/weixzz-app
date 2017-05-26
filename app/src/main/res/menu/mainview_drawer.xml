@@ -14,22 +14,22 @@
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
             android:title="收藏(不可用)" />
-        <item
-            android:id="@+id/nav_seach"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="搜索(不可用)" />
+        <!--<item-->
+            <!--android:id="@+id/nav_seach"-->
+            <!--android:icon="@drawable/ic_menu_slideshow"-->
+            <!--android:title="搜索(不可用)" />-->
 
     </group>
 
-    <item android:title="分组">
-        <menu>
-            <item
-                android:id="@+id/nav_user_group"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="默认分组(不可用)" />
-
-        </menu>
-    </item>
+    <!--<item android:title="分组">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_user_group"-->
+                <!--android:icon="@drawable/ic_menu_manage"-->
+                <!--android:title="默认分组(不可用)" />-->
+<!---->
+        <!--</menu>-->
+    <!--</item>-->
 
     <item android:title="WeiXzz">
         <menu>

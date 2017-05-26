@@ -1,109 +1,109 @@
-·µ»Ø×Ö¶ÎËµÃ÷
-·µ»ØÖµ×Ö¶Î	×Ö¶ÎÀàĞÍ	×Ö¶ÎËµÃ÷
-created_at	string	Î¢²©´´½¨Ê±¼ä
-id	int64	Î¢²©ID
-mid	int64	Î¢²©MID
-idstr	string	×Ö·û´®ĞÍµÄÎ¢²©ID
-text	string	Î¢²©ĞÅÏ¢ÄÚÈİ
-source	string	Î¢²©À´Ô´
-favorited	boolean	ÊÇ·ñÒÑÊÕ²Ø£¬true£ºÊÇ£¬false£º·ñ
-truncated	boolean	ÊÇ·ñ±»½Ø¶Ï£¬true£ºÊÇ£¬false£º·ñ
-in_reply_to_status_id	string	£¨ÔİÎ´Ö§³Ö£©»Ø¸´ID
-in_reply_to_user_id	string	£¨ÔİÎ´Ö§³Ö£©»Ø¸´ÈËUID
-in_reply_to_screen_name	string	£¨ÔİÎ´Ö§³Ö£©»Ø¸´ÈËêÇ³Æ
-thumbnail_pic	string	ËõÂÔÍ¼Æ¬µØÖ·£¬Ã»ÓĞÊ±²»·µ»Ø´Ë×Ö¶Î
-bmiddle_pic	string	ÖĞµÈ³ß´çÍ¼Æ¬µØÖ·£¬Ã»ÓĞÊ±²»·µ»Ø´Ë×Ö¶Î
-original_pic	string	Ô­Ê¼Í¼Æ¬µØÖ·£¬Ã»ÓĞÊ±²»·µ»Ø´Ë×Ö¶Î
-geo	object	µØÀíĞÅÏ¢×Ö¶Î ÏêÏ¸
-user	object	Î¢²©×÷ÕßµÄÓÃ»§ĞÅÏ¢×Ö¶Î ÏêÏ¸
-retweeted_status	object	±»×ª·¢µÄÔ­Î¢²©ĞÅÏ¢×Ö¶Î£¬µ±¸ÃÎ¢²©Îª×ª·¢Î¢²©Ê±·µ»Ø ÏêÏ¸
-reposts_count	int	×ª·¢Êı
-comments_count	int	ÆÀÂÛÊı
-attitudes_count	int	±íÌ¬Êı
-mlevel	int	ÔİÎ´Ö§³Ö
-visible	object	Î¢²©µÄ¿É¼ûĞÔ¼°Ö¸¶¨¿É¼û·Ö×éĞÅÏ¢¡£¸ÃobjectÖĞtypeÈ¡Öµ£¬0£ºÆÕÍ¨Î¢²©£¬1£ºË½ÃÜÎ¢²©£¬3£ºÖ¸¶¨·Ö×éÎ¢²©£¬4£ºÃÜÓÑÎ¢²©£»list_idÎª·Ö×éµÄ×éºÅ
-pic_ids	object	Î¢²©ÅäÍ¼ID¡£¶àÍ¼Ê±·µ»Ø¶àÍ¼ID£¬ÓÃÀ´Æ´½ÓÍ¼Æ¬url¡£ÓÃ·µ»Ø×Ö¶Îthumbnail_picµÄµØÖ·ÅäÉÏ¸Ã·µ»Ø×Ö¶ÎµÄÍ¼Æ¬ID£¬¼´¿ÉµÃµ½¶à¸öÍ¼Æ¬url¡£
-ad	object array	Î¢²©Á÷ÄÚµÄÍÆ¹ãÎ¢²©ID
+è¿”å›å­—æ®µè¯´æ˜
+è¿”å›å€¼å­—æ®µ	å­—æ®µç±»å‹	å­—æ®µè¯´æ˜
+created_at	string	å¾®åšåˆ›å»ºæ—¶é—´
+id	int64	å¾®åšID
+mid	int64	å¾®åšMID
+idstr	string	å­—ç¬¦ä¸²å‹çš„å¾®åšID
+text	string	å¾®åšä¿¡æ¯å†…å®¹
+source	string	å¾®åšæ¥æº
+favorited	boolean	æ˜¯å¦å·²æ”¶è—ï¼Œtrueï¼šæ˜¯ï¼Œfalseï¼šå¦
+truncated	boolean	æ˜¯å¦è¢«æˆªæ–­ï¼Œtrueï¼šæ˜¯ï¼Œfalseï¼šå¦
+in_reply_to_status_id	string	ï¼ˆæš‚æœªæ”¯æŒï¼‰å›å¤ID
+in_reply_to_user_id	string	ï¼ˆæš‚æœªæ”¯æŒï¼‰å›å¤äººUID
+in_reply_to_screen_name	string	ï¼ˆæš‚æœªæ”¯æŒï¼‰å›å¤äººæ˜µç§°
+thumbnail_pic	string	ç¼©ç•¥å›¾ç‰‡åœ°å€ï¼Œæ²¡æœ‰æ—¶ä¸è¿”å›æ­¤å­—æ®µ
+bmiddle_pic	string	ä¸­ç­‰å°ºå¯¸å›¾ç‰‡åœ°å€ï¼Œæ²¡æœ‰æ—¶ä¸è¿”å›æ­¤å­—æ®µ
+original_pic	string	åŸå§‹å›¾ç‰‡åœ°å€ï¼Œæ²¡æœ‰æ—¶ä¸è¿”å›æ­¤å­—æ®µ
+geo	object	åœ°ç†ä¿¡æ¯å­—æ®µ è¯¦ç»†
+user	object	å¾®åšä½œè€…çš„ç”¨æˆ·ä¿¡æ¯å­—æ®µ è¯¦ç»†
+retweeted_status	object	è¢«è½¬å‘çš„åŸå¾®åšä¿¡æ¯å­—æ®µï¼Œå½“è¯¥å¾®åšä¸ºè½¬å‘å¾®åšæ—¶è¿”å› è¯¦ç»†
+reposts_count	int	è½¬å‘æ•°
+comments_count	int	è¯„è®ºæ•°
+attitudes_count	int	è¡¨æ€æ•°
+mlevel	int	æš‚æœªæ”¯æŒ
+visible	object	å¾®åšçš„å¯è§æ€§åŠæŒ‡å®šå¯è§åˆ†ç»„ä¿¡æ¯ã€‚è¯¥objectä¸­typeå–å€¼ï¼Œ0ï¼šæ™®é€šå¾®åšï¼Œ1ï¼šç§å¯†å¾®åšï¼Œ3ï¼šæŒ‡å®šåˆ†ç»„å¾®åšï¼Œ4ï¼šå¯†å‹å¾®åšï¼›list_idä¸ºåˆ†ç»„çš„ç»„å·
+pic_ids	object	å¾®åšé…å›¾IDã€‚å¤šå›¾æ—¶è¿”å›å¤šå›¾IDï¼Œç”¨æ¥æ‹¼æ¥å›¾ç‰‡urlã€‚ç”¨è¿”å›å­—æ®µthumbnail_picçš„åœ°å€é…ä¸Šè¯¥è¿”å›å­—æ®µçš„å›¾ç‰‡IDï¼Œå³å¯å¾—åˆ°å¤šä¸ªå›¾ç‰‡urlã€‚
+ad	object array	å¾®åšæµå†…çš„æ¨å¹¿å¾®åšID
 
 
-ÓÃ»§£¨user£©
-·µ»ØÖµ×Ö¶Î	×Ö¶ÎÀàĞÍ	×Ö¶ÎËµÃ÷
-id	int64	ÓÃ»§UID
-idstr	string	×Ö·û´®ĞÍµÄÓÃ»§UID
-screen_name	string	ÓÃ»§êÇ³Æ
-name	string	ÓÑºÃÏÔÊ¾Ãû³Æ
-province	int	ÓÃ»§ËùÔÚÊ¡¼¶ID
-city	int	ÓÃ»§ËùÔÚ³ÇÊĞID
-location	string	ÓÃ»§ËùÔÚµØ
-description	string	ÓÃ»§¸öÈËÃèÊö
-url	string	ÓÃ»§²©¿ÍµØÖ·
-profile_image_url	string	ÓÃ»§Í·ÏñµØÖ·£¨ÖĞÍ¼£©£¬50¡Á50ÏñËØ
-profile_url	string	ÓÃ»§µÄÎ¢²©Í³Ò»URLµØÖ·
-domain	string	ÓÃ»§µÄ¸öĞÔ»¯ÓòÃû
-weihao	string	ÓÃ»§µÄÎ¢ºÅ
-gender	string	ĞÔ±ğ£¬m£ºÄĞ¡¢f£ºÅ®¡¢n£ºÎ´Öª
-followers_count	int	·ÛË¿Êı
-friends_count	int	¹Ø×¢Êı
-statuses_count	int	Î¢²©Êı
-favourites_count	int	ÊÕ²ØÊı
-created_at	string	ÓÃ»§´´½¨£¨×¢²á£©Ê±¼ä
-following	boolean	ÔİÎ´Ö§³Ö
-allow_all_act_msg	boolean	ÊÇ·ñÔÊĞíËùÓĞÈË¸øÎÒ·¢Ë½ĞÅ£¬true£ºÊÇ£¬false£º·ñ
-geo_enabled	boolean	ÊÇ·ñÔÊĞí±êÊ¶ÓÃ»§µÄµØÀíÎ»ÖÃ£¬true£ºÊÇ£¬false£º·ñ
-verified	boolean	ÊÇ·ñÊÇÎ¢²©ÈÏÖ¤ÓÃ»§£¬¼´¼ÓVÓÃ»§£¬true£ºÊÇ£¬false£º·ñ
-verified_type	int	ÔİÎ´Ö§³Ö
-remark	string	ÓÃ»§±¸×¢ĞÅÏ¢£¬Ö»ÓĞÔÚ²éÑ¯ÓÃ»§¹ØÏµÊ±²Å·µ»Ø´Ë×Ö¶Î
-status	object	ÓÃ»§µÄ×î½üÒ»ÌõÎ¢²©ĞÅÏ¢×Ö¶Î ÏêÏ¸
-allow_all_comment	boolean	ÊÇ·ñÔÊĞíËùÓĞÈË¶ÔÎÒµÄÎ¢²©½øĞĞÆÀÂÛ£¬true£ºÊÇ£¬false£º·ñ
-avatar_large	string	ÓÃ»§Í·ÏñµØÖ·£¨´óÍ¼£©£¬180¡Á180ÏñËØ
-avatar_hd	string	ÓÃ»§Í·ÏñµØÖ·£¨¸ßÇå£©£¬¸ßÇåÍ·ÏñÔ­Í¼
-verified_reason	string	ÈÏÖ¤Ô­Òò
-follow_me	boolean	¸ÃÓÃ»§ÊÇ·ñ¹Ø×¢µ±Ç°µÇÂ¼ÓÃ»§£¬true£ºÊÇ£¬false£º·ñ
-online_status	int	ÓÃ»§µÄÔÚÏß×´Ì¬£¬0£º²»ÔÚÏß¡¢1£ºÔÚÏß
-bi_followers_count	int	ÓÃ»§µÄ»¥·ÛÊı
-lang	string	ÓÃ»§µ±Ç°µÄÓïÑÔ°æ±¾£¬zh-cn£º¼òÌåÖĞÎÄ£¬zh-tw£º·±ÌåÖĞÎÄ£¬en£ºÓ¢Óï
+ç”¨æˆ·ï¼ˆuserï¼‰
+è¿”å›å€¼å­—æ®µ	å­—æ®µç±»å‹	å­—æ®µè¯´æ˜
+id	int64	ç”¨æˆ·UID
+idstr	string	å­—ç¬¦ä¸²å‹çš„ç”¨æˆ·UID
+screen_name	string	ç”¨æˆ·æ˜µç§°
+name	string	å‹å¥½æ˜¾ç¤ºåç§°
+province	int	ç”¨æˆ·æ‰€åœ¨çœçº§ID
+city	int	ç”¨æˆ·æ‰€åœ¨åŸå¸‚ID
+location	string	ç”¨æˆ·æ‰€åœ¨åœ°
+description	string	ç”¨æˆ·ä¸ªäººæè¿°
+url	string	ç”¨æˆ·åšå®¢åœ°å€
+profile_image_url	string	ç”¨æˆ·å¤´åƒåœ°å€ï¼ˆä¸­å›¾ï¼‰ï¼Œ50Ã—50åƒç´ 
+profile_url	string	ç”¨æˆ·çš„å¾®åšç»Ÿä¸€URLåœ°å€
+domain	string	ç”¨æˆ·çš„ä¸ªæ€§åŒ–åŸŸå
+weihao	string	ç”¨æˆ·çš„å¾®å·
+gender	string	æ€§åˆ«ï¼Œmï¼šç”·ã€fï¼šå¥³ã€nï¼šæœªçŸ¥
+followers_count	int	ç²‰ä¸æ•°
+friends_count	int	å…³æ³¨æ•°
+statuses_count	int	å¾®åšæ•°
+favourites_count	int	æ”¶è—æ•°
+created_at	string	ç”¨æˆ·åˆ›å»ºï¼ˆæ³¨å†Œï¼‰æ—¶é—´
+following	boolean	æš‚æœªæ”¯æŒ
+allow_all_act_msg	boolean	æ˜¯å¦å…è®¸æ‰€æœ‰äººç»™æˆ‘å‘ç§ä¿¡ï¼Œtrueï¼šæ˜¯ï¼Œfalseï¼šå¦
+geo_enabled	boolean	æ˜¯å¦å…è®¸æ ‡è¯†ç”¨æˆ·çš„åœ°ç†ä½ç½®ï¼Œtrueï¼šæ˜¯ï¼Œfalseï¼šå¦
+verified	boolean	æ˜¯å¦æ˜¯å¾®åšè®¤è¯ç”¨æˆ·ï¼Œå³åŠ Vç”¨æˆ·ï¼Œtrueï¼šæ˜¯ï¼Œfalseï¼šå¦
+verified_type	int	æš‚æœªæ”¯æŒ
+remark	string	ç”¨æˆ·å¤‡æ³¨ä¿¡æ¯ï¼Œåªæœ‰åœ¨æŸ¥è¯¢ç”¨æˆ·å…³ç³»æ—¶æ‰è¿”å›æ­¤å­—æ®µ
+status	object	ç”¨æˆ·çš„æœ€è¿‘ä¸€æ¡å¾®åšä¿¡æ¯å­—æ®µ è¯¦ç»†
+allow_all_comment	boolean	æ˜¯å¦å…è®¸æ‰€æœ‰äººå¯¹æˆ‘çš„å¾®åšè¿›è¡Œè¯„è®ºï¼Œtrueï¼šæ˜¯ï¼Œfalseï¼šå¦
+avatar_large	string	ç”¨æˆ·å¤´åƒåœ°å€ï¼ˆå¤§å›¾ï¼‰ï¼Œ180Ã—180åƒç´ 
+avatar_hd	string	ç”¨æˆ·å¤´åƒåœ°å€ï¼ˆé«˜æ¸…ï¼‰ï¼Œé«˜æ¸…å¤´åƒåŸå›¾
+verified_reason	string	è®¤è¯åŸå› 
+follow_me	boolean	è¯¥ç”¨æˆ·æ˜¯å¦å…³æ³¨å½“å‰ç™»å½•ç”¨æˆ·ï¼Œtrueï¼šæ˜¯ï¼Œfalseï¼šå¦
+online_status	int	ç”¨æˆ·çš„åœ¨çº¿çŠ¶æ€ï¼Œ0ï¼šä¸åœ¨çº¿ã€1ï¼šåœ¨çº¿
+bi_followers_count	int	ç”¨æˆ·çš„äº’ç²‰æ•°
+lang	string	ç”¨æˆ·å½“å‰çš„è¯­è¨€ç‰ˆæœ¬ï¼Œzh-cnï¼šç®€ä½“ä¸­æ–‡ï¼Œzh-twï¼šç¹ä½“ä¸­æ–‡ï¼Œenï¼šè‹±è¯­
 
-ÒşË½ÉèÖÃ£¨privacy£©
-·µ»ØÖµ×Ö¶Î	×Ö¶ÎÀàĞÍ	×Ö¶ÎËµÃ÷
-comment	int	ÊÇ·ñ¿ÉÒÔÆÀÂÛÎÒµÄÎ¢²©£¬0£ºËùÓĞÈË¡¢1£º¹Ø×¢µÄÈË¡¢2£º¿ÉĞÅÓÃ»§
-geo	int	ÊÇ·ñ¿ªÆôµØÀíĞÅÏ¢£¬0£º²»¿ªÆô¡¢1£º¿ªÆô
-message	int	ÊÇ·ñ¿ÉÒÔ¸øÎÒ·¢Ë½ĞÅ£¬0£ºËùÓĞÈË¡¢1£ºÎÒ¹Ø×¢µÄÈË¡¢2£º¿ÉĞÅÓÃ»§
-realname	int	ÊÇ·ñ¿ÉÒÔÍ¨¹ıÕæÃûËÑË÷µ½ÎÒ£¬0£º²»¿ÉÒÔ¡¢1£º¿ÉÒÔ
-badge	int	Ñ«ÕÂÊÇ·ñ¿É¼û£¬0£º²»¿É¼û¡¢1£º¿É¼û
-mobile	int	ÊÇ·ñ¿ÉÒÔÍ¨¹ıÊÖ»úºÅÂëËÑË÷µ½ÎÒ£¬0£º²»¿ÉÒÔ¡¢1£º¿ÉÒÔ
-webim	int	ÊÇ·ñ¿ªÆôwebim£¬ 0£º²»¿ªÆô¡¢1£º¿ªÆô
+éšç§è®¾ç½®ï¼ˆprivacyï¼‰
+è¿”å›å€¼å­—æ®µ	å­—æ®µç±»å‹	å­—æ®µè¯´æ˜
+comment	int	æ˜¯å¦å¯ä»¥è¯„è®ºæˆ‘çš„å¾®åšï¼Œ0ï¼šæ‰€æœ‰äººã€1ï¼šå…³æ³¨çš„äººã€2ï¼šå¯ä¿¡ç”¨æˆ·
+geo	int	æ˜¯å¦å¼€å¯åœ°ç†ä¿¡æ¯ï¼Œ0ï¼šä¸å¼€å¯ã€1ï¼šå¼€å¯
+message	int	æ˜¯å¦å¯ä»¥ç»™æˆ‘å‘ç§ä¿¡ï¼Œ0ï¼šæ‰€æœ‰äººã€1ï¼šæˆ‘å…³æ³¨çš„äººã€2ï¼šå¯ä¿¡ç”¨æˆ·
+realname	int	æ˜¯å¦å¯ä»¥é€šè¿‡çœŸåæœç´¢åˆ°æˆ‘ï¼Œ0ï¼šä¸å¯ä»¥ã€1ï¼šå¯ä»¥
+badge	int	å‹‹ç« æ˜¯å¦å¯è§ï¼Œ0ï¼šä¸å¯è§ã€1ï¼šå¯è§
+mobile	int	æ˜¯å¦å¯ä»¥é€šè¿‡æ‰‹æœºå·ç æœç´¢åˆ°æˆ‘ï¼Œ0ï¼šä¸å¯ä»¥ã€1ï¼šå¯ä»¥
+webim	int	æ˜¯å¦å¼€å¯webimï¼Œ 0ï¼šä¸å¼€å¯ã€1ï¼šå¼€å¯
 
-ÏûÏ¢Î´¶ÁÊı£¨remind£©
-·µ»ØÖµ×Ö¶Î	×Ö¶ÎÀàĞÍ	×Ö¶ÎËµÃ÷
-status	int	ĞÂÎ¢²©Î´¶ÁÊı
-follower	int	ĞÂ·ÛË¿Êı
-cmt	int	ĞÂÆÀÂÛÊı
-dm	int	ĞÂË½ĞÅÊı
-mention_status	int	ĞÂÌá¼°ÎÒµÄÎ¢²©Êı
-mention_cmt	int	ĞÂÌá¼°ÎÒµÄÆÀÂÛÊı
-group	int	Î¢ÈºÏûÏ¢Î´¶ÁÊı
-private_group	int	Ë½ÓĞÎ¢ÈºÏûÏ¢Î´¶ÁÊı
-notice	int	ĞÂÍ¨ÖªÎ´¶ÁÊı
-invite	int	ĞÂÑûÇëÎ´¶ÁÊı
-badge	int	ĞÂÑ«ÕÂÊı
-photo	int	Ïà²áÏûÏ¢Î´¶ÁÊı
+æ¶ˆæ¯æœªè¯»æ•°ï¼ˆremindï¼‰
+è¿”å›å€¼å­—æ®µ	å­—æ®µç±»å‹	å­—æ®µè¯´æ˜
+status	int	æ–°å¾®åšæœªè¯»æ•°
+follower	int	æ–°ç²‰ä¸æ•°
+cmt	int	æ–°è¯„è®ºæ•°
+dm	int	æ–°ç§ä¿¡æ•°
+mention_status	int	æ–°æåŠæˆ‘çš„å¾®åšæ•°
+mention_cmt	int	æ–°æåŠæˆ‘çš„è¯„è®ºæ•°
+group	int	å¾®ç¾¤æ¶ˆæ¯æœªè¯»æ•°
+private_group	int	ç§æœ‰å¾®ç¾¤æ¶ˆæ¯æœªè¯»æ•°
+notice	int	æ–°é€šçŸ¥æœªè¯»æ•°
+invite	int	æ–°é‚€è¯·æœªè¯»æ•°
+badge	int	æ–°å‹‹ç« æ•°
+photo	int	ç›¸å†Œæ¶ˆæ¯æœªè¯»æ•°
 msgbox	int	{{{3}}}
 
-¶ÌÁ´£¨url_short£©
-·µ»ØÖµ×Ö¶Î	×Ö¶ÎÀàĞÍ	×Ö¶ÎËµÃ÷
-url_short	string	¶ÌÁ´½Ó
-url_long	string	Ô­Ê¼³¤Á´½Ó
-type	int	Á´½ÓµÄÀàĞÍ£¬0£ºÆÕÍ¨ÍøÒ³¡¢1£ºÊÓÆµ¡¢2£ºÒôÀÖ¡¢3£º»î¶¯¡¢5¡¢Í¶Æ±
-result	boolean	¶ÌÁ´µÄ¿ÉÓÃ×´Ì¬£¬true£º¿ÉÓÃ¡¢false£º²»¿ÉÓÃ¡£
+çŸ­é“¾ï¼ˆurl_shortï¼‰
+è¿”å›å€¼å­—æ®µ	å­—æ®µç±»å‹	å­—æ®µè¯´æ˜
+url_short	string	çŸ­é“¾æ¥
+url_long	string	åŸå§‹é•¿é“¾æ¥
+type	int	é“¾æ¥çš„ç±»å‹ï¼Œ0ï¼šæ™®é€šç½‘é¡µã€1ï¼šè§†é¢‘ã€2ï¼šéŸ³ä¹ã€3ï¼šæ´»åŠ¨ã€5ã€æŠ•ç¥¨
+result	boolean	çŸ­é“¾çš„å¯ç”¨çŠ¶æ€ï¼Œtrueï¼šå¯ç”¨ã€falseï¼šä¸å¯ç”¨ã€‚
 
-µØÀíĞÅÏ¢£¨geo£©
-·µ»ØÖµ×Ö¶Î	×Ö¶ÎÀàĞÍ	×Ö¶ÎËµÃ÷
-longitude	string	¾­¶È×ø±ê
-latitude	string	Î¬¶È×ø±ê
-city	string	ËùÔÚ³ÇÊĞµÄ³ÇÊĞ´úÂë
-province	string	ËùÔÚÊ¡·İµÄÊ¡·İ´úÂë
-city_name	string	ËùÔÚ³ÇÊĞµÄ³ÇÊĞÃû³Æ
-province_name	string	ËùÔÚÊ¡·İµÄÊ¡·İÃû³Æ
-address	string	ËùÔÚµÄÊµ¼ÊµØÖ·£¬¿ÉÒÔÎª¿Õ
-pinyin	string	µØÖ·µÄººÓïÆ´Òô£¬²»ÊÇËùÓĞÇé¿ö¶¼»á·µ»Ø¸Ã×Ö¶Î
-more	string	¸ü¶àĞÅÏ¢£¬²»ÊÇËùÓĞÇé¿ö¶¼»á·µ»Ø¸Ã×Ö¶Î
+åœ°ç†ä¿¡æ¯ï¼ˆgeoï¼‰
+è¿”å›å€¼å­—æ®µ	å­—æ®µç±»å‹	å­—æ®µè¯´æ˜
+longitude	string	ç»åº¦åæ ‡
+latitude	string	ç»´åº¦åæ ‡
+city	string	æ‰€åœ¨åŸå¸‚çš„åŸå¸‚ä»£ç 
+province	string	æ‰€åœ¨çœä»½çš„çœä»½ä»£ç 
+city_name	string	æ‰€åœ¨åŸå¸‚çš„åŸå¸‚åç§°
+province_name	string	æ‰€åœ¨çœä»½çš„çœä»½åç§°
+address	string	æ‰€åœ¨çš„å®é™…åœ°å€ï¼Œå¯ä»¥ä¸ºç©º
+pinyin	string	åœ°å€çš„æ±‰è¯­æ‹¼éŸ³ï¼Œä¸æ˜¯æ‰€æœ‰æƒ…å†µéƒ½ä¼šè¿”å›è¯¥å­—æ®µ
+more	string	æ›´å¤šä¿¡æ¯ï¼Œä¸æ˜¯æ‰€æœ‰æƒ…å†µéƒ½ä¼šè¿”å›è¯¥å­—æ®µ

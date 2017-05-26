@@ -91,7 +91,7 @@
     android:background="@color/pinkcolor"
     android:orientation="horizontal">
 
-        <com.finderlo.weixzz.base.BaseTextView
+        <me.ticknick.weixzz.base.BaseTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="微博详情"

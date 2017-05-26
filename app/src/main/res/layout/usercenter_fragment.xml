@@ -20,7 +20,7 @@
             android:layout_marginTop="160dp"
             android:orientation="vertical">
 
-            <com.finderlo.weixzz.widgt.RoundImageView
+            <me.ticknick.weixzz.widgt.RoundImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginStart="10dp"
