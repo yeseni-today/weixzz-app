@@ -8,18 +8,16 @@
 
 ![](https://raw.githubusercontent.com/finderlo/SomeFile/master/weixzz1.jpeg)
 
-
-
 ![](https://raw.githubusercontent.com/finderlo/SomeFile/master/weixzz2.jpeg)
-
-
 
 ![](https://raw.githubusercontent.com/finderlo/SomeFile/master/weixzz3.jpeg)
 
-# #
+# 版本信息
 
-版本信息
 
+* alpha 1.0
+ 
+ bug-fix，核心功能正常
 
 * alpha 0.114
 
