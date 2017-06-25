@@ -3,25 +3,14 @@
 这是一个仅供学习之用的第三方微博客户端，未完成
 
 
-
-# 样式
-
-![](https://raw.githubusercontent.com/finderlo/SomeFile/master/weixzz1.jpeg)
-
-![](https://raw.githubusercontent.com/finderlo/SomeFile/master/weixzz2.jpeg)
-
-![](https://raw.githubusercontent.com/finderlo/SomeFile/master/weixzz3.jpeg)
-
 # 版本信息
 
 
 * alpha 1.0
- 
- bug-fix，核心功能正常
+  bug-fix，核心功能正常
 
 * alpha 0.114
-
-  更新README，存在BUG，无法查看微博详情页
+  更新README，存在BUG，无法查看微博详情页
 
 * alpha 0.113
   可以发微博
@@ -66,3 +55,11 @@
 
 * alpha 0.100 
   ~~首页recycler视图顶部无法显示~~，~~侧边栏无法被打开~~
+  
+# 样式
+
+![](https://raw.githubusercontent.com/finderlo/SomeFile/master/weixzz1.jpeg)
+
+![](https://raw.githubusercontent.com/finderlo/SomeFile/master/weixzz2.jpeg)
+
+![](https://raw.githubusercontent.com/finderlo/SomeFile/master/weixzz3.jpeg)
